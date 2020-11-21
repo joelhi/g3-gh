@@ -14,6 +14,8 @@ namespace gh3sharp.Core.Goos
 
     public class DMesh3_goo : GH_Goo<DMesh3>
     {
+        public Mesh dispMsh = null;
+
         public DMesh3_goo()
         {
 
@@ -23,11 +25,19 @@ namespace gh3sharp.Core.Goos
         public DMesh3_goo(DMesh3 ms)
         {
             Value = ms;
+            
         }
 
         public DMesh3_goo(Mesh ms)
         {
             Value = ms.ToDMesh3();
+        }
+
+        public void GenerateDispMesh()
+        {
+            if (dispMsh == null)
+                dispMsh = this.Value.ToRhino();
+            
         }
 
         public override string ToString()

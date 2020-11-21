@@ -63,6 +63,7 @@ namespace gh3sharp.Components.Remesh
             DA.GetData(0, ref dMsh_goo);
             DA.GetData(1, ref numF);
             DA.GetData(2, ref fixB);
+            DA.GetData(3, ref projBack);
 
             DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
 

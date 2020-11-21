@@ -3,16 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 using Grasshopper.Kernel.Types;
 
 using gh3sharp.Core;
 using gh3sharp.Core.Goos;
 using g3;
+using Rhino.Geometry;
+using Rhino.Display;
 
 namespace gh3sharp.Components.Params
 {
-    public class DMesh3_Param : GH_Param<DMesh3_goo>
+    public class DMesh3_Param : GH_Param<DMesh3_goo>, IGH_PreviewObject
     {
 
         public DMesh3_Param() :
@@ -44,9 +47,58 @@ namespace gh3sharp.Components.Params
                 return null;
         }
 
+        public void DrawViewportMeshes(IGH_PreviewArgs args)
+        {
+            DisplayPipeline dp = args.Display;
+
+            List<Mesh> meshes = new List<Mesh>();
+
+            foreach (DMesh3_goo goo in this.m_data.NonNulls)
+            {
+                goo.GenerateDispMesh();
+                dp.DrawMeshShaded(goo.dispMsh, new DisplayMaterial(Color.DarkSlateGray, 0.2));
+                dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
+            }
+        }
+
+
+        public void DrawViewportWires(IGH_PreviewArgs args)
+        {
+            DisplayPipeline dp = args.Display;
+
+            List<Mesh> meshes = new List<Mesh>();
+
+            foreach (DMesh3_goo goo in this.m_data.NonNulls)
+            {
+                goo.GenerateDispMesh();
+                dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
+            }
+ 
+        }
+
         public override Guid ComponentGuid
         {
             get { return new Guid("b55b2356-c963-4eca-811b-20b86f9dc4c0"); }
+        }
+
+        public bool Hidden { get; set; }
+
+        public bool IsPreviewCapable => true;
+
+        public Rhino.Geometry.BoundingBox ClippingBox
+        {
+            get
+            {
+                if (Hidden)
+                    return BoundingBox.Empty;
+
+                BoundingBox box = BoundingBox.Empty;
+
+                foreach (DMesh3_goo mGoo in this.m_data.NonNulls)
+                    box.Union(mGoo.Value.GetBounds().ToRhino()); 
+
+                return box;
+            }
         }
     }
 }

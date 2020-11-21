@@ -24,4 +24,7 @@
     <Folder Include="Components\5_Voxel_Lattice\" />
     <Folder Include="Components\6_Analyze_Extract\" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
 </Project>

@@ -60,5 +60,10 @@ namespace gh3sharp.Core
                 throw new Exception("The mesh face needs to be a triangle.");
                     
         }
+
+        public static Rhino.Geometry.BoundingBox ToRhino(this AxisAlignedBox3d bx)
+        {
+            return new Rhino.Geometry.BoundingBox(bx.Min.x, bx.Min.y, bx.Min.z, bx.Max.x, bx.Max.y, bx.Max.z);
+        }
     }
 }
