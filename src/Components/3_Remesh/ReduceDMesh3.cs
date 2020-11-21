@@ -5,9 +5,9 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace gh3sharp.Components._Construction
+namespace gh3sharp.Components._Remesh
 {
-    public class DMesh3_From_ : GH_Component
+    public class ReduceDMesh3 : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -16,9 +16,9 @@ namespace gh3sharp.Components._Construction
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public DMesh3_From_()
-          : base("DMesh3_From_", "Nickname",
-            "DMesh3_From_ description",
+        public ReduceDMesh3()
+          : base("ReduceDMesh3", "Nickname",
+            "ReduceDMesh3 description",
             "Category", "Subcategory")
         {
         }
@@ -46,11 +46,6 @@ namespace gh3sharp.Components._Construction
         {
         }
 
-        public override GH_Exposure Exposure
-        {
-            get { return GH_Exposure.primary; }
-        }
-
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.
         /// Icons need to be 24x24 pixels.
@@ -72,7 +67,7 @@ namespace gh3sharp.Components._Construction
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("bec18d88-10f7-4242-b58a-f33f0ce1f018"); }
+            get { return new Guid("41abcf02-b005-4753-9075-a0320a9f069c"); }
         }
     }
 }
