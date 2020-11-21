@@ -21,21 +21,23 @@ namespace gh3sharp.Core
             for (int i = 0; i < numF; i++)
                 Triangles.Add(ms.Faces[i].ToVec3i());
 
-            return DMesh3Builder.Build<Vector3f,Vector3i,Vector3f>(Vertices, Triangles);
+            DMesh3 dMs = DMesh3Builder.Build<Vector3f,Vector3i,Vector3f>(Vertices, Triangles);
+            return dMs;
         }
 
         public static Rhino.Geometry.Mesh ToRhino(this DMesh3 dMesh3)
         {
             Rhino.Geometry.Mesh rhMs = new Rhino.Geometry.Mesh();
-
             List<Rhino.Geometry.MeshFace> rhFaces = new List<Rhino.Geometry.MeshFace>();
+            List<Rhino.Geometry.Point3f> rhVertices = new List<Rhino.Geometry.Point3f>();
 
             foreach (var tri in dMesh3.Triangles())
-            {
+                rhMs.Faces.AddFace(new Rhino.Geometry.MeshFace(tri.a, tri.b, tri.c));
+            foreach (var vert in dMesh3.Vertices())
+                rhMs.Vertices.Add((float)vert.x, (float)vert.y, (float)vert.z);
 
-            }
+            return rhMs;
 
-            
         }
         public static Vector3f ToVec3f(this Rhino.Geometry.Point3f rhPt)
         {

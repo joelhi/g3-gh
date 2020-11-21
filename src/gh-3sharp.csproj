@@ -15,5 +15,8 @@
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="Core\Goos\" />
+    <Folder Include="Components\" />
+    <Folder Include="Components\0_Params\" />
+    <Folder Include="Components\1_Construction\" />
   </ItemGroup>
 </Project>
