@@ -5,9 +5,11 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace gh3sharp.Components._Remesh
+using gh3sharp.Core;
+
+namespace gh3sharp.Components.Remesh
 {
-    public class ReduceDMesh3 : GH_Component
+    public class SmoothDMesh3Laplace : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -16,10 +18,10 @@ namespace gh3sharp.Components._Remesh
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public ReduceDMesh3()
-          : base("ReduceDMesh3", "Nickname",
-            "ReduceDMesh3 description",
-            "Category", "Subcategory")
+        public SmoothDMesh3Laplace()
+          : base("SmoothDMesh3Laplace", "Nickname",
+            "SmoothDMesh3Laplace description",
+            gh3sharpUtil.pluginName, "3_Operations")
         {
         }
 
@@ -67,7 +69,7 @@ namespace gh3sharp.Components._Remesh
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("41abcf02-b005-4753-9075-a0320a9f069c"); }
+            get { return new Guid("69fa6a7a-29a4-4288-bae7-cbbf0b03b7dd"); }
         }
     }
 }

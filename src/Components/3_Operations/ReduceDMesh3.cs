@@ -5,9 +5,15 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace gh3sharp.Components._Remesh
+using gh3sharp.Core;
+using gh3sharp.Components.Params;
+using gh3sharp.Core.Goos;
+
+using g3;
+
+namespace gh3sharp.Components.Remesh
 {
-    public class RemeshDMesh3 : GH_Component
+    public class ReduceDMesh3 : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -16,10 +22,10 @@ namespace gh3sharp.Components._Remesh
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public RemeshDMesh3()
-          : base("RemeshDMesh3", "Nickname",
-            "RemeshDMesh3 description",
-            "Category", "Subcategory")
+        public ReduceDMesh3()
+          : base("ReduceDMesh3", "Nickname",
+            "ReduceDMesh3 description",
+            gh3sharpUtil.pluginName, "3_Operations")
         {
         }
 
@@ -28,6 +34,10 @@ namespace gh3sharp.Components._Remesh
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddIntegerParameter("Number of faces", "n", "Number of faces after reduction", GH_ParamAccess.item);
+            pManager.AddBooleanParameter("Constrain Edges", "c", "Option to constrain the edges during the reduction procedure", GH_ParamAccess.item,false);
+            pManager.AddBooleanParameter("Project to Input", "p", "Project the reduced result back to the input mesh", GH_ParamAccess.item, false);
         }
 
         /// <summary>
@@ -35,6 +45,7 @@ namespace gh3sharp.Components._Remesh
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param());
         }
 
         /// <summary>
@@ -44,6 +55,40 @@ namespace gh3sharp.Components._Remesh
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            DMesh3_goo dMsh_goo = null;
+            int numF = 0;
+            bool fixB = false;
+            bool projBack = false;
+
+            DA.GetData(0, ref dMsh_goo);
+            DA.GetData(1, ref numF);
+            DA.GetData(2, ref fixB);
+
+            DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
+
+            Reducer r = new Reducer(dMsh_copy);
+
+            if(fixB)
+            {
+                r.SetExternalConstraints(new MeshConstraints());
+                MeshConstraintUtil.FixAllBoundaryEdges(r.Constraints, dMsh_copy);
+            }
+            if(projBack)
+            {
+                DMeshAABBTree3 tree = new DMeshAABBTree3(new DMesh3(dMsh_copy));
+                tree.Build();
+                MeshProjectionTarget target = new MeshProjectionTarget(tree.Mesh, tree);
+                r.SetProjectionTarget(target);
+            }
+
+
+            r.ReduceToTriangleCount(numF);
+            bool isValid = dMsh_copy.CheckValidity();
+
+            if (!isValid)
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Mesh seems to have been corrupted during reduction. Please check...");
+
+            DA.SetData(0, dMsh_copy);
         }
 
         /// <summary>
@@ -67,7 +112,7 @@ namespace gh3sharp.Components._Remesh
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("862f6d4e-964c-495c-a1f1-3465879263b5"); }
+            get { return new Guid("41abcf02-b005-4753-9075-a0320a9f069c"); }
         }
     }
 }

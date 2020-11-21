@@ -5,6 +5,8 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
+using gh3sharp.Core;
+
 namespace gh3sharp.Components._Transform
 {
     public class RotateDMesh3 : GH_Component
@@ -19,7 +21,7 @@ namespace gh3sharp.Components._Transform
         public RotateDMesh3()
           : base("RotateDMesh3", "Nickname",
             "RotateDMesh3 description",
-            "Category", "Subcategory")
+            gh3sharpUtil.pluginName, "2_Transform")
         {
         }
 

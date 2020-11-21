@@ -31,10 +31,18 @@ namespace gh3sharp.Core
             List<Rhino.Geometry.MeshFace> rhFaces = new List<Rhino.Geometry.MeshFace>();
             List<Rhino.Geometry.Point3f> rhVertices = new List<Rhino.Geometry.Point3f>();
 
-            foreach (var tri in dMesh3.Triangles())
+            DMesh3 copy;
+            if (!dMesh3.IsCompact)
+                copy = new DMesh3(dMesh3, true);
+            else
+                copy = dMesh3;
+
+            foreach (var tri in copy.Triangles())
                 rhMs.Faces.AddFace(new Rhino.Geometry.MeshFace(tri.a, tri.b, tri.c));
-            foreach (var vert in dMesh3.Vertices())
+            foreach (var vert in copy.Vertices())
                 rhMs.Vertices.Add((float)vert.x, (float)vert.y, (float)vert.z);
+
+           
 
             return rhMs;
 

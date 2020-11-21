@@ -18,10 +18,10 @@
     <Folder Include="Components\" />
     <Folder Include="Components\0_Params\" />
     <Folder Include="Components\1_Construction\" />
-    <Folder Include="Components\3_Remesh\" />
+    <Folder Include="Components\3_Operations\" />
     <Folder Include="Components\2_Transform\" />
     <Folder Include="Components\4_MarchingCubes\" />
     <Folder Include="Components\5_Voxel_Lattice\" />
-    <Folder Include="Components\6_Merge_Subtract\" />
+    <Folder Include="Components\6_Analyze_Extract\" />
   </ItemGroup>
 </Project>
