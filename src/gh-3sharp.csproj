@@ -12,4 +12,8 @@
     <PackageReference Include="geometry3Sharp" Version="1.0.324" />
   </ItemGroup>
   
+  <ItemGroup>
+    <Folder Include="Core\" />
+    <Folder Include="Core\Goos\" />
+  </ItemGroup>
 </Project>
