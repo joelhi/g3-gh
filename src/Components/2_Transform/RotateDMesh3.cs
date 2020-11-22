@@ -6,8 +6,11 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 
 using gh3sharp.Core;
+using gh3sharp.Components.Params;
 
-namespace gh3sharp.Components._Transform
+using g3;
+
+namespace gh3sharp.Components.Transform
 {
     public class RotateDMesh3 : GH_Component
     {
@@ -30,6 +33,8 @@ namespace gh3sharp.Components._Transform
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddNumberParameter("Scale Factor", "f", "Scale factor for DMesh3", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -37,6 +42,7 @@ namespace gh3sharp.Components._Transform
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param());
         }
 
         /// <summary>

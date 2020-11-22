@@ -52,6 +52,16 @@ namespace gh3sharp.Core
             return new Vector3f(rhPt.X,rhPt.Y,rhPt.Z);
         }
 
+        public static Vector3d ToVec3d(this Rhino.Geometry.Point3d pt3d)
+        {
+            return new Vector3d(pt3d.X, pt3d.Y, pt3d.Z);
+        }
+
+        public static Vector3d ToVec3d(this Rhino.Geometry.Vector3d vec3d)
+        {
+            return new Vector3d(vec3d.X, vec3d.Y, vec3d.Z);
+        }
+
         public static Vector3i ToVec3i(this Rhino.Geometry.MeshFace rhMeshFace)
         {
             if (rhMeshFace.IsTriangle)
@@ -60,6 +70,8 @@ namespace gh3sharp.Core
                 throw new Exception("The mesh face needs to be a triangle.");
                     
         }
+
+
 
         public static Rhino.Geometry.BoundingBox ToRhino(this AxisAlignedBox3d bx)
         {
