@@ -23,7 +23,7 @@ namespace gh3sharp.Components.Remesh
         /// new tabs/panels will automatically be created.
         /// </summary>
         public ReduceDMesh3()
-          : base("ReduceDMesh3", "Nickname",
+          : base("Reduce DMesh3", "Nickname",
             "ReduceDMesh3 description",
             gh3sharpUtil.pluginName, "3_Operations")
         {
@@ -81,7 +81,6 @@ namespace gh3sharp.Components.Remesh
                 MeshProjectionTarget target = new MeshProjectionTarget(tree.Mesh, tree);
                 r.SetProjectionTarget(target);
             }
-
 
             r.ReduceToTriangleCount(numF);
             bool isValid = dMsh_copy.CheckValidity();

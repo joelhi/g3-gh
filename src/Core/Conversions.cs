@@ -62,6 +62,7 @@ namespace gh3sharp.Core
             return new Vector3d(vec3d.X, vec3d.Y, vec3d.Z);
         }
 
+
         public static Vector3i ToVec3i(this Rhino.Geometry.MeshFace rhMeshFace)
         {
             if (rhMeshFace.IsTriangle)

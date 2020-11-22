@@ -23,7 +23,7 @@ namespace gh3sharp.Components.Remesh
         /// new tabs/panels will automatically be created.
         /// </summary>
         public RemeshDMesh3()
-          : base("RemeshDMesh3", "Nickname",
+          : base("Remesh DMesh3", "Nickname",
             "RemeshDMesh3 description",gh3sharpUtil.pluginName
             , "3_Operations")
         {

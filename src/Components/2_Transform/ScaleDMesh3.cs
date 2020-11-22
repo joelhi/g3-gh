@@ -60,9 +60,9 @@ namespace gh3sharp.Components.Transform
 
             DA.GetData(0, ref dMsh_goo);
             DA.GetData(1, ref sFact);
+            DA.GetData(2, ref origin);
 
             DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
-
             MeshTransforms.Scale(dMsh_copy, sFact.ToVec3d(), origin.ToVec3d());
 
             DA.SetData(0, dMsh_copy);

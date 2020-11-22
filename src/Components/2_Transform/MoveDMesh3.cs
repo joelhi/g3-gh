@@ -6,7 +6,10 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 
 using gh3sharp.Core;
+using gh3sharp.Core.Goos;
 using gh3sharp.Components.Params;
+
+using g3;
 
 namespace gh3sharp.Components.Transform
 {
@@ -20,8 +23,8 @@ namespace gh3sharp.Components.Transform
         /// new tabs/panels will automatically be created.
         /// </summary>
         public MoveDMesh3()
-          : base("MoveDMesh3", "Nickname",
-            "MoveDMesh3 description",
+          : base("Move DMesh3", "moveDMesh3",
+            "Move a DMesh3 along a translation vector",
             gh3sharpUtil.pluginName, "2_Transform")
         {
         }
@@ -32,7 +35,7 @@ namespace gh3sharp.Components.Transform
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param());
-            pManager.AddNumberParameter("Scale Factor", "f", "Scale factor for DMesh3", GH_ParamAccess.item);
+            pManager.AddVectorParameter("Translation Vector", "v", "Translation vector for DMesh3", GH_ParamAccess.item, new Rhino.Geometry.Vector3d(0, 0, 0));
         }
 
         /// <summary>
@@ -50,6 +53,16 @@ namespace gh3sharp.Components.Transform
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            DMesh3_goo dMsh_goo = null;
+            Rhino.Geometry.Vector3d vec = new Rhino.Geometry.Vector3d(0,0,0);
+
+            DA.GetData(0, ref dMsh_goo);
+            DA.GetData(1, ref vec);
+
+            DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
+            MeshTransforms.Translate(dMsh_copy, vec.ToVec3d());
+
+            DA.SetData(0, dMsh_copy);
         }
 
         /// <summary>
