@@ -27,8 +27,6 @@ namespace gh3sharp.Components.Params
             get { return GH_Exposure.primary; }
         }
 
-
-        
         protected override DMesh3_goo PreferredCast(object data)
         {
             if (data is Rhino.Geometry.Mesh)
@@ -46,6 +44,8 @@ namespace gh3sharp.Components.Params
             else
                 return null;
         }
+
+
 
         public void DrawViewportMeshes(IGH_PreviewArgs args)
         {

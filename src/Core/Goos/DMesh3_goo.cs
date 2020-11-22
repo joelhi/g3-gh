@@ -12,7 +12,7 @@ using gh3sharp.Core;
 namespace gh3sharp.Core.Goos
 {
 
-    public class DMesh3_goo : GH_Goo<DMesh3>
+    public class DMesh3_goo : GH_GeometricGoo<DMesh3>
     {
         public Mesh dispMsh = null;
 
@@ -66,9 +66,53 @@ namespace gh3sharp.Core.Goos
             get { return !(Value is null); }
         }
 
+        public override BoundingBox Boundingbox => throw new NotImplementedException();
+
         public override object ScriptVariable()
         {
             return base.ScriptVariable();
+        }
+
+        public override bool CastTo<Q>(out Q target)
+        {
+
+            //Cast to mesh.
+            if (typeof(Q).IsAssignableFrom(typeof(GH_Mesh)))
+            {
+                if (Value == null)
+                    target = default(Q);
+                else
+                    target = (Q)(object)(new GH_Mesh(Value.ToRhino()));
+                return true;
+            }
+
+            //Todo: cast to point, number, mesh, curve?
+
+            target = default(Q);
+            return false;
+        }
+
+        public override IGH_GeometricGoo DuplicateGeometry()
+        {
+            return new DMesh3_goo(new DMesh3(Value));
+        }
+
+        public override BoundingBox GetBoundingBox(Transform xform)
+        {
+
+            BoundingBox box = BoundingBox.Empty;
+            box.Union(Value.GetBounds().ToRhino());
+            return box;
+        }
+
+        public override IGH_GeometricGoo Transform(Transform xform)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override IGH_GeometricGoo Morph(SpaceMorph xmorph)
+        {
+            throw new NotImplementedException();
         }
 
         public static implicit operator DMesh3(DMesh3_goo dmshGoo)

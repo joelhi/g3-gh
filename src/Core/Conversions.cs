@@ -8,7 +8,6 @@ namespace gh3sharp.Core
     {
         public static DMesh3 ToDMesh3(this Rhino.Geometry.Mesh ms)
         {
-
             int numV = ms.Vertices.Count;
             int numF = ms.Faces.Count;
 
@@ -42,11 +41,9 @@ namespace gh3sharp.Core
             foreach (var vert in copy.Vertices())
                 rhMs.Vertices.Add((float)vert.x, (float)vert.y, (float)vert.z);
 
-           
-
             return rhMs;
-
         }
+
         public static Vector3f ToVec3f(this Rhino.Geometry.Point3f rhPt)
         {
             return new Vector3f(rhPt.X,rhPt.Y,rhPt.Z);
@@ -62,7 +59,6 @@ namespace gh3sharp.Core
             return new Vector3d(vec3d.X, vec3d.Y, vec3d.Z);
         }
 
-
         public static Vector3i ToVec3i(this Rhino.Geometry.MeshFace rhMeshFace)
         {
             if (rhMeshFace.IsTriangle)
@@ -71,8 +67,6 @@ namespace gh3sharp.Core
                 throw new Exception("The mesh face needs to be a triangle.");
                     
         }
-
-
 
         public static Rhino.Geometry.BoundingBox ToRhino(this AxisAlignedBox3d bx)
         {

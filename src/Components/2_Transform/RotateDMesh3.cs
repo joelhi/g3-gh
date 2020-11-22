@@ -15,13 +15,6 @@ namespace gh3sharp.Components.Transform
 {
     public class RotateDMesh3 : GH_Component
     {
-        /// <summary>
-        /// Each implementation of GH_Component must provide a public 
-        /// constructor without any arguments.
-        /// Category represents the Tab in which the component will appear, 
-        /// Subcategory the panel. If you use non-existing tab or panel names, 
-        /// new tabs/panels will automatically be created.
-        /// </summary>
         public RotateDMesh3()
           : base("RotateDMesh3", "Nickname",
             "RotateDMesh3 description",
@@ -29,9 +22,6 @@ namespace gh3sharp.Components.Transform
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param());
@@ -39,19 +29,11 @@ namespace gh3sharp.Components.Transform
             pManager.AddPlaneParameter("Plane", "p", "Plane to rotate in", GH_ParamAccess.item, Plane.WorldXY);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param());
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object can be used to retrieve data from input parameters and 
-        /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             DMesh3_goo dMsh_goo = null;
@@ -70,10 +52,6 @@ namespace gh3sharp.Components.Transform
             DA.SetData(0, dMsh_copy);
         }
 
-        /// <summary>
-        /// Provides an Icon for every component that will be visible in the User Interface.
-        /// Icons need to be 24x24 pixels.
-        /// </summary>
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -84,11 +62,6 @@ namespace gh3sharp.Components.Transform
             }
         }
 
-        /// <summary>
-        /// Each component must have a unique Guid to identify it. 
-        /// It is vital this Guid doesn't change otherwise old ghx files 
-        /// that use the old ID will partially fail during loading.
-        /// </summary>
         public override Guid ComponentGuid
         {
             get { return new Guid("2d78a98b-4940-49d7-b1c9-7335e40e9ab8"); }
