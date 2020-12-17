@@ -5,9 +5,11 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace gh3sharp.Components.Voxel_Lattice
+using g3;
+
+namespace gh3sharp.Components.MarchingCubes
 {
-    public class ExoLattice : GH_Component
+    public class CreateMeshSDF : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -16,9 +18,9 @@ namespace gh3sharp.Components.Voxel_Lattice
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public ExoLattice()
-          : base("ExoLattice", "Nickname",
-            "ExoLattice description",
+        public CreateMeshSDF()
+          : base("Create MeshSDF", "MeshSDF",
+            "Create a signed distance field (SDF) from a mesh",
             "Category", "Subcategory")
         {
         }
@@ -28,6 +30,9 @@ namespace gh3sharp.Components.Voxel_Lattice
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            DenseGrid3f grd = new DenseGrid3f();
+
+            
         }
 
         /// <summary>
@@ -46,6 +51,11 @@ namespace gh3sharp.Components.Voxel_Lattice
         {
         }
 
+
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.primary; }
+        }
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.
         /// Icons need to be 24x24 pixels.
@@ -67,7 +77,7 @@ namespace gh3sharp.Components.Voxel_Lattice
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("b4d92ffc-8fd9-41f3-ad34-3c8a56d9ee24"); }
+            get { return new Guid("188897ae-828c-48b3-984f-6bf68bd749b2"); }
         }
     }
 }

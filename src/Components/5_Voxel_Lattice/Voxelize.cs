@@ -5,7 +5,7 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace gh3sharp.Components._Voxel_Lattice
+namespace gh3sharp.Components.Voxel_Lattice
 {
     public class Voxelize : GH_Component
     {

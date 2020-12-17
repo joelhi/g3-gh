@@ -5,11 +5,9 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using g3;
-
-namespace gh3sharp.Components.MarchingCubes
+namespace gh3sharp.Components._MarchingCubes
 {
-    public class CreateSignedDistanceGrid : GH_Component
+    public class CreateGrid3f : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -18,9 +16,9 @@ namespace gh3sharp.Components.MarchingCubes
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public CreateSignedDistanceGrid()
-          : base("CreateSignedDistanceGrid", "Nickname",
-            "CreateSignedDistanceGrid description",
+        public CreateGrid3f()
+          : base("CreateGrid3f", "Nickname",
+            "CreateGrid3f description",
             "Category", "Subcategory")
         {
         }
@@ -30,9 +28,6 @@ namespace gh3sharp.Components.MarchingCubes
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            DenseGrid3f grd = new DenseGrid3f();
-
-            grd
         }
 
         /// <summary>
@@ -49,6 +44,11 @@ namespace gh3sharp.Components.MarchingCubes
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+        }
+
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.primary; }
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace gh3sharp.Components.MarchingCubes
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("188897ae-828c-48b3-984f-6bf68bd749b2"); }
+            get { return new Guid("d213850b-d433-43e5-8a89-ae429fbd6d3a"); }
         }
     }
 }

@@ -5,7 +5,7 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace gh3sharp.Components._MarchingCubes
+namespace gh3sharp.Components.MarchingCubes
 {
     public class ImplicitUnion : GH_Component
     {
@@ -44,6 +44,11 @@ namespace gh3sharp.Components._MarchingCubes
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+        }
+
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.tertiary; }
         }
 
         /// <summary>

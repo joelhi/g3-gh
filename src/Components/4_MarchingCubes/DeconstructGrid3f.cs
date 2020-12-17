@@ -5,9 +5,9 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace gh3sharp.Components.Voxel_Lattice
+namespace gh3sharp.Components._MarchingCubes
 {
-    public class ExoLattice : GH_Component
+    public class DeconstructGrid3f : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -16,9 +16,9 @@ namespace gh3sharp.Components.Voxel_Lattice
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public ExoLattice()
-          : base("ExoLattice", "Nickname",
-            "ExoLattice description",
+        public DeconstructGrid3f()
+          : base("DeconstructGrid3f", "Nickname",
+            "DeconstructGrid3f description",
             "Category", "Subcategory")
         {
         }
@@ -46,6 +46,11 @@ namespace gh3sharp.Components.Voxel_Lattice
         {
         }
 
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.secondary; }
+        }
+
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.
         /// Icons need to be 24x24 pixels.
@@ -67,7 +72,7 @@ namespace gh3sharp.Components.Voxel_Lattice
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("b4d92ffc-8fd9-41f3-ad34-3c8a56d9ee24"); }
+            get { return new Guid("f7cadf56-59ad-4b50-9190-7ef0adc09bec"); }
         }
     }
 }

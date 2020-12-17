@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Timers;
 
 using Grasshopper;
 using Grasshopper.Kernel;
@@ -13,11 +14,14 @@ using g3;
 
 namespace gh3sharp.Components.Remesh
 {
-    public class ZombieRemeshDMesh3 : GH_Component
+    public class RemeshDMesh3 : GH_Component
     {
+        Remesher r;
+        Timer timer;
+        DMesh3 dMsh_copy;
 
-        public ZombieRemeshDMesh3()
-          : base("Remesh DMesh3 [Zombie]", "Nickname",
+        public RemeshDMesh3()
+          : base("Remesh DMesh3", "Nickname",
             "RemeshDMesh3 description",gh3sharpUtil.pluginName
             , "3_Operations")
         {
@@ -27,9 +31,11 @@ namespace gh3sharp.Components.Remesh
         {
             pManager.AddParameter(new DMesh3_Param());
             pManager.AddNumberParameter("Target Edge Length", "l", "Target edge length for remeshing", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Number of Iterations", "n", "Number of Iterations for the remeshing process", GH_ParamAccess.item);
             pManager.AddBooleanParameter("Constrain Edges", "c", "Option to constrain the edges during the remeshing procedure", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Project to Input", "p", "Project the remeshed result back to the input mesh", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("Run", "run", "Run remeshing?", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("Reset", "reset", "Reset mesh?", GH_ParamAccess.item, false);
+
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -41,33 +47,44 @@ namespace gh3sharp.Components.Remesh
         {
             DMesh3_goo dMsh_goo = null;
             double targetL = 0;
-            int numI = 0;
             bool fixB = false;
             bool projBack = false;
+            bool run = false;
+            bool reset = false;
 
             DA.GetData(0, ref dMsh_goo);
             DA.GetData(1, ref targetL);
-            DA.GetData(2, ref numI);
-            DA.GetData(3, ref fixB);
-            DA.GetData(4, ref projBack);
+            DA.GetData(2, ref fixB);
+            DA.GetData(3, ref projBack);
 
-            DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
+            double timestep = 100;
 
-            Remesher r = new Remesher(dMsh_copy);
-            r.PreventNormalFlips = true;
-            r.SetTargetEdgeLength(targetL);
-
-            if(fixB)
-                MeshConstraintUtil.FixAllBoundaryEdges(r);
-
-            if(projBack)
+            if (r is null || timer is null || reset)
             {
-                r.SmoothSpeedT = 0.5;
-                r.SetProjectionTarget(MeshProjectionTarget.Auto(dMsh_goo.Value));
+                dMsh_copy = new DMesh3(dMsh_goo.Value);
+
+                r = new Remesher(dMsh_copy);
+                r.PreventNormalFlips = true;
+                r.SetTargetEdgeLength(targetL);
+
+                timer = new Timer();
+                timer.Interval = timestep;
+                timer.Elapsed += UpdateSolution;
+
+                if (fixB)
+                    MeshConstraintUtil.FixAllBoundaryEdges(r);
+
+                if (projBack)
+                {
+                    r.SmoothSpeedT = 0.5;
+                    r.SetProjectionTarget(MeshProjectionTarget.Auto(dMsh_goo.Value));
+                }
             }
 
-            for (int k = 0; k < numI; ++k)
-                r.BasicRemeshPass();
+            if (run && !timer.Enabled)
+                timer.Start();
+            if (!run && timer.Enabled)
+                timer.Stop();
 
             bool isValid = dMsh_copy.CheckValidity();
 
@@ -88,6 +105,12 @@ namespace gh3sharp.Components.Remesh
         public override Guid ComponentGuid
         {
             get { return new Guid("862f6d4e-964c-495c-a1f1-3465879263b5"); }
+        }
+
+        private void UpdateSolution(object source, EventArgs e)
+        {
+            r.BasicRemeshPass();
+            this.ExpireSolution(true);
         }
     }
 }

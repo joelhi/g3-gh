@@ -45,7 +45,7 @@ namespace gh3sharp.Core.Goos
 
         public override string TypeName
         {
-            get { return ("Grid3f"); }
+            get { return ("DenseGrid3f"); }
         }
 
         public override IGH_Goo Duplicate()
@@ -58,7 +58,7 @@ namespace gh3sharp.Core.Goos
             get { return !(Value is null); }
         }
 
-        public override BoundingBox Boundingbox => throw new NotImplementedException();
+        public override BoundingBox Boundingbox => this.Value.Bounds().ToRhino();
 
         public override object ScriptVariable()
         {
@@ -73,10 +73,7 @@ namespace gh3sharp.Core.Goos
 
         public override BoundingBox GetBoundingBox(Transform xform)
         {
-
-            BoundingBox box = BoundingBox.Empty;
-            box.Union(Value.GetBounds().ToRhino());
-            return box;
+            return this.Value.Bounds().ToRhino();
         }
 
         public override IGH_GeometricGoo Transform(Transform xform)
