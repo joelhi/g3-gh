@@ -43,18 +43,15 @@ namespace gh3sharp.Components.Remesh
             DA.GetData(1, ref w);
 
             DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value, true);
-
             LaplacianMeshSmoother smoother = new LaplacianMeshSmoother(dMsh_copy);
 
             foreach (int vid in dMsh_copy.VertexIndices())
             {
                 if (smoother.IsConstrained(vid) == false)
                     smoother.SetConstraint(vid, dMsh_copy.GetVertex(vid), w);
-
             }
 
             bool success = smoother.SolveAndUpdateMesh();
-
             bool isValid = dMsh_copy.CheckValidity();
 
             if (!success)

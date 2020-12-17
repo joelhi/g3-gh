@@ -45,7 +45,7 @@ namespace gh3sharp.Components.Params
                 return null;
         }
 
-
+        
 
         public void DrawViewportMeshes(IGH_PreviewArgs args)
         {
@@ -98,6 +98,16 @@ namespace gh3sharp.Components.Params
                     box.Union(mGoo.Value.GetBounds().ToRhino()); 
 
                 return box;
+            }
+        }
+
+        protected override Bitmap Icon
+        {
+            get
+            {
+                // You can add image files to your project resources and access them like this:
+                //return Resources.IconForThisComponent;
+                return null;
             }
         }
     }

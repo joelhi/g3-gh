@@ -12,31 +12,24 @@ using gh3sharp.Core;
 namespace gh3sharp.Core.Goos
 {
 
-    public class DMesh3_goo : GH_GeometricGoo<DMesh3>
+    public class Grid3f_goo : GH_GeometricGoo<DenseGrid3f>
     {
-        public Mesh dispMsh = null;
+        public Point3d[] dispPts = null;
 
-        public DMesh3_goo()
+        public Grid3f_goo()
         {
 
             this.Value = null;
         }
 
-        public DMesh3_goo(DMesh3 ms)
+        public Grid3f_goo(DenseGrid3f grid)
         {
-            Value = ms;
-            
+            this.Value = grid;
         }
 
-        public DMesh3_goo(Mesh ms)
+        public void GenerateDispPts()
         {
-            Value = ms.ToDMesh3();
-        }
 
-        public void GenerateDispMesh()
-        {
-            if (dispMsh == null)
-                dispMsh = this.Value.ToRhino();
         }
 
         public override string ToString()
@@ -47,12 +40,12 @@ namespace gh3sharp.Core.Goos
 
         public override string TypeDescription
         {
-            get { return ("DMesh3 Goo"); }
+            get { return ("Grid3f Goo"); }
         }
 
         public override string TypeName
         {
-            get { return ("DMesh3"); }
+            get { return ("Grid3f"); }
         }
 
         public override IGH_Goo Duplicate()
@@ -72,28 +65,10 @@ namespace gh3sharp.Core.Goos
             return base.ScriptVariable();
         }
 
-        public override bool CastTo<Q>(out Q target)
-        {
-
-            //Cast to mesh.
-            if (typeof(Q).IsAssignableFrom(typeof(GH_Mesh)))
-            {
-                if (Value == null)
-                    target = default(Q);
-                else
-                    target = (Q)(object)(new GH_Mesh(Value.ToRhino()));
-                return true;
-            }
-
-            //Todo: cast to point, number, mesh, curve?
-
-            target = default(Q);
-            return false;
-        }
 
         public override IGH_GeometricGoo DuplicateGeometry()
         {
-            return new DMesh3_goo(new DMesh3(Value));
+            return new Grid3f_goo(new DenseGrid3f(this.Value));
         }
 
         public override BoundingBox GetBoundingBox(Transform xform)

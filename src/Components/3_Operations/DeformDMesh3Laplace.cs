@@ -67,7 +67,7 @@ namespace gh3sharp.Components._Operations
 
         public override GH_Exposure Exposure
         {
-            get { return GH_Exposure.primary; }
+            get { return GH_Exposure.hidden; }
         }
 
         protected override System.Drawing.Bitmap Icon
