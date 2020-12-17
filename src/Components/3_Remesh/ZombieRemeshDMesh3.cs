@@ -64,8 +64,6 @@ namespace gh3sharp.Components.Remesh
             DA.GetData(5, ref run);
             DA.GetData(6, ref reset);
 
-            int timestep = 500;
-
             if (passes >= maxIter)
                 run = false;
 
