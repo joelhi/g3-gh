@@ -12,7 +12,7 @@ using gh3sharp.Core;
 namespace gh3sharp.Core.Goos
 {
 
-    public class Grid3f_goo : GH_GeometricGoo<DenseGrid3f>
+    public class Grid3f_goo : GH_GeometricGoo<DenseGridTrilinearImplicit>
     {
         public Point3d[] dispPts = null;
 
@@ -22,7 +22,7 @@ namespace gh3sharp.Core.Goos
             this.Value = null;
         }
 
-        public Grid3f_goo(DenseGrid3f grid)
+        public Grid3f_goo(DenseGridTrilinearImplicit grid)
         {
             this.Value = grid;
         }
@@ -68,7 +68,7 @@ namespace gh3sharp.Core.Goos
 
         public override IGH_GeometricGoo DuplicateGeometry()
         {
-            return new Grid3f_goo(new DenseGrid3f(this.Value));
+            return new Grid3f_goo(this.Value);
         }
 
         public override BoundingBox GetBoundingBox(Transform xform)
@@ -89,24 +89,6 @@ namespace gh3sharp.Core.Goos
             throw new NotImplementedException();
         }
 
-        public static implicit operator DMesh3(DMesh3_goo dmshGoo)
-        {
-            return dmshGoo.Value;
-        }
-
-        public static implicit operator DMesh3_goo(DMesh3 dMesh3)
-        {
-            return new DMesh3_goo(dMesh3);
-        }
-
-        public static implicit operator Mesh(DMesh3_goo dmshGoo)
-        {
-            return dmshGoo.Value.ToRhino();
-        }
-
-        public static implicit operator DMesh3_goo(Mesh dMesh3)
-        {
-            return new DMesh3_goo(dMesh3);
-        }
+        
     }
 }
