@@ -54,7 +54,7 @@ namespace gh3sharp.Components.Remesh
             if(fixB)
             {
                 r.SetExternalConstraints(new MeshConstraints());
-                MeshConstraintUtil.FixAllBoundaryEdges(r.Constraints, dMsh_copy);
+                MeshConstraintUtil.PreserveBoundaryLoops(r.Constraints, dMsh_copy);
             }
             if(projBack)
             {

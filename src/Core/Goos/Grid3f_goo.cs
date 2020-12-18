@@ -15,6 +15,7 @@ namespace gh3sharp.Core.Goos
     public class Grid3f_goo : GH_GeometricGoo<DenseGridTrilinearImplicit>
     {
         public Point3d[] dispPts = null;
+        public float[] values = null;
 
         public Grid3f_goo()
         {
@@ -29,7 +30,11 @@ namespace gh3sharp.Core.Goos
 
         public void GenerateDispPts()
         {
-
+            if(dispPts is null || values is null)
+            {
+                dispPts = Value.ToRhinoPts();
+                values = Value.Grid.Buffer;
+            }
         }
 
         public override string ToString()
@@ -86,6 +91,15 @@ namespace gh3sharp.Core.Goos
             throw new NotImplementedException();
         }
 
-        
+        public static implicit operator DenseGridTrilinearImplicit(Grid3f_goo grid3f_goo)
+        {
+            return grid3f_goo.Value;
+        }
+
+        public static implicit operator Grid3f_goo(DenseGridTrilinearImplicit grid3f)
+        {
+            return new Grid3f_goo(grid3f);
+        }
+
     }
 }

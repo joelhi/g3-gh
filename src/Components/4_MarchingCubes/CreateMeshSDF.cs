@@ -6,6 +6,8 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 
 using gh3sharp.Core;
+using gh3sharp.Core.Goos;
+using gh3sharp.Components.Params;
 
 using g3;
 
@@ -13,13 +15,6 @@ namespace gh3sharp.Components.MarchingCubes
 {
     public class CreateMeshSDF : GH_Component
     {
-        /// <summary>
-        /// Each implementation of GH_Component must provide a public 
-        /// constructor without any arguments.
-        /// Category represents the Tab in which the component will appear, 
-        /// Subcategory the panel. If you use non-existing tab or panel names, 
-        /// new tabs/panels will automatically be created.
-        /// </summary>
         public CreateMeshSDF()
           : base("Create MeshSDF", "MeshSDF",
             "Create a signed distance field (SDF) from a mesh",
@@ -27,21 +22,15 @@ namespace gh3sharp.Components.MarchingCubes
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            DenseGrid3f grd = new DenseGrid3f();
-
-            
+            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddIntegerParameter("Number of Cells", "n", "Number of cells (Resolution)", GH_ParamAccess.item, 128);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddParameter(new Grid3f_Param());
         }
 
         /// <summary>
@@ -51,6 +40,23 @@ namespace gh3sharp.Components.MarchingCubes
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+
+            int num_cells = 128;
+            DMesh3_goo dMsh_goo = null;
+
+            DA.GetData(0, ref dMsh_goo);
+            DA.GetData(1, ref num_cells);
+
+            DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
+            double cell_size = dMsh_copy.CachedBounds.MaxDim / num_cells;
+
+            MeshSignedDistanceGrid sdf = new MeshSignedDistanceGrid(dMsh_copy, cell_size);
+            sdf.Compute();
+
+            var iso = new DenseGridTrilinearImplicit(sdf.Grid, sdf.GridOrigin, sdf.CellSize);
+            Grid3f_goo goo = iso;
+
+            DA.SetData(0, goo);
         }
 
 

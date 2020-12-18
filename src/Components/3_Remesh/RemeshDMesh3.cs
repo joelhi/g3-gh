@@ -79,7 +79,7 @@ namespace gh3sharp.Components.Remesh
                 passes = 0;
 
                 if (fixB)
-                    MeshConstraintUtil.FixAllBoundaryEdges(r);
+                    MeshConstraintUtil.PreserveBoundaryLoops(r);
 
                 if (projBack)
                 {

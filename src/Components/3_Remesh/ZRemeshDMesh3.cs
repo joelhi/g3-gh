@@ -58,7 +58,7 @@ namespace gh3sharp.Components.Remesh
             r.SetTargetEdgeLength(targetL);
 
             if(fixB)
-                MeshConstraintUtil.FixAllBoundaryEdges(r);
+                MeshConstraintUtil.PreserveBoundaryLoops(r);
 
             if(projBack)
             {

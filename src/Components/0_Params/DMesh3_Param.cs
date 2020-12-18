@@ -19,7 +19,7 @@ namespace gh3sharp.Components.Params
     {
 
         public DMesh3_Param() :
-            base("DMesh3 Parameter", "DMesh3", "Holds a DMesh3 Object", gh3sharpUtil.pluginName, "0_params", GH_ParamAccess.item)
+            base("DMesh3", "DMesh3", "Holds a DMesh3 Object", gh3sharpUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
 
         public override GH_Exposure Exposure
@@ -51,8 +51,6 @@ namespace gh3sharp.Components.Params
         {
             DisplayPipeline dp = args.Display;
 
-            List<Mesh> meshes = new List<Mesh>();
-
             foreach (DMesh3_goo goo in this.m_data.NonNulls)
             {
                 goo.GenerateDispMesh();
@@ -70,8 +68,6 @@ namespace gh3sharp.Components.Params
         public void DrawViewportWires(IGH_PreviewArgs args)
         {
             DisplayPipeline dp = args.Display;
-
-            List<Mesh> meshes = new List<Mesh>();
 
             foreach (DMesh3_goo goo in this.m_data.NonNulls)
             {

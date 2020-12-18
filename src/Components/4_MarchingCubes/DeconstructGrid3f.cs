@@ -6,8 +6,10 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 
 using gh3sharp.Core;
+using gh3sharp.Core.Goos;
+using gh3sharp.Components.Params;
 
-namespace gh3sharp.Components._MarchingCubes
+namespace gh3sharp.Components.MarchingCubes
 {
     public class DeconstructGrid3f : GH_Component
     {
@@ -30,6 +32,7 @@ namespace gh3sharp.Components._MarchingCubes
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new Grid3f_Param());
         }
 
         /// <summary>
@@ -37,6 +40,11 @@ namespace gh3sharp.Components._MarchingCubes
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddPointParameter("Points", "pts", "Points in grid", GH_ParamAccess.list);
+            pManager.AddNumberParameter("Values", "val", "Values for the points in the grid", GH_ParamAccess.list);
+            pManager.AddIntegerParameter("X Dimension", "nx", "Size of grid in global x direction", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Y Dimension", "ny", "Size of grid in global y direction", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Z Dimension", "nz", "Size of grid in global z direction", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -46,6 +54,15 @@ namespace gh3sharp.Components._MarchingCubes
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            Grid3f_goo goo = null;
+
+            DA.GetData(0, ref goo);
+
+            DA.SetDataList(0, goo.Value.ToRhinoPts());
+            DA.SetDataList(1, goo.Value.Grid.Buffer);
+            DA.SetData(2, goo.Value.Grid.ni);
+            DA.SetData(3, goo.Value.Grid.nj);
+            DA.SetData(4, goo.Value.Grid.nk);
         }
 
         public override GH_Exposure Exposure

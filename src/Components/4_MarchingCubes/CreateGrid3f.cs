@@ -7,7 +7,7 @@ using Rhino.Geometry;
 
 using gh3sharp.Core;
 
-namespace gh3sharp.Components._MarchingCubes
+namespace gh3sharp.Components.MarchingCubes
 {
     public class CreateGrid3f : GH_Component
     {
