@@ -56,7 +56,12 @@ namespace gh3sharp.Components.Params
             foreach (DMesh3_goo goo in this.m_data.NonNulls)
             {
                 goo.GenerateDispMesh();
-                dp.DrawMeshShaded(goo.dispMsh, new DisplayMaterial(Color.DarkSlateGray, 0.2));
+
+                if(goo.dispMsh.VertexColors.Count != 0)
+                    dp.DrawMeshFalseColors(goo.dispMsh);
+                else
+                    dp.DrawMeshShaded(goo.dispMsh, new DisplayMaterial(Color.DarkSlateGray, 0.2));
+
                 dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
             }
         }

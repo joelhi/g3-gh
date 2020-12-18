@@ -10,6 +10,7 @@ namespace gh3sharp.Core
         {
             int numV = ms.Vertices.Count;
             int numF = ms.Faces.Count;
+            int numC = ms.VertexColors.Count;
 
             List<Vector3f> Vertices = new List<Vector3f>(numV);
             List<Vector3i> Triangles = new List<Vector3i>(numF);
@@ -21,6 +22,19 @@ namespace gh3sharp.Core
                 Triangles.Add(ms.Faces[i].ToVec3i());
 
             DMesh3 dMs = DMesh3Builder.Build<Vector3f,Vector3i,Vector3f>(Vertices, Triangles);
+
+            if(numV == numC)
+            {
+                dMs.EnableVertexColors(new Vector3f(0.5, 0.5, 0.5));
+
+                for (int i = 0; i < numC; i++)
+                {
+                    dMs.ColorsBuffer.Add(((float)ms.VertexColors[i].R) / 256);
+                    dMs.ColorsBuffer.Add(((float)ms.VertexColors[i].G) / 256);
+                    dMs.ColorsBuffer.Add(((float)ms.VertexColors[i].B) / 256);
+                }
+            }
+
             return dMs;
         }
 
@@ -40,6 +54,13 @@ namespace gh3sharp.Core
                 rhMs.Faces.AddFace(new Rhino.Geometry.MeshFace(tri.a, tri.b, tri.c));
             foreach (var vert in copy.Vertices())
                 rhMs.Vertices.Add((float)vert.x, (float)vert.y, (float)vert.z);
+            if(copy.HasVertexColors)
+            {
+                for (int i = 0; i < copy.ColorsBuffer.Length; i+=3)
+                {
+
+                }
+            }
 
             return rhMs;
         }

@@ -36,12 +36,14 @@ namespace gh3sharp.Core.Goos
         public void GenerateDispMesh()
         {
             if (dispMsh == null)
+            { 
                 dispMsh = this.Value.ToRhino();
+            }
         }
 
         public override string ToString()
         {
-            return this.Value.ToString();
+            return "DMesh3 [V: " + this.Value.VertexCount.ToString() + "F: " + this.Value.TriangleCount.ToString() + "]";
         }
 
 

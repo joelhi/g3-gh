@@ -5,6 +5,8 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
+using gh3sharp.Core;
+
 using g3;
 
 namespace gh3sharp.Components.MarchingCubes
@@ -21,7 +23,7 @@ namespace gh3sharp.Components.MarchingCubes
         public CreateMeshSDF()
           : base("Create MeshSDF", "MeshSDF",
             "Create a signed distance field (SDF) from a mesh",
-            "Category", "Subcategory")
+            gh3sharpUtil.pluginName, "4_MarchingCubes")
         {
         }
 

@@ -5,6 +5,8 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
+using gh3sharp.Core;
+
 namespace gh3sharp.Components._MarchingCubes
 {
     public class CreateGrid3f : GH_Component
@@ -19,7 +21,7 @@ namespace gh3sharp.Components._MarchingCubes
         public CreateGrid3f()
           : base("CreateGrid3f", "Nickname",
             "CreateGrid3f description",
-            "Category", "Subcategory")
+            gh3sharpUtil.pluginName, "4_MarchingCubes")
         {
         }
 

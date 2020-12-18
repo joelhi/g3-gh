@@ -5,6 +5,8 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
+using gh3sharp.Core;
+
 namespace gh3sharp.Components.MarchingCubes
 {
     public class ImplicitDifference : GH_Component
@@ -19,7 +21,7 @@ namespace gh3sharp.Components.MarchingCubes
         public ImplicitDifference()
           : base("ImplicitDifference", "Nickname",
             "ImplicitDifference description",
-            "Category", "Subcategory")
+            gh3sharpUtil.pluginName, "4_MarchingCubes")
         {
         }
 

@@ -5,6 +5,8 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
+using gh3sharp.Core;
+
 namespace gh3sharp.Components._MarchingCubes
 {
     public class DeconstructGrid3f : GH_Component
@@ -19,7 +21,7 @@ namespace gh3sharp.Components._MarchingCubes
         public DeconstructGrid3f()
           : base("DeconstructGrid3f", "Nickname",
             "DeconstructGrid3f description",
-            "Category", "Subcategory")
+            gh3sharpUtil.pluginName, "4_MarchingCubes")
         {
         }
 
