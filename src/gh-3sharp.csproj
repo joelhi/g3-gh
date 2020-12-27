@@ -23,6 +23,7 @@
     <Folder Include="Components\4_MarchingCubes\" />
     <Folder Include="Components\5_Voxel_Lattice\" />
     <Folder Include="Components\6_Analyze_Extract\" />
+    <Folder Include="Components\7_Utils\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

@@ -57,8 +57,6 @@ namespace gh3sharp.Components.Voxel_Lattice
             double cellsize = bounds.MaxDim / num_cells;
             ShiftGridIndexer3 indexer = new ShiftGridIndexer3(bounds.Min, cellsize);
 
-
-
             Bitmap3 bmp = new Bitmap3(new Vector3i(num_cells, num_cells, num_cells));
             foreach (Vector3i idx in bmp.Indices())
             {

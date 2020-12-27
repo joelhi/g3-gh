@@ -13,7 +13,7 @@ using g3;
 
 namespace gh3sharp.Components.MarchingCubes
 {
-    public class CreateGrid3f : GH_Component
+    public class MarchingCubesIso : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -22,9 +22,9 @@ namespace gh3sharp.Components.MarchingCubes
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public CreateGrid3f()
-          : base("CreateGrid3f", "Nickname",
-            "CreateGrid3f description",
+        public MarchingCubesIso()
+          : base("Marching Cubes Iso Surface", "isoSrf",
+            "construct marching cubes iso surface from a grid",
             gh3sharpUtil.pluginName, "4_MarchingCubes")
         {
         }
@@ -34,11 +34,9 @@ namespace gh3sharp.Components.MarchingCubes
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddPointParameter("Origin", "o", "Origin of grid", GH_ParamAccess.item, Point3d.Origin);
-            pManager.AddIntegerParameter("X Cells", "nx", "Number of cells in x", GH_ParamAccess.item, 16);
-            pManager.AddIntegerParameter("Y Cells", "ny", "Number of cells in y", GH_ParamAccess.item, 16);
-            pManager.AddIntegerParameter("Z Cells", "nz", "Number of cells in z", GH_ParamAccess.item, 16);
-            pManager.AddNumberParameter("Cell size", "s", "Size of cells", GH_ParamAccess.item, 1);
+            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddNumberParameter("Value", "val", "Value for iso surface", GH_ParamAccess.item, 0);
+            pManager.AddNumberParameter("Expansion", "e", "Expansion of grid beyond size of mesh", GH_ParamAccess.item, 0);
         }
 
         /// <summary>
@@ -46,7 +44,7 @@ namespace gh3sharp.Components.MarchingCubes
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new DMesh3_Param());
         }
 
         /// <summary>
@@ -56,28 +54,26 @@ namespace gh3sharp.Components.MarchingCubes
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            Point3d pt = Point3d.Origin;
+            Grid3f_goo goo = null;
+            double val = 0;
+            double exp = 0;
 
-            int ni = 0;
-            int nj = 0;
-            int nk = 0;
-            double cellSize = 0;
+            DA.GetData(0, ref goo);
+            DA.GetData(1, ref val);
+            DA.GetData(2, ref exp);
 
-            DA.GetData(0, ref pt);
-            DA.GetData(1, ref ni);
-            DA.GetData(2, ref nj);
-            DA.GetData(3, ref nk);
-            DA.GetData(4, ref cellSize);
+            var iso = goo.Value;
 
-            DenseGrid3f grid = new DenseGrid3f(ni, nj, nk, 0);
-            DenseGridTrilinearImplicit grd = new DenseGridTrilinearImplicit(grid, pt.ToVec3d(), cellSize);
+            g3.MarchingCubes c = new g3.MarchingCubes();
+            c.Implicit = iso;
+            c.Bounds = iso.Bounds();
+            c.CubeSize = iso.CellSize;
+            c.Bounds.Expand(3 * c.CubeSize);
+            c.IsoValue = val;
+            c.Generate();
+            DMesh3 outputMesh = c.Mesh;
 
-            DA.SetData(0, grd);
-        }
-
-        public override GH_Exposure Exposure
-        {
-            get { return GH_Exposure.primary; }
+            DA.SetData(0,outputMesh);
         }
 
         /// <summary>
@@ -101,7 +97,7 @@ namespace gh3sharp.Components.MarchingCubes
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("d213850b-d433-43e5-8a89-ae429fbd6d3a"); }
+            get { return new Guid("0a86bc8e-8671-451d-ab32-721184b90bf0"); }
         }
     }
 }
