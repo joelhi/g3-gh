@@ -73,6 +73,11 @@ namespace gh3sharp.Components.MarchingCubes
             c.Generate();
             DMesh3 outputMesh = c.Mesh;
 
+            bool isValid = outputMesh.CheckValidity();
+
+            if(!isValid)
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Mesh seems to have been corrupted during reduction. Please check...");
+
             DA.SetData(0,outputMesh);
         }
 
