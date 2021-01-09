@@ -30,10 +30,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="icons\tempIcon.png" />
-    <None Remove="Resources\tempIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\tempIcon.png" />
+    <None Remove="Resources\dmesh3.png" />
+    <None Remove="Resources\dmesh3.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
@@ -45,5 +43,8 @@
     <Compile Update="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\dmesh3.png" />
   </ItemGroup>
 </Project>

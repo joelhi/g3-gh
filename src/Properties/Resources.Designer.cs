@@ -46,5 +46,7 @@ namespace gh3sharp.Properties {
                 resourceCulture = value;
             }
         }
+
+
     }
 }
