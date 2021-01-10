@@ -13,6 +13,7 @@ using g3;
 using Rhino.Geometry;
 using Rhino.Display;
 
+
 namespace gh3sharp.Components.Params
 {
     public class DMesh3_Param : GH_Param<DMesh3_goo>, IGH_PreviewObject
@@ -108,7 +109,7 @@ namespace gh3sharp.Components.Params
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.dmesh3;
             }
         }
     }

@@ -13,13 +13,15 @@ using g3;
 using Rhino.Geometry;
 using Rhino.Display;
 
+using gh3sharp;
+
 namespace gh3sharp.Components.Params
 {
     public class Grid3f_Param : GH_Param<Grid3f_goo>, IGH_PreviewObject
     {
 
         public Grid3f_Param() :
-            base("Grid3f", "Grid3f", "Holds a Grid3f Object", gh3sharpUtil.pluginName, "0_params", GH_ParamAccess.item)
+            base("Grid3f", "Grid3f", "Holds a Grid3f Object. This is a grid of point with values, which can be used to create meshes using marching cubes. ", gh3sharpUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
 
         public override GH_Exposure Exposure
@@ -89,7 +91,7 @@ namespace gh3sharp.Components.Params
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.grid3f;
             }
         }
     }

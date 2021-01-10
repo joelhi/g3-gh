@@ -18,7 +18,7 @@ namespace gh3sharp.Components.Voxel_Lattice
 
         public Voxelize()
           : base("Voxelize", "Voxl",
-            "Voxelize a mesh using a bitmap. Returns a voxel surface mesh.",
+            "Voxelize a mesh using a bitmap. Returns a voxelized surface mesh.",
             gh3sharpUtil.pluginName, "Voxel_Lattice")
         {
         }
@@ -69,6 +69,12 @@ namespace gh3sharp.Components.Voxel_Lattice
             voxGen.Voxels = bmp;
             voxGen.Generate();
             DMesh3 voxMesh = voxGen.Meshes[0];
+
+            var vecSize = dMsh_copy.CachedBounds.Extents;
+            var box = dMsh_copy.GetBounds();
+
+            // Scale voxel mesh
+            //MeshTransforms.Scale(voxMesh,)
 
             DA.SetData(0, voxMesh);
         }
