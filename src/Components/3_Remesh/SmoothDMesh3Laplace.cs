@@ -19,7 +19,7 @@ namespace gh3sharp.Components.Remesh
         public SmoothDMesh3Laplace()
           : base("Smooth DMesh3 [Laplace]", "laplaceSmooth",
             "SmoothDMesh3Laplace description",
-            gh3sharpUtil.pluginName, "3_Operations")
+            gh3sharpUtil.pluginName, "3_Remesh")
         {
         }
 

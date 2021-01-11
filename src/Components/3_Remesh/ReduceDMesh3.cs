@@ -19,7 +19,7 @@ namespace gh3sharp.Components.Remesh
         public ReduceDMesh3()
           : base("Reduce DMesh3", "Nickname",
             "ReduceDMesh3 description",
-            gh3sharpUtil.pluginName, "3_Operations")
+            gh3sharpUtil.pluginName, "3_Remesh")
         {
         }
 

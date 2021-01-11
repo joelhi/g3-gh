@@ -20,7 +20,7 @@ namespace gh3sharp.Components._Operations
         public DeformDMesh3Laplace()
           : base("Deform DMesh3 [Laplace]", "laplaceDeform",
             "DeformDMesh3Laplace description",
-            gh3sharpUtil.pluginName, "3_Operations")
+            gh3sharpUtil.pluginName, "3_Remesh")
         {
         }
 

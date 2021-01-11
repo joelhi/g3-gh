@@ -25,7 +25,7 @@ namespace gh3sharp.Components.Remesh
         public RemeshDMesh3()
           : base("Remesh DMesh3", "Nickname",
             "RemeshDMesh3 description",gh3sharpUtil.pluginName
-            , "3_Operations")
+            , "3_Remesh")
         {
         }
 

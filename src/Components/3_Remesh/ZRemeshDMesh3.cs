@@ -19,7 +19,7 @@ namespace gh3sharp.Components.Remesh
         public ZombieRemeshDMesh3()
           : base("Remesh DMesh3 [Zombie]", "Nickname",
             "RemeshDMesh3 description",gh3sharpUtil.pluginName
-            , "3_Operations")
+            , "3_Remesh")
         {
         }
 
@@ -27,7 +27,7 @@ namespace gh3sharp.Components.Remesh
         {
             pManager.AddParameter(new DMesh3_Param());
             pManager.AddNumberParameter("Target Edge Length", "l", "Target edge length for remeshing", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Number of Iterations", "n", "Number of Iterations for the remeshing process", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Number of Iterations", "n", "Number of Iterations for the remeshing process", GH_ParamAccess.item, 10);
             pManager.AddBooleanParameter("Constrain Edges", "c", "Option to constrain the edges during the remeshing procedure", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Project to Input", "p", "Project the remeshed result back to the input mesh", GH_ParamAccess.item, false);
         }
