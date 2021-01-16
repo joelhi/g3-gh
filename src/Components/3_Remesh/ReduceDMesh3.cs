@@ -77,7 +77,7 @@ namespace gh3sharp.Components.Remesh
         {
             get
             {
-                return null;
+                return Resource1.reduce;
             }
         }
 

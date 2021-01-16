@@ -18,7 +18,7 @@ namespace gh_3sharp
         public override Guid Id => new Guid("0248B474-5DB3-48C3-850E-455A32DEE9D8");
 
         //Return a string identifying you or your company.
-        public override string AuthorName => "JoelHilmersson";
+        public override string AuthorName => "Joel Hilmersson";
 
         //Return a string representing your preferred contact details.
         public override string AuthorContact => "d.j.hilmersson@gmail.com";
