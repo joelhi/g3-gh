@@ -20,7 +20,7 @@ namespace gh3sharp.Components.Params
     {
 
         public DMesh3_Param() :
-            base("DMesh3", "DMesh3", "Holds a DMesh3 Object", gh3sharpUtil.pluginName, "0_params", GH_ParamAccess.item)
+            base("DMesh3", "DMesh3", "Holds a DMesh3 Object, which is the main data structure used by the g3sharp library.", gh3sharpUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
 
         public override GH_Exposure Exposure

@@ -17,8 +17,8 @@ namespace gh3sharp.Components.Transform
     {
 
         public MoveDMesh3()
-          : base("Move DMesh3", "moveDMesh3",
-            "Move a DMesh3 along a translation vector",
+          : base("Translate", "moveDMesh3",
+            "Translate a DMesh3 along a translation vector",
             gh3sharpUtil.pluginName, "2_Transform")
         {
         }
@@ -54,7 +54,7 @@ namespace gh3sharp.Components.Transform
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.translate;
             }
         }
 

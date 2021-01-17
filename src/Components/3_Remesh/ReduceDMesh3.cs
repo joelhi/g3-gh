@@ -17,7 +17,7 @@ namespace gh3sharp.Components.Remesh
     {
 
         public ReduceDMesh3()
-          : base("Reduce DMesh3", "Nickname",
+          : base("Reduce Mesh", "Nickname",
             "ReduceDMesh3 description",
             gh3sharpUtil.pluginName, "3_Remesh")
         {
@@ -71,6 +71,11 @@ namespace gh3sharp.Components.Remesh
                 this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Mesh seems to have been corrupted during reduction. Please check...");
 
             DA.SetData(0, dMsh_copy);
+        }
+
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.secondary; }
         }
 
         protected override System.Drawing.Bitmap Icon

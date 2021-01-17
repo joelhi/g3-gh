@@ -16,8 +16,8 @@ namespace gh3sharp.Components.MarchingCubes
     public class CreateMeshSDF : GH_Component
     {
         public CreateMeshSDF()
-          : base("Create MeshSDF", "MeshSDF",
-            "Create a signed distance field (SDF) from a mesh",
+          : base("New Mesh SDF", "MeshSDF",
+            "Create a new signed distance field (SDF) from a mesh",
             gh3sharpUtil.pluginName, "4_MarchingCubes")
         {
         }

@@ -23,7 +23,7 @@ namespace gh3sharp.Components.Remesh
         int passes = 0;
 
         public RemeshDMesh3()
-          : base("Remesh DMesh3", "Nickname",
+          : base("Remesh", "Nickname",
             "RemeshDMesh3 description",gh3sharpUtil.pluginName
             , "3_Remesh")
         {
@@ -32,10 +32,10 @@ namespace gh3sharp.Components.Remesh
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param());
-            pManager.AddNumberParameter("Target Edge Length", "l", "Target edge length for remeshing", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Target Edge Length", "len", "Target edge length for remeshing", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Number of iterations", "iter", "Maximum number of iterations", GH_ParamAccess.item, 10);
             pManager.AddBooleanParameter("Constrain Edges", "c", "Option to constrain the edges during the remeshing procedure", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Project to Input", "p", "Project the remeshed result back to the input mesh", GH_ParamAccess.item, false);
-            pManager.AddIntegerParameter("Number of iterations", "iter", "Maximum number of iterations", GH_ParamAccess.item, 10);
             pManager.AddBooleanParameter("Run", "run", "Run remeshing?", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Reset", "reset", "Reset mesh?", GH_ParamAccess.item, false);
 
@@ -58,9 +58,9 @@ namespace gh3sharp.Components.Remesh
 
             DA.GetData(0, ref dMsh_goo);
             DA.GetData(1, ref targetL);
-            DA.GetData(2, ref fixB);
-            DA.GetData(3, ref projBack);
-            DA.GetData(4, ref maxIter);
+            DA.GetData(3, ref fixB);
+            DA.GetData(4, ref projBack);
+            DA.GetData(2, ref maxIter);
             DA.GetData(5, ref run);
             DA.GetData(6, ref reset);
 
@@ -75,6 +75,7 @@ namespace gh3sharp.Components.Remesh
                 r = new Remesher(dMsh_copy);
                 r.PreventNormalFlips = true;
                 r.SetTargetEdgeLength(targetL);
+                r.SmoothSpeedT = 0.5;
 
                 passes = 0;
 
@@ -83,9 +84,11 @@ namespace gh3sharp.Components.Remesh
 
                 if (projBack)
                 {
-                    r.SmoothSpeedT = 0.5;
+                    
                     r.SetProjectionTarget(MeshProjectionTarget.Auto(dMsh_goo.Value));
                 }
+
+                
             }
 
             if (run && !reset)
@@ -105,11 +108,16 @@ namespace gh3sharp.Components.Remesh
             DA.SetData(0, dMsh_copy);
         }
 
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.primary; }
+        }
+
         protected override System.Drawing.Bitmap Icon
         {
             get
             {
-                return null;
+                return Resource1.remesh;
             }
         }
 

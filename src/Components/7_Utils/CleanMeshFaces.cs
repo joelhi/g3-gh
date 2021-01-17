@@ -5,7 +5,7 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace gh3sharp.Components._Utils
+namespace gh3sharp.Components.Utils
 {
     public class CleanMeshFaces : GH_Component
     {

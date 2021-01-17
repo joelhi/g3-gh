@@ -18,7 +18,7 @@ namespace gh3sharp.Components.MarchingCubes
 
         public MarchingCubesIso()
           : base("Marching Cubes Iso Surface", "isoSrf",
-            "construct marching cubes iso surface from a grid",
+            "Construct marching cubes iso surface from a grid by interpolating through a value specific value.",
             gh3sharpUtil.pluginName, "4_MarchingCubes")
         {
         }
@@ -50,10 +50,14 @@ namespace gh3sharp.Components.MarchingCubes
             g3.MarchingCubes c = new g3.MarchingCubes();
             c.Implicit = iso;
             c.Bounds = iso.Bounds();
+            c.RootMode = g3.MarchingCubes.RootfindingModes.LerpSteps;
+            c.RootModeSteps = 5;
             c.CubeSize = iso.CellSize;
             c.Bounds.Expand(3 * c.CubeSize);
             c.IsoValue = val;
             c.Generate();
+
+            
             
             DMesh3 outputMesh = c.Mesh;
 
@@ -63,6 +67,11 @@ namespace gh3sharp.Components.MarchingCubes
                 this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Mesh seems to have been corrupted during reduction. Please check...");
 
             DA.SetData(0,outputMesh);
+        }
+
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.quarternary; }
         }
 
         protected override System.Drawing.Bitmap Icon

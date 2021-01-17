@@ -19,7 +19,7 @@ namespace gh3sharp.Components.MarchingCubes
     {
 
         public AssignValuesGrid3f()
-          : base("AssignValuesGrid3f", "GridAssign",
+          : base("Assign Values to Grid3f", "GridAssign",
             "AssignValuesGrid3f description",
             gh3sharpUtil.pluginName, "4_MarchingCubes")
         {

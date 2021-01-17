@@ -17,7 +17,7 @@ namespace gh3sharp.Components.Remesh
     {
 
         public ZombieRemeshDMesh3()
-          : base("Remesh DMesh3 [Zombie]", "Nickname",
+          : base("Remesh [Zombie]", "Nickname",
             "RemeshDMesh3 description",gh3sharpUtil.pluginName
             , "3_Remesh")
         {
@@ -26,8 +26,8 @@ namespace gh3sharp.Components.Remesh
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param());
-            pManager.AddNumberParameter("Target Edge Length", "l", "Target edge length for remeshing", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Number of Iterations", "n", "Number of Iterations for the remeshing process", GH_ParamAccess.item, 10);
+            pManager.AddNumberParameter("Target Edge Length", "len", "Target edge length for remeshing", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Number of Iterations", "iter", "Number of Iterations for the remeshing process", GH_ParamAccess.item, 10);
             pManager.AddBooleanParameter("Constrain Edges", "c", "Option to constrain the edges during the remeshing procedure", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Project to Input", "p", "Project the remeshed result back to the input mesh", GH_ParamAccess.item, false);
         }
@@ -56,15 +56,13 @@ namespace gh3sharp.Components.Remesh
             Remesher r = new Remesher(dMsh_copy);
             r.PreventNormalFlips = true;
             r.SetTargetEdgeLength(targetL);
+            r.SmoothSpeedT = 0.5;
 
-            if(fixB)
+            if (fixB)
                 MeshConstraintUtil.PreserveBoundaryLoops(r);
 
             if(projBack)
-            {
-                r.SmoothSpeedT = 0.5;
                 r.SetProjectionTarget(MeshProjectionTarget.Auto(dMsh_goo.Value));
-            }
 
             for (int k = 0; k < numI; ++k)
                 r.BasicRemeshPass();
@@ -77,11 +75,16 @@ namespace gh3sharp.Components.Remesh
             DA.SetData(0, dMsh_copy);
         }
 
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.primary; }
+        }
+
         protected override System.Drawing.Bitmap Icon
         {
             get
             {
-                return null;
+                return Resource1.remesh;
             }
         }
 

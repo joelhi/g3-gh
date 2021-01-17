@@ -19,7 +19,7 @@ namespace gh3sharp.Components.Voxel_Lattice
         public Voxelize()
           : base("Voxelize", "Voxl",
             "Voxelize a mesh using a bitmap. Returns a voxelized surface mesh.",
-            gh3sharpUtil.pluginName, "Voxel_Lattice")
+            gh3sharpUtil.pluginName, "6_Voxel_Lattice")
         {
         }
 

@@ -87,8 +87,6 @@ namespace gh3sharp.Core.Goos
                 return true;
             }
 
-            //Todo: cast to point, number, mesh, curve?
-
             target = default(Q);
             return false;
         }

@@ -16,8 +16,8 @@ namespace gh3sharp.Components.Transform
     public class RotateDMesh3 : GH_Component
     {
         public RotateDMesh3()
-          : base("RotateDMesh3", "Nickname",
-            "RotateDMesh3 description",
+          : base("Rotate", "Nickname",
+            "Rotate DMesh3 description",
             gh3sharpUtil.pluginName, "2_Transform")
         {
         }
@@ -58,7 +58,7 @@ namespace gh3sharp.Components.Transform
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.rotate;
             }
         }
 

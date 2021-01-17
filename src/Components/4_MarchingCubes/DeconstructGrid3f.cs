@@ -21,7 +21,7 @@ namespace gh3sharp.Components.MarchingCubes
         /// new tabs/panels will automatically be created.
         /// </summary>
         public DeconstructGrid3f()
-          : base("DeconstructGrid3f", "Nickname",
+          : base("Deconstruct Grid3f", "Nickname",
             "DeconstructGrid3f description",
             gh3sharpUtil.pluginName, "4_MarchingCubes")
         {

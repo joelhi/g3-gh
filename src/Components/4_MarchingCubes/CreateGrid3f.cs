@@ -23,8 +23,8 @@ namespace gh3sharp.Components.MarchingCubes
         /// new tabs/panels will automatically be created.
         /// </summary>
         public CreateGrid3f()
-          : base("CreateGrid3f", "Nickname",
-            "CreateGrid3f description",
+          : base("New Grid3f", "Nickname",
+            "New Grid3f description",
             gh3sharpUtil.pluginName, "4_MarchingCubes")
         {
         }

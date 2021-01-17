@@ -16,11 +16,13 @@ namespace gh3sharp.Components.Transform
     public class ScaleDMesh3 : GH_Component
     {
         public ScaleDMesh3()
-          : base("ScaleDMesh3", "Nickname",
-            "ScaleDMesh3 description",
+          : base("Scale", "Nickname",
+            "Scale DMesh3 description",
             gh3sharpUtil.pluginName, "2_Transform")
         {
         }
+
+
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
@@ -47,6 +49,8 @@ namespace gh3sharp.Components.Transform
             DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
             MeshTransforms.Scale(dMsh_copy, sFact.ToVec3d(), origin.ToVec3d());
 
+            
+
             DA.SetData(0, dMsh_copy);
         }
 
@@ -56,7 +60,7 @@ namespace gh3sharp.Components.Transform
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.scale;
             }
         }
 

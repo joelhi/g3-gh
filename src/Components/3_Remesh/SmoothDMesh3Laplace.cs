@@ -17,7 +17,7 @@ namespace gh3sharp.Components.Remesh
     {
 
         public SmoothDMesh3Laplace()
-          : base("Smooth DMesh3 [Laplace]", "laplaceSmooth",
+          : base("Smooth Mesh", "laplaceSmooth",
             "SmoothDMesh3Laplace description",
             gh3sharpUtil.pluginName, "3_Remesh")
         {
@@ -63,13 +63,18 @@ namespace gh3sharp.Components.Remesh
             DA.SetData(0, dMsh_copy);
         }
 
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.secondary; }
+        }
+
         protected override System.Drawing.Bitmap Icon
         {
             get
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.smooth;
             }
         }
 

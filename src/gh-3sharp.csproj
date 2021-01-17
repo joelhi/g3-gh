@@ -15,15 +15,11 @@
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="Core\Goos\" />
-    <Folder Include="Components\" />
     <Folder Include="Components\0_Params\" />
     <Folder Include="Components\1_Construction\" />
     <Folder Include="Components\3_Remesh\" />
     <Folder Include="Components\2_Transform\" />
-    <Folder Include="Components\4_MarchingCubes\" />
-    <Folder Include="Components\5_Voxel_Lattice\" />
-    <Folder Include="Components\6_Analyze_Extract\" />
-    <Folder Include="Components\7_Utils\" />
+    <Folder Include="Components\6_Voxel_Lattice\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -51,4 +47,7 @@
       <CustomToolNamespace>gh3sharp</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="Copy &quot;$(TargetPath)&quot; &quot;%appdata%\Grasshopper\Libraries\$(ProjectName).gha&quot;&#xD;&#xA;Copy &quot;$(TargetDir)geometry3Sharp.dll&quot; &quot;%appdata%\Grasshopper\Libraries\geometry3Sharp.dll&quot;" />
+  </Target>
 </Project>

@@ -130,20 +130,39 @@
   </data>
   <data name="grid3f" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAKvSURBVEhLzVXPSyJhGB6tCUHwYgSDFyMPHodwUWPtZtAh
-        6JC7ECx4bcGDiyiRB8VjUZHgD0JQE8yDZR48Kqi7/8mQu0Hr2Zb59nkHx9Ic24PBvvDwvfOM7/t8vt8z
-        Mxxj7F0xlZwnnpPXYQcegF3l6jk+AH1Ai//2rwLnkiQxQRDo5hgotHibzdbH8tx3lIxHGJB3dnaYx+P5
-        SMTa2hr3FRGNRmWfzzeVxyU1+vSWADVny8vL5Vardd/tdoVEIsGdnp5+AeR0Op0Fxyb5SCSSpTrApiVA
-        Mz8HZLPZXA6FQktoIt3d3QlosAcMgFqxWORJYJLf2NjgUTtT4IFm7nK52MnJyT2KpGQy+Qdrz2KxPMXj
-        cYb815CnXOVr+P0Sz1P/2QK7dHBut9uDYiGXywnNZrN3fX0toknv8vJSLJVKQqVSETA6pvL5fN7S6XS4
-        7e3tlaHAlpYABdPpdNzR0RHNds9qtT7V6/Ue/RM07dHIbm9vJZwPm+T9fn+fJoCax5kC5Ao0p4MbVKtV
-        1mg0xLOzs165XBYLhUIAuXxxcfGKPzw8lGkCi4uLBzMFyHJoLmN3tXa7/fPm5oYOUwICJJpKpUp0yJM8
-        BEpUD2ieAT2JjPyMgizOgMdsJexQbUT8FWauuGiSdzqdb7qInkC2ublJDhmDyWRisVhMiy8fHx/rFxYW
-        qMdMgf/DRYS5uYgeIhym5aVb0FSmsah8JpMRvV5vwGg0kot+wEX7MwVUFwE1CCxhJcGRW4ASBPQqv76+
-        HkDdACAX6ZUmGgIjFwWDwazD4eD1ej1nt9tXsMN+OByW8X66EkWRpzGqvMFgoLfoFaC8Kyi0BBQX0f1J
-        aH0Xhvx35MrO1VB7Ku1GCb5E+Fj8xvoZsL3A1urq6iNseKDB7yMfi6kC74Wp5DwxlZwfGPcXTmixsXJn
-        PF4AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAAAq9JREFUSEvNVc9LImEYHq0JQfBiBIMXIw8eh3BRY+1m0CHokLsQLHhtwYOLKJEH
+        xWNRkeAPQlATzINlHjwqqLv/yZC7QevZlvn2eQfH0hzbg8G+8PC984zv+3y+3zMzHGPsXTGVnCeek9dh
+        Bx6AXeXqOT4AfUCL//avAueSJDFBEOjmGCi0eJvN1sfy3HeUjEcYkHd2dpjH4/lIxNraGvcVEY1GZZ/P
+        N5XHJTX69JYANWfLy8vlVqt13+12hUQiwZ2enn4B5HQ6nQXHJvlIJJKlOsCmJUAzPwdks9lcDoVCS2gi
+        3d3dCWiwBwyAWrFY5Elgkt/Y2OBRO1PggWbucrnYycnJPYqkZDL5B2vPYrE8xeNxhvzXkKdc5Wv4/RLP
+        U//ZArt0cG6324NiIZfLCc1ms3d9fS2iSe/y8lIslUpCpVIRMDqm8vl83tLpdLjt7e2VocCWlgAF0+l0
+        3NHREc12z2q1PtXr9R79EzTt0chub28lnA+b5P1+f58mgJrHmQLkCjSngxtUq1XWaDTEs7OzXrlcFguF
+        QgC5fHFx8Yo/PDyUaQKLi4sHMwXIcmguY3e1drv98+bmhg5TAgIkmkqlSnTIkzwESlQPaJ4BPYmM/IyC
+        LM6Ax2wl7FBtRPwVZq64aJJ3Op1vuoieQLa5uUkOGYPJZGKxWEyLLx8fH+sXFhaox0yB/8NFhLm5iB4i
+        HKblpVvQVKaxqHwmkxG9Xm/AaDSSi37ARfszBVQXATUILGElwZFbgBIE9Cq/vr4eQN0AIBfplSYaAiMX
+        BYPBrMPh4PV6PWe321eww344HJbxfroSRZGnMaq8wWCgt+gVoLwrKLQEFBfR/UlofReG/Hfkys7VUHsq
+        7UYJvkT4WPzG+hmwvcDW6urqI2x4oMHvIx+LqQLvhankPDGVnB8Y9xdOaLGxcmc8XgAAAABJRU5ErkJg
+        gg==
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="reduce" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\reduce.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="remesh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\remesh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rotate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\rotate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\scale.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="smooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\smooth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="translate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\translate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
