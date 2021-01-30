@@ -70,6 +70,8 @@ namespace gh3sharp.Components.Intersect
             DA.SetData(0, cutter.Mesh);
         }
 
+        public override GH_Exposure Exposure => GH_Exposure.secondary;
+
         /// <summary>
         /// Provides an Icon for the component.
         /// </summary>
