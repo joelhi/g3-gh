@@ -54,7 +54,7 @@ namespace gh3sharp.Components.Transform
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return Resource1.translate;
+                return Resource1.g3_gh_icons_10_copy;
             }
         }
 

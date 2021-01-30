@@ -84,7 +84,7 @@ namespace gh3sharp.Components.Remesh
         {
             get
             {
-                return Resource1.remesh;
+                return Resource1.g3_gh_icons_02_copy;
             }
         }
 

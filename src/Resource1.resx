@@ -117,52 +117,68 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="dmesh3" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAANxJREFUSEvVlcERgjAQRTMKddGIvVCHNXDzQgdShA1Qg5f4nzOMMUbZQHLwz7wJ
-        y7D/JzkszntfleTLkrwenGvFIChYj8Iqvg1721TA0HWd7/ves6oexdnIGPUOqYDnB4iVOoe4V/oIiE8w
-        iYuR2XKCRnAtFFdxEBadxF3cxNLbpAIQ90nBrixazFnfeksEhOaoaEBsjooFpMxRkYBv5mh3wC9ztCtg
-        zRxtDrCYo00BVnOUHZBjjlYDwlExixxzxko4ZpKjIh52zBZ2ZeH/x/VkOUHdX2Ytki/L4d0D8N/3+kwH
-        wYYAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="grid3f" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAAq9JREFUSEvNVc9LImEYHq0JQfBiBIMXIw8eh3BRY+1m0CHokLsQLHhtwYOLKJEH
-        xWNRkeAPQlATzINlHjwqqLv/yZC7QevZlvn2eQfH0hzbg8G+8PC984zv+3y+3zMzHGPsXTGVnCeek9dh
-        Bx6AXeXqOT4AfUCL//avAueSJDFBEOjmGCi0eJvN1sfy3HeUjEcYkHd2dpjH4/lIxNraGvcVEY1GZZ/P
-        N5XHJTX69JYANWfLy8vlVqt13+12hUQiwZ2enn4B5HQ6nQXHJvlIJJKlOsCmJUAzPwdks9lcDoVCS2gi
-        3d3dCWiwBwyAWrFY5Elgkt/Y2OBRO1PggWbucrnYycnJPYqkZDL5B2vPYrE8xeNxhvzXkKdc5Wv4/RLP
-        U//ZArt0cG6324NiIZfLCc1ms3d9fS2iSe/y8lIslUpCpVIRMDqm8vl83tLpdLjt7e2VocCWlgAF0+l0
-        3NHREc12z2q1PtXr9R79EzTt0chub28lnA+b5P1+f58mgJrHmQLkCjSngxtUq1XWaDTEs7OzXrlcFguF
-        QgC5fHFx8Yo/PDyUaQKLi4sHMwXIcmguY3e1drv98+bmhg5TAgIkmkqlSnTIkzwESlQPaJ4BPYmM/IyC
-        LM6Ax2wl7FBtRPwVZq64aJJ3Op1vuoieQLa5uUkOGYPJZGKxWEyLLx8fH+sXFhaox0yB/8NFhLm5iB4i
-        HKblpVvQVKaxqHwmkxG9Xm/AaDSSi37ARfszBVQXATUILGElwZFbgBIE9Cq/vr4eQN0AIBfplSYaAiMX
-        BYPBrMPh4PV6PWe321eww344HJbxfroSRZGnMaq8wWCgt+gVoLwrKLQEFBfR/UlofReG/Hfkys7VUHsq
-        7UYJvkT4WPzG+hmwvcDW6urqI2x4oMHvIx+LqQLvhankPDGVnB8Y9xdOaLGxcmc8XgAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="reduce" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\reduce.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="g3_gh_icons_01_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-01 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="remesh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\remesh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="g3_gh_icons_02_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-02 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rotate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\rotate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="g3_gh_icons_03_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-03 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="scale" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\scale.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="g3_gh_icons_04_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-04 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="smooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\smooth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="g3_gh_icons_05_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-05 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="translate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\translate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="g3_gh_icons_06_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-06 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_07_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-07 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_08_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-08 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_09_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-09 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_10_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-10 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_11_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-11 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_12_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-12 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_13_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-13 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_14_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-14 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_15_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-15 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_16_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-16 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_17_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-17 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_18_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-18 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_19_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-19 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_20_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-20 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_21_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-21 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

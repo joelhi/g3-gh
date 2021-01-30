@@ -63,9 +63,9 @@ namespace gh3sharp {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap dmesh3 {
+        internal static System.Drawing.Bitmap g3_gh_icons_01_copy {
             get {
-                object obj = ResourceManager.GetObject("dmesh3", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_01_copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace gh3sharp {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap grid3f {
+        internal static System.Drawing.Bitmap g3_gh_icons_02_copy {
             get {
-                object obj = ResourceManager.GetObject("grid3f", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_02_copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace gh3sharp {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap reduce {
+        internal static System.Drawing.Bitmap g3_gh_icons_03_copy {
             get {
-                object obj = ResourceManager.GetObject("reduce", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_03_copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace gh3sharp {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap remesh {
+        internal static System.Drawing.Bitmap g3_gh_icons_04_copy {
             get {
-                object obj = ResourceManager.GetObject("remesh", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_04_copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace gh3sharp {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap rotate {
+        internal static System.Drawing.Bitmap g3_gh_icons_05_copy {
             get {
-                object obj = ResourceManager.GetObject("rotate", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_05_copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace gh3sharp {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap scale {
+        internal static System.Drawing.Bitmap g3_gh_icons_06_copy {
             get {
-                object obj = ResourceManager.GetObject("scale", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_06_copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace gh3sharp {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap smooth {
+        internal static System.Drawing.Bitmap g3_gh_icons_07_copy {
             get {
-                object obj = ResourceManager.GetObject("smooth", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_07_copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,139 @@ namespace gh3sharp {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap translate {
+        internal static System.Drawing.Bitmap g3_gh_icons_08_copy {
             get {
-                object obj = ResourceManager.GetObject("translate", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_08_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_09_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_09_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_10_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_10_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_11_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_11_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_12_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_12_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_13_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_13_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_14_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_14_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_15_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_15_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_16_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_16_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_17_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_17_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_18_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_18_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_19_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_19_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_20_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_20_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap g3_gh_icons_21_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_21_copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

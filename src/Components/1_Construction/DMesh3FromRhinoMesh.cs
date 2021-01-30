@@ -78,7 +78,7 @@ namespace gh3sharp.Components.Construction
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.g3_gh_icons_05_copy;
             }
         }
 
