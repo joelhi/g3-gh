@@ -7,6 +7,15 @@
     <Description>Description of gh_3sharp</Description>
   </PropertyGroup>
   
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Grasshopper" Version="6.16.19190.7001" IncludeAssets="compile;build" />
     <PackageReference Include="geometry3Sharp" Version="1.0.324" />
