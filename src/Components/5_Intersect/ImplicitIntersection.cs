@@ -6,14 +6,14 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
+using g3gh.Core;
 
 using g3;
 
-using gh3sharp.Core.Goos;
-using gh3sharp.Components.Params;
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
 
-namespace gh3sharp.Components.ImplicitBoolean
+namespace g3gh.Components.ImplicitBoolean
 {
     public class ImplicitIntersection : GH_Component
     {
@@ -27,7 +27,7 @@ namespace gh3sharp.Components.ImplicitBoolean
         public ImplicitIntersection()
           : base("Implicit Intersection", "Nickname",
             "ImplicitIntersection description",
-            gh3sharpUtil.pluginName, "5_Intersect")
+            g3ghUtil.pluginName, "5_Intersect")
         {
         }
 
@@ -63,7 +63,7 @@ namespace gh3sharp.Components.ImplicitBoolean
 
             ImplicitNaryIntersection3d diff2 = new ImplicitNaryIntersection3d();
 
-            diff2.Children = goo.Select(x => gh3sharpUtil.MeshToImplicit(x.Value, numCells, 0.2f)).ToList();
+            diff2.Children = goo.Select(x => g3ghUtil.MeshToImplicit(x.Value, numCells, 0.2f)).ToList();
 
             g3.MarchingCubes c = new g3.MarchingCubes();
             c.Implicit = diff2;

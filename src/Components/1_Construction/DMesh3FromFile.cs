@@ -5,12 +5,12 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
-using gh3sharp.Components.Params;
+using g3gh.Core;
+using g3gh.Components.Params;
 
 using g3;
 
-namespace gh3sharp.Components.Construction
+namespace g3gh.Components.Construction
 {
     public class DMesh3FromFile: GH_Component
     {
@@ -22,9 +22,9 @@ namespace gh3sharp.Components.Construction
         /// new tabs/panels will automatically be created.
         /// </summary>
         public DMesh3FromFile()
-          : base("DMesh3 From File", "DMshFromObj",
+          : base("Read From File", "DMshFromObj",
             "DMesh3_From_ description",
-            gh3sharpUtil.pluginName, "1_Construction")
+            g3ghUtil.pluginName, "1_Construction")
         {
         }
 

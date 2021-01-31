@@ -6,13 +6,13 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 
 
-using gh3sharp.Core;
-using gh3sharp.Components.Params;
-using gh3sharp.Core.Goos;
+using g3gh.Core;
+using g3gh.Components.Params;
+using g3gh.Core.Goos;
 
 using g3;
 
-namespace gh3sharp.Components._Operations
+namespace g3gh.Components._Operations
 {
     public class DeformDMesh3Laplace : GH_Component
     {
@@ -20,7 +20,7 @@ namespace gh3sharp.Components._Operations
         public DeformDMesh3Laplace()
           : base("Deform DMesh3 [Laplace]", "laplaceDeform",
             "DeformDMesh3Laplace description",
-            gh3sharpUtil.pluginName, "3_Remesh")
+            g3ghUtil.pluginName, "3_Remesh")
         {
         }
 

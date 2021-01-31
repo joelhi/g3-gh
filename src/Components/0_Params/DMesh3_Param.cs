@@ -7,20 +7,20 @@ using System.Drawing;
 
 using Grasshopper.Kernel.Types;
 
-using gh3sharp.Core;
-using gh3sharp.Core.Goos;
+using g3gh.Core;
+using g3gh.Core.Goos;
 using g3;
 using Rhino.Geometry;
 using Rhino.Display;
 
 
-namespace gh3sharp.Components.Params
+namespace g3gh.Components.Params
 {
     public class DMesh3_Param : GH_Param<DMesh3_goo>, IGH_PreviewObject
     {
 
         public DMesh3_Param() :
-            base("DMesh3", "DMesh3", "Holds a DMesh3 Object, which is the main data structure used by the g3sharp library.", gh3sharpUtil.pluginName, "0_params", GH_ParamAccess.item)
+            base("DMesh3", "DMesh3", "Holds a DMesh3 Object, which is the main data structure used by the g3sharp library.", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
 
         public override GH_Exposure Exposure

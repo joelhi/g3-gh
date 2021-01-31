@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using g3;
 
-namespace gh3sharp.Core
+namespace g3gh.Core
 {
     public static class Conversions
     {

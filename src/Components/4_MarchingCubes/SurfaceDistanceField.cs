@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
-using gh3sharp.Core.Goos;
-using gh3sharp.Components.Params;
+using g3gh.Core;
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
 
 using g3;
 
-namespace gh3sharp.Components._MarchingCubes
+namespace g3gh.Components._MarchingCubes
 {
     public class SurfaceDistanceField : GH_Component
     {
@@ -24,8 +25,8 @@ namespace gh3sharp.Components._MarchingCubes
         /// </summary>
         public SurfaceDistanceField()
           : base("Point Distance Field", "ptDist",
-              "Assign a value to each point of a grid based on their shortest distance to a curve in a set.",
-              gh3sharpUtil.pluginName, "4_MarchingCubes")
+              "Assign a value to each point of a grid based on their shortest distance to a surface in a set.",
+              g3ghUtil.pluginName, "4_MarchingCubes")
         {
         }
 
@@ -34,6 +35,8 @@ namespace gh3sharp.Components._MarchingCubes
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddSurfaceParameter("Surfaces", "srfs", "Surfaces to compute values for", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -41,6 +44,7 @@ namespace gh3sharp.Components._MarchingCubes
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddParameter(new Grid3f_Param());
         }
 
         /// <summary>
@@ -50,6 +54,35 @@ namespace gh3sharp.Components._MarchingCubes
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            Grid3f_goo goo = null;
+            List<Surface> srfs = new List<Surface>();
+
+            DA.GetData(0, ref goo);
+            DA.GetDataList(1, srfs);
+
+            DenseGridTrilinearImplicit grid = new DenseGridTrilinearImplicit(new DenseGrid3f(goo.Value.Grid), new g3.Vector3f(goo.Value.GridOrigin), goo.Value.CellSize);
+
+            var pts = grid.ToRhinoPts();
+            int numCurves = srfs.Count;
+
+            for (int i = 0; i < pts.Length; i++)
+            {
+                var pt = pts[i];
+                double[] distances = new double[numCurves];
+                for (int j = 0; j < srfs.Count; j++)
+                {
+                    double u = 0;
+                    double v = 0;
+                    var srf = srfs[j];
+                    bool res = srf.ClosestPoint(pt, out u, out v);
+
+                    double tempDouble = srf.PointAt(u,v).DistanceTo(pt);
+                    distances[j] = tempDouble;
+                }
+                grid.Grid.Buffer[i] = (float)distances.Min();
+            }
+
+            DA.SetData(0, grid);
         }
 
         public override GH_Exposure Exposure

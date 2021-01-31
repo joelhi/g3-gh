@@ -5,11 +5,11 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
-using gh3sharp.Core.Goos;
-using gh3sharp.Components.Params;
+using g3gh.Core;
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
 
-namespace gh3sharp.Components.MarchingCubes
+namespace g3gh.Components.MarchingCubes
 {
     public class DeconstructGrid3f : GH_Component
     {
@@ -23,7 +23,7 @@ namespace gh3sharp.Components.MarchingCubes
         public DeconstructGrid3f()
           : base("Deconstruct Grid3f", "Nickname",
             "DeconstructGrid3f description",
-            gh3sharpUtil.pluginName, "4_MarchingCubes")
+            g3ghUtil.pluginName, "4_MarchingCubes")
         {
         }
 

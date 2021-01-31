@@ -5,21 +5,25 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace gh3sharp.Components.Utils
+
+using g3gh.Core;
+
+using g3;
+
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
+
+namespace g3gh.Components.Utils
 {
-    public class CleanMeshFaces : GH_Component
+    public class EdgeLengthStats : GH_Component
     {
         /// <summary>
-        /// Each implementation of GH_Component must provide a public 
-        /// constructor without any arguments.
-        /// Category represents the Tab in which the component will appear, 
-        /// Subcategory the panel. If you use non-existing tab or panel names, 
-        /// new tabs/panels will automatically be created.
+        /// Initializes a new instance of the CutMesh class.
         /// </summary>
-        public CleanMeshFaces()
-          : base("CleanMeshFaces", "Nickname",
-            "CleanMeshFaces description",
-            "Category", "Subcategory")
+        public EdgeLengthStats()
+          : base("Mesh Edge Statistics", "edgeStats",
+              "Extract information about mesh edge lengths. Useful when setting target edge lengths for remeshing.",
+              g3ghUtil.pluginName, "7_Utils")
         {
         }
 
@@ -28,6 +32,7 @@ namespace gh3sharp.Components.Utils
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "msh", "Mesh to evaluate", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -35,6 +40,9 @@ namespace gh3sharp.Components.Utils
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddNumberParameter("Max Edge Length", "max", "Maximum length of an edge", GH_ParamAccess.list);
+            pManager.AddNumberParameter("Min Edge Length", "min", "Minimum length of an edge", GH_ParamAccess.list);
+            pManager.AddNumberParameter("Average Edge Length", "avrg", "Average length of all edges", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -44,6 +52,11 @@ namespace gh3sharp.Components.Utils
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+        }
+
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.secondary; }
         }
 
         /// <summary>
@@ -56,7 +69,7 @@ namespace gh3sharp.Components.Utils
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.g3_gh_icons_32_copy;
             }
         }
 
@@ -67,7 +80,7 @@ namespace gh3sharp.Components.Utils
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("e0410764-d4f7-4d94-a51c-e832d6f58ab0"); }
+            get { return new Guid("bb08176b-c537-433b-9cad-fabaeb7268b3"); }
         }
     }
 }

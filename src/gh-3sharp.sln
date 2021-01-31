@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gh-3sharp", "gh-3sharp.csproj", "{8960B712-B3C6-4F1F-A9DC-EB49A714AD39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "g3-gh", "g3-gh.csproj", "{8960B712-B3C6-4F1F-A9DC-EB49A714AD39}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7CB7FFE-9482-40C2-A056-966BDD2AA88F}"
 	ProjectSection(SolutionItems) = preProject

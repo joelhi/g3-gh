@@ -7,18 +7,18 @@ using Rhino.Geometry;
 
 using g3;
 
-using gh3sharp.Core;
-using gh3sharp.Core.Goos;
-using gh3sharp.Components.Params;
+using g3gh.Core;
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
 
-namespace gh3sharp.Components.Transform
+namespace g3gh.Components.Transform
 {
     public class ScaleDMesh3 : GH_Component
     {
         public ScaleDMesh3()
           : base("Scale", "Nickname",
             "Scale DMesh3 description",
-            gh3sharpUtil.pluginName, "2_Transform")
+            g3ghUtil.pluginName, "2_Transform")
         {
         }
 

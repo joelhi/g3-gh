@@ -6,14 +6,14 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
-using gh3sharp.Core.Goos;
+using g3gh.Core;
+using g3gh.Core.Goos;
 
-using gh3sharp.Components.Params;
+using g3gh.Components.Params;
 
 using g3;
 
-namespace gh3sharp.Components.MarchingCubes
+namespace g3gh.Components.MarchingCubes
 {
     public class AssignValuesGrid3f : GH_Component
     {
@@ -21,7 +21,7 @@ namespace gh3sharp.Components.MarchingCubes
         public AssignValuesGrid3f()
           : base("Assign Values to Grid3f", "GridAssign",
             "AssignValuesGrid3f description",
-            gh3sharpUtil.pluginName, "4_MarchingCubes")
+            g3ghUtil.pluginName, "4_MarchingCubes")
         {
         }
 

@@ -5,13 +5,13 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
-using gh3sharp.Components.Params;
-using gh3sharp.Core.Goos;
+using g3gh.Core;
+using g3gh.Components.Params;
+using g3gh.Core.Goos;
 
 using g3;
 
-namespace gh3sharp.Components.Remesh
+namespace g3gh.Components.Remesh
 {
     public class ReduceDMesh3 : GH_Component
     {
@@ -19,7 +19,7 @@ namespace gh3sharp.Components.Remesh
         public ReduceDMesh3()
           : base("Reduce Mesh", "Nickname",
             "ReduceDMesh3 description",
-            gh3sharpUtil.pluginName, "3_Remesh")
+            g3ghUtil.pluginName, "3_Remesh")
         {
         }
 

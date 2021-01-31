@@ -6,14 +6,14 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
+using g3gh.Core;
 
 using g3;
 
-using gh3sharp.Core.Goos;
-using gh3sharp.Components.Params;
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
 
-namespace gh3sharp.Components.Intersect
+namespace g3gh.Components.Intersect
 {
     public class MeshPlaneCut : GH_Component
     {
@@ -21,9 +21,9 @@ namespace gh3sharp.Components.Intersect
         /// Initializes a new instance of the CutMesh class.
         /// </summary>
         public MeshPlaneCut()
-          : base("Mesh | Plane Cut", "Nickname",
+          : base("Mesh | Plane Cut", "mshXpl",
               "Description",
-              gh3sharpUtil.pluginName, "5_Intersect")
+              g3ghUtil.pluginName, "5_Intersect")
         {
         }
 

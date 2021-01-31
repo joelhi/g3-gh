@@ -5,11 +5,11 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Components.Params;
-using gh3sharp.Core.Goos;
-using gh3sharp.Core;
+using g3gh.Components.Params;
+using g3gh.Core.Goos;
+using g3gh.Core;
 
-namespace gh3sharp.Components.Construction
+namespace g3gh.Components.Construction
 {
     public class RhinoMeshFromDMesh3 : GH_Component
     {
@@ -21,9 +21,9 @@ namespace gh3sharp.Components.Construction
         /// new tabs/panels will automatically be created.
         /// </summary>
         public RhinoMeshFromDMesh3()
-          : base("Rhino Mesh From DMesh3", "RhFromDMesh3",
+          : base("Convert to Rhino Mesh", "RhFromDMesh3",
             "DMesh3FromRhinoMesh description",
-            Core.gh3sharpUtil.pluginName, "1_Construction")
+            Core.g3ghUtil.pluginName, "1_Construction")
         {
         }
 

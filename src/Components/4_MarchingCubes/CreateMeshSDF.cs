@@ -5,20 +5,20 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
-using gh3sharp.Core.Goos;
-using gh3sharp.Components.Params;
+using g3gh.Core;
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
 
 using g3;
 
-namespace gh3sharp.Components.MarchingCubes
+namespace g3gh.Components.MarchingCubes
 {
     public class CreateMeshSDF : GH_Component
     {
         public CreateMeshSDF()
           : base("New Mesh SDF", "MeshSDF",
             "Create a new signed distance field (SDF) from a mesh",
-            gh3sharpUtil.pluginName, "4_MarchingCubes")
+            g3ghUtil.pluginName, "4_MarchingCubes")
         {
         }
 

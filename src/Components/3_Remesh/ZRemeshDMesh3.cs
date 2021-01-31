@@ -5,20 +5,20 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
-using gh3sharp.Components.Params;
-using gh3sharp.Core.Goos;
+using g3gh.Core;
+using g3gh.Components.Params;
+using g3gh.Core.Goos;
 
 using g3;
 
-namespace gh3sharp.Components.Remesh
+namespace g3gh.Components.Remesh
 {
     public class ZombieRemeshDMesh3 : GH_Component
     {
 
         public ZombieRemeshDMesh3()
           : base("Remesh [Zombie]", "Nickname",
-            "RemeshDMesh3 description",gh3sharpUtil.pluginName
+            "RemeshDMesh3 description",g3ghUtil.pluginName
             , "3_Remesh")
         {
         }

@@ -7,21 +7,21 @@ using System.Drawing;
 
 using Grasshopper.Kernel.Types;
 
-using gh3sharp.Core;
-using gh3sharp.Core.Goos;
+using g3gh.Core;
+using g3gh.Core.Goos;
 using g3;
 using Rhino.Geometry;
 using Rhino.Display;
 
-using gh3sharp;
+using g3gh;
 
-namespace gh3sharp.Components.Params
+namespace g3gh.Components.Params
 {
     public class Grid3f_Param : GH_Param<Grid3f_goo>, IGH_PreviewObject
     {
 
         public Grid3f_Param() :
-            base("Grid3f", "Grid3f", "Holds a Grid3f Object. This is a grid of point with values, which can be used to create meshes using marching cubes. ", gh3sharpUtil.pluginName, "0_params", GH_ParamAccess.item)
+            base("Grid3f", "Grid3f", "Holds a Grid3f Object. This is a grid of point with values, which can be used to create meshes using marching cubes. ", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
 
         public override GH_Exposure Exposure

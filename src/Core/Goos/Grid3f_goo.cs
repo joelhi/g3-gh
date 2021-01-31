@@ -7,9 +7,9 @@ using Rhino.Geometry;
 
 using g3;
 
-using gh3sharp.Core;
+using g3gh.Core;
 
-namespace gh3sharp.Core.Goos
+namespace g3gh.Core.Goos
 {
 
     public class Grid3f_goo : GH_GeometricGoo<DenseGridTrilinearImplicit>

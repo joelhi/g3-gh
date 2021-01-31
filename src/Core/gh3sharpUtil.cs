@@ -2,9 +2,9 @@
 
 using g3;
 
-namespace gh3sharp.Core
+namespace g3gh.Core
 {
-    public static class gh3sharpUtil
+    public static class g3ghUtil
     {
         public const string pluginName = "g3";
 

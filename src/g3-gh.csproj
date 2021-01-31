@@ -6,6 +6,7 @@
     <Title>gh_3sharp</Title>
     <Description>Description of gh_3sharp</Description>
     <Configurations>Release;Debug</Configurations>
+    <RhinoMacLauncher>/Applications/Rhino 7.app</RhinoMacLauncher>
   </PropertyGroup>
   
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,6 +32,7 @@
     <Folder Include="Components\2_Transform\" />
     <Folder Include="Components\6_Voxel_Lattice\" />
     <Folder Include="Properties\" />
+    <Folder Include="Components\7_Process\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -42,6 +44,8 @@
     <None Remove="Resources\g3_gh_icons-09 copy.png" />
     <None Remove="Resources\g3_gh_icons-12 copy.png" />
     <None Remove="Resources\g3_gh_icons-18 copy.png" />
+    <None Remove="Resources\g3_gh_icons-14 copy.png" />
+    <None Remove="Resources\g3_gh_icons-15 copy.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resource1.Designer.cs">
@@ -57,7 +61,4 @@
       <CustomToolNamespace>gh3sharp</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="Copy &quot;$(TargetPath)&quot; &quot;%appdata%\Grasshopper\Libraries\$(ProjectName).gha&quot;&#xD;&#xA;Copy &quot;$(TargetDir)geometry3Sharp.dll&quot; &quot;%appdata%\Grasshopper\Libraries\geometry3Sharp.dll&quot;" />
-  </Target>
 </Project>

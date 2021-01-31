@@ -6,14 +6,14 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
+using g3gh.Core;
 
 using g3;
 
-using gh3sharp.Core.Goos;
-using gh3sharp.Components.Params;
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
 
-namespace gh3sharp.Components.ImplicitBoolean
+namespace g3gh.Components.ImplicitBoolean
 {
     public class ImplicitDifference : GH_Component
     {
@@ -27,7 +27,7 @@ namespace gh3sharp.Components.ImplicitBoolean
         public ImplicitDifference()
           : base("Implicit Difference", "Nickname",
             "ImplicitDifference description",
-            gh3sharpUtil.pluginName, "5_Intersect")
+            g3ghUtil.pluginName, "5_Intersect")
         {
         }
 
@@ -69,8 +69,8 @@ namespace gh3sharp.Components.ImplicitBoolean
 
             ImplicitNaryDifference3d diff2 = new ImplicitNaryDifference3d();
 
-            diff2.A = gh3sharpUtil.MeshToImplicit(A,numCells,0.2f);
-            diff2.BSet = B.Select(x => gh3sharpUtil.MeshToImplicit(x,numCells,0.2f)).ToList();
+            diff2.A = g3ghUtil.MeshToImplicit(A,numCells,0.2f);
+            diff2.BSet = B.Select(x => g3ghUtil.MeshToImplicit(x,numCells,0.2f)).ToList();
 
             g3.MarchingCubes c = new g3.MarchingCubes();
             c.Implicit = diff2;

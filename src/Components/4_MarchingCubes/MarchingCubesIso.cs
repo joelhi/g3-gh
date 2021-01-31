@@ -5,13 +5,13 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using gh3sharp.Core;
-using gh3sharp.Core.Goos;
-using gh3sharp.Components.Params;
+using g3gh.Core;
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
 
 using g3;
 
-namespace gh3sharp.Components.MarchingCubes
+namespace g3gh.Components.MarchingCubes
 {
     public class MarchingCubesIso : GH_Component
     {
@@ -19,7 +19,7 @@ namespace gh3sharp.Components.MarchingCubes
         public MarchingCubesIso()
           : base("Marching Cubes Iso Surface", "isoSrf",
             "Construct marching cubes iso surface from a grid by interpolating through a value specific value.",
-            gh3sharpUtil.pluginName, "4_MarchingCubes")
+            g3ghUtil.pluginName, "4_MarchingCubes")
         {
         }
 
@@ -60,6 +60,8 @@ namespace gh3sharp.Components.MarchingCubes
             
             
             DMesh3 outputMesh = c.Mesh;
+
+            
 
             bool isValid = outputMesh.CheckValidity();
 
