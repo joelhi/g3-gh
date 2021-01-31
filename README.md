@@ -25,6 +25,9 @@ Remeshing based on edge lengths.
 
 Autocast, just plug into DMesh3 param / GH_Mesh param.
 
+![](https://github.com/joelhi/g3-gh/blob/main/src/media/cast.png)
+
+
 
 
 
