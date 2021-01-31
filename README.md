@@ -3,7 +3,7 @@ Grasshopper components wrapping functionality from the [geometry3sharp](https://
 
 ![](https://github.com/joelhi/g3-gh/blob/main/src/media/toolbar.png)
 
-I found the tools in that library quite useful, so to kill time in a global pandemic I thought I'd expose them from grasshopper. 
+I found the tools in that library quite useful so, to kill time in a global pandemic, I thought I'd expose them from grasshopper. 
 
 ## Current Functionality
 
