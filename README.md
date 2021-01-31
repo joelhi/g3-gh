@@ -3,7 +3,7 @@ This repository contains a set of components for the Grasshopper plugin for Rhin
 
 ![](https://github.com/joelhi/g3-gh/blob/main/src/media/toolbar.png)
 
-I found the tools in that library quite useful so, to kill time in a global pandemic, I thought I'd expose them from grasshopper. 
+I found the tools in that library quite useful so, to kill some time during a global pandemic, I thought I'd expose some of them from grasshopper. 
 
 ## Installation
 
