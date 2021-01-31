@@ -7,6 +7,28 @@ I found the tools in that library quite useful, so I thought I'd expose them fro
 
 ## Current Functionality
 
+### Remeshing
+
+Smoothing
+
+Remeshing based on edge lengths.
+
+### Marching Cubes
+
+### Voxelization / Lattices
+
+### File Utility
+
+## How to use it.
+
+### Convert from - to Rhino Meshes.
+
+Autocast, just plug into DMesh3 param / GH_Mesh param.
+
+
+
+
+
 
 
 
