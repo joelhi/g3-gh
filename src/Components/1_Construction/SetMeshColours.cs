@@ -48,7 +48,7 @@ namespace g3gh.Components.Construction
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            dMs.SetVertexColor(i, new Vector3f((float)ms.VertexColors[i].R / 255, (float)ms.VertexColors[i].G / 255, (float)ms.VertexColors[i].B / 255));
+            //dMs.SetVertexColor(i, new Vector3f((float)ms.VertexColors[i].R / 255, (float)ms.VertexColors[i].G / 255, (float)ms.VertexColors[i].B / 255));
         }
 
         public override GH_Exposure Exposure

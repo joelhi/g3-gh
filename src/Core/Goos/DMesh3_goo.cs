@@ -43,7 +43,7 @@ namespace g3gh.Core.Goos
 
         public override string ToString()
         {
-            return "DMesh3 [V: " + this.Value.VertexCount.ToString() + "F: " + this.Value.TriangleCount.ToString() + "]";
+            return "DMesh3 [V:" + this.Value.VertexCount.ToString() + " F:" + this.Value.TriangleCount.ToString() + "]";
         }
 
 
