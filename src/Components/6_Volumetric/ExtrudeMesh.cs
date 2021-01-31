@@ -5,25 +5,27 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-
 using g3gh.Core;
-
-using g3;
-
 using g3gh.Core.Goos;
 using g3gh.Components.Params;
 
-namespace g3gh.Components.Utils
+using g3;
+
+namespace g3gh.Components.Volumetric
 {
-    public class CleanMesh : GH_Component
+    public class ExtrudeMesh : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the CutMesh class.
+        /// Each implementation of GH_Component must provide a public 
+        /// constructor without any arguments.
+        /// Category represents the Tab in which the component will appear, 
+        /// Subcategory the panel. If you use non-existing tab or panel names, 
+        /// new tabs/panels will automatically be created.
         /// </summary>
-        public CleanMesh()
-          : base("Clean Mesh", "cleanMsh",
-              "Clean a DMesh3, ridding it of unused vertices and faces etc.",
-              g3ghUtil.pluginName, "7_Process")
+        public ExtrudeMesh()
+          : base("ExtrudeMesh", "Nickname",
+            "ExtrudeMesh description",
+            g3ghUtil.pluginName, "6_Volumetric")
         {
         }
 
@@ -32,8 +34,6 @@ namespace g3gh.Components.Utils
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Mesh", "msh", "Mesh to Clean", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("Remove Fins", "fins", "Remove fin triangles (slim / narrow ones)", GH_ParamAccess.item, false);
         }
 
         /// <summary>
@@ -41,7 +41,6 @@ namespace g3gh.Components.Utils
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Clean Mesh", "msh", "Cleaned mesh", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -51,11 +50,6 @@ namespace g3gh.Components.Utils
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-        }
-
-        public override GH_Exposure Exposure
-        {
-            get { return GH_Exposure.primary; }
         }
 
         /// <summary>
@@ -68,7 +62,7 @@ namespace g3gh.Components.Utils
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return Resource1.g3_gh_icons_29_copy;
+                return Resource1.g3_gh_icons_36_copy;
             }
         }
 
@@ -79,7 +73,7 @@ namespace g3gh.Components.Utils
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("e0410764-d4f7-4d94-a51c-e832d6f58ab0"); }
+            get { return new Guid("418b48da-485e-4af9-a78b-342f1d2a849c"); }
         }
     }
 }

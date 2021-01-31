@@ -22,7 +22,7 @@ namespace g3gh.Components._Utils
         public DeconstructMesh()
           : base("Deconstruct Mesh", "deconMsh",
               "Deconstruct a DMesh3 Object",
-              g3ghUtil.pluginName, "7_Utils")
+              g3ghUtil.pluginName, "8_Utils")
         {
         }
 
@@ -61,7 +61,7 @@ namespace g3gh.Components._Utils
 
         public override GH_Exposure Exposure
         {
-            get { return GH_Exposure.secondary; }
+            get { return GH_Exposure.primary; }
         }
 
         /// <summary>

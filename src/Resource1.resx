@@ -208,16 +208,28 @@
   <data name="g3_gh_icons_30_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\g3_gh_icons-30 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-    <data name="g3_gh_icons_31_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="g3_gh_icons_31_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\g3_gh_icons-31 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-    <data name="g3_gh_icons_32_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="g3_gh_icons_32_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\g3_gh_icons-32 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-    <data name="g3_gh_icons_33_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="g3_gh_icons_33_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\g3_gh_icons-33 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-    <data name="g3_gh_icons_34_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="g3_gh_icons_34_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\g3_gh_icons-34 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_35_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-35 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_36_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-36 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_37_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-37 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g3_gh_icons_38_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\g3_gh_icons-38 copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

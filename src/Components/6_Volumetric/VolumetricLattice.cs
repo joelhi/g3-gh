@@ -5,9 +5,15 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace g3gh.Components._Process
+using g3gh.Core;
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
+
+using g3;
+
+namespace g3gh.Components.Volumetric
 {
-    public class ExtrudeMesh : GH_Component
+    public class VolumetricLattice : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -16,10 +22,10 @@ namespace g3gh.Components._Process
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public ExtrudeMesh()
-          : base("ExtrudeMesh", "Nickname",
-            "ExtrudeMesh description",
-            "Category", "Subcategory")
+        public VolumetricLattice()
+          : base("VolumetricLattice", "Nickname",
+            "VolumetricLattice description",
+            g3ghUtil.pluginName, "6_Volumetric")
         {
         }
 
@@ -56,7 +62,7 @@ namespace g3gh.Components._Process
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.g3_gh_icons_35_copy;
             }
         }
 
@@ -67,7 +73,7 @@ namespace g3gh.Components._Process
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("418b48da-485e-4af9-a78b-342f1d2a849c"); }
+            get { return new Guid("8e74a4e3-fd43-4b40-87bf-f0b51a0ad676"); }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace g3gh.Components._Utils
         public RepairMesh()
           : base("RepairMesh", "Nickname",
             "RepairMesh description",
-            g3ghUtil.pluginName, "7_Utils")
+            g3ghUtil.pluginName, "7_Process")
         {
         }
 

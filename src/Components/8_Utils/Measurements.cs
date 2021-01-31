@@ -21,7 +21,7 @@ namespace g3gh.Components.Utils
         public Measurements()
           : base("Measure Mesh", "msMsh",
                   "Measure volume and area etc. of a DMesh3 Object",
-                  g3ghUtil.pluginName, "7_Utils")
+                  g3ghUtil.pluginName, "8_Utils")
         {
         }
 

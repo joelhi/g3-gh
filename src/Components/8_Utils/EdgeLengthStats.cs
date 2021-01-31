@@ -23,7 +23,7 @@ namespace g3gh.Components.Utils
         public EdgeLengthStats()
           : base("Mesh Edge Statistics", "edgeStats",
               "Extract information about mesh edge lengths. Useful when setting target edge lengths for remeshing.",
-              g3ghUtil.pluginName, "7_Utils")
+              g3ghUtil.pluginName, "8_Utils")
         {
         }
 

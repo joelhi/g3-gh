@@ -5,7 +5,14 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace g3gh.Components._Utils
+using g3gh.Core;
+
+using g3;
+
+using g3gh.Core.Goos;
+using g3gh.Components.Params;
+
+namespace g3gh.Components.Utils
 {
     public class FaceNormals : GH_Component
     {
@@ -19,7 +26,7 @@ namespace g3gh.Components._Utils
         public FaceNormals()
           : base("FaceNormals", "Nickname",
             "FaceNormals description",
-            "Category", "Subcategory")
+            g3ghUtil.pluginName, "8_Utils")
         {
         }
 
@@ -46,6 +53,11 @@ namespace g3gh.Components._Utils
         {
         }
 
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.primary; }
+        }
+
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.
         /// Icons need to be 24x24 pixels.
@@ -56,7 +68,7 @@ namespace g3gh.Components._Utils
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.g3_gh_icons_38_copy;
             }
         }
 

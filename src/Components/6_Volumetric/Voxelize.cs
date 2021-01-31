@@ -11,7 +11,7 @@ using g3gh.Components.Params;
 
 using g3;
 
-namespace g3gh.Components.Voxel_Lattice
+namespace g3gh.Components.Volumetric
 {
     public class Voxelize : GH_Component
     {
@@ -19,7 +19,7 @@ namespace g3gh.Components.Voxel_Lattice
         public Voxelize()
           : base("Voxelize", "Voxl",
             "Voxelize a mesh using a bitmap. Returns a voxelized surface mesh.",
-            g3ghUtil.pluginName, "6_Voxel_Lattice")
+            g3ghUtil.pluginName, "6_Volumetric")
         {
         }
 

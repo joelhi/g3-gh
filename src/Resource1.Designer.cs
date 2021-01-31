@@ -284,5 +284,38 @@ namespace g3gh {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+
+        internal static System.Drawing.Bitmap g3_gh_icons_35_copy
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("g3_gh_icons_35_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        internal static System.Drawing.Bitmap g3_gh_icons_36_copy
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("g3_gh_icons_36_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        internal static System.Drawing.Bitmap g3_gh_icons_37_copy
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("g3_gh_icons_37_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        internal static System.Drawing.Bitmap g3_gh_icons_38_copy
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("g3_gh_icons_38_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

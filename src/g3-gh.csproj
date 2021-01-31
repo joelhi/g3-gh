@@ -30,7 +30,7 @@
     <Folder Include="Components\1_Construction\" />
     <Folder Include="Components\3_Remesh\" />
     <Folder Include="Components\2_Transform\" />
-    <Folder Include="Components\6_Voxel_Lattice\" />
+    <Folder Include="Components\6_Volumetric\" />
     <Folder Include="Properties\" />
     <Folder Include="Components\7_Process\" />
   </ItemGroup>
