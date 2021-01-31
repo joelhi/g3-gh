@@ -5,6 +5,7 @@
     <Version>1.0</Version>
     <Title>gh_3sharp</Title>
     <Description>Description of gh_3sharp</Description>
+    <Configurations>Release;Debug</Configurations>
   </PropertyGroup>
   
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -36,11 +37,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="icons\tempIcon.png" />
-    <None Remove="Resources\dmesh3.png" />
-    <None Remove="Resources\dmesh3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\dmesh3.png" />
+    <None Remove="Resources\g3_gh_icons-07 copy.png" />
+    <None Remove="Resources\g3_gh_icons-15 copy.png" />
+    <None Remove="Resources\g3_gh_icons-09 copy.png" />
+    <None Remove="Resources\g3_gh_icons-12 copy.png" />
+    <None Remove="Resources\g3_gh_icons-18 copy.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resource1.Designer.cs">

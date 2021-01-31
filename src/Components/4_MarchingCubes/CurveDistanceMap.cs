@@ -15,13 +15,13 @@ using g3;
 
 namespace gh3sharp.Components.MarchingCubes
 {
-    public class CurveDistanceMap : GH_Component
+    public class CurveDistanceField : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the CreateCurveDistanceField class.
         /// </summary>
-        public CurveDistanceMap()
-          : base("Curves Distance Map", "crvDist",
+        public CurveDistanceField()
+          : base("Curves Distance Field", "crvDist",
               "Assign a value to each point of a grid based on their shortest distance to a curve in a set.",
               gh3sharpUtil.pluginName, "4_MarchingCubes")
         {
@@ -89,7 +89,7 @@ namespace gh3sharp.Components.MarchingCubes
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Resource1.g3_gh_icons_14_copy;
+                return Resource1.g3_gh_icons_23_copy;
             }
         }
 
