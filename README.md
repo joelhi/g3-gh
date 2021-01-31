@@ -1,9 +1,15 @@
 # g3-gh
-Grasshopper components wrapping functionality from the [geometry3sharp](https://github.com/gradientspace/geometry3Sharp) library.
+This repository contains a set of components for the Grasshopper plugin for Rhino wrapping functionality from the [geometry3sharp](https://github.com/gradientspace/geometry3Sharp) library.
 
 ![](https://github.com/joelhi/g3-gh/blob/main/src/media/toolbar.png)
 
 I found the tools in that library quite useful so, to kill time in a global pandemic, I thought I'd expose them from grasshopper. 
+
+## Installation
+
+Build the project and as with most other gh plugins, just copy the g3gh.gha assembly and the geometry3sharp.dll to the grasshopper libraries folder.
+
+Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have used it on Window as well and everything seemed fine.
 
 ## Current Functionality
 
