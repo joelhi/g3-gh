@@ -18,7 +18,7 @@ namespace g3gh.Components._Utils
     {
 
         public RepairMesh()
-          : base("RepairMesh", "Nickname",
+          : base("Repair Mesh", "repairMsh",
             "RepairMesh description",
             g3ghUtil.pluginName, "7_Process")
         {
@@ -26,14 +26,23 @@ namespace g3gh.Components._Utils
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param());
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param());
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            DMesh3_goo goo = null;
+
+            DA.GetData(0, ref goo);
+
+            DMesh3 mesh = new DMesh3(goo.Value);
+
+
         }
 
         public override GH_Exposure Exposure
