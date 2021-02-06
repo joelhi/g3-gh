@@ -91,6 +91,8 @@ namespace g3gh.Core.Goos
                     target = (Q)(object)(new GH_Curve(new PolylineCurve(this.Value.Vertices.Select(ind => Value.Mesh.GetVertex(ind).ToRhinoPt()))));
                 return true;
             }
+            else if (typeof(Q).IsAssignableFrom(typeof(EdgeLoop)))
+                target = (Q)(object)(this.Value);
 
             target = default(Q);
             return false;

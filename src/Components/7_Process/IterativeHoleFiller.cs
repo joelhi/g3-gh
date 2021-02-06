@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 using Grasshopper;
 using Grasshopper.Kernel;
@@ -16,14 +15,16 @@ using System.Windows.Forms;
 
 namespace g3gh.Components.Process
 {
-    public class HoleFiller : GH_Component
-    {
+    public enum HoleFillerType { Planar = 0, Smooth = 1, Minimal = 2 }
 
+    public class IterativeHoleFiller : GH_Component
+    {
+        
         public HoleFillerType Type = HoleFillerType.Minimal;
 
-        public HoleFiller()
-          : base("Mesh Hole Filler", "mshFill",
-            "MeshHoleFiller description",
+        public IterativeHoleFiller()
+          : base("IterativeHoleFiller", "Nickname",
+            "IterativeHoleFiller description",
             g3ghUtil.pluginName, "7_Process")
         {
         }
@@ -36,16 +37,12 @@ namespace g3gh.Components.Process
             menu.Closed += contextMenuStrip_Closing;
         }
 
-        
-
         private void Menu_PanelTypeChanged(object sender, EventArgs e)
         {
             if (sender is ToolStripMenuItem item && item.Tag is "Filler")
-                Type = (HoleFillerType)Enum.Parse(typeof(HoleFillerType),item.Text);
+                Type = (HoleFillerType)Enum.Parse(typeof(HoleFillerType), item.Text);
 
         }
-
-        
 
         private void contextMenuStrip_Closing(object sender, EventArgs e)
         {
@@ -55,7 +52,6 @@ namespace g3gh.Components.Process
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param());
-            pManager.AddParameter(new EdgeLoop_Param(), "Loops", "loops", "The boundary loops to try to fill", GH_ParamAccess.item);
             pManager.AddNumberParameter("Target Edge Length", "eLen", "Target edge length for hole fill", GH_ParamAccess.item, 1);
         }
 
@@ -64,62 +60,68 @@ namespace g3gh.Components.Process
             pManager.AddParameter(new DMesh3_Param());
         }
 
-
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             this.Message = Type.ToString();
 
             DMesh3_goo goo = null;
-            EdgeLoop_goo loop_goo = null;
             double eLen = 1;
             DA.GetData(0, ref goo);
-            DA.GetData(1, ref loop_goo);
-            DA.GetData(2, ref eLen);
+            DA.GetData(1, ref eLen);
 
             DMesh3 msh = new DMesh3(goo.Value);
-            EdgeLoop loop = new EdgeLoop(loop_goo.Value);
 
-            DMesh3 outMesh;
+            DMesh3 outMesh = msh;
+            MeshBoundaryLoops loops = new MeshBoundaryLoops(outMesh, true);
 
-            switch (Type)
+            var lps = loops.Loops;
+
+            bool hasLoops = (lps.Count > 0);
+            int iter = 0;
+
+            while(hasLoops)
             {
-                case HoleFillerType.Planar:
-                    outMesh = HoleFillMethods.PlanarFill(msh,loop,eLen);
-                    break;
-                case HoleFillerType.Smooth:
-                    outMesh = HoleFillMethods.SmoothFill(msh,loop,eLen);
-                    break;
-                case HoleFillerType.Minimal:
-                    outMesh = HoleFillMethods.MinimalFill(msh,loop,eLen);
-                    break;
-                default:
-                    outMesh = HoleFillMethods.PlanarFill(msh,loop,eLen);
-                    break;
+                EdgeLoop loop = lps[0];
+
+                switch (Type)
+                {
+                    case HoleFillerType.Planar:
+                        outMesh = HoleFillMethods.PlanarFill(outMesh, loop, eLen);
+                        break;
+                    case HoleFillerType.Smooth:
+                        outMesh = HoleFillMethods.SmoothFill(outMesh, loop, eLen);
+                        break;
+                    case HoleFillerType.Minimal:
+                        outMesh = HoleFillMethods.MinimalFill(outMesh, loop, eLen);
+                        break;
+                    default:
+                        outMesh = HoleFillMethods.PlanarFill(outMesh, loop, eLen);
+                        break;
+                }
+
+                loops = new MeshBoundaryLoops(outMesh, true);
+                lps = loops.Loops;
+
+                hasLoops = (lps.Count > 0);
+
+                iter++;
+                if (iter > 500) { break; }
             }
+
 
             DA.SetData(0, outMesh);
         }
 
-        
-
-        public override GH_Exposure Exposure
-        {
-            get { return GH_Exposure.secondary; }
-        }
+        public override GH_Exposure Exposure{ get { return GH_Exposure.secondary; } }
 
         protected override System.Drawing.Bitmap Icon
         {
-            get
-            {
-                // You can add image files to your project resources and access them like this:
-                //return Resources.IconForThisComponent;
-                return null;
-            }
+            get{ return null; }
         }
 
         public override Guid ComponentGuid
         {
-            get { return new Guid("3f22f345-7b53-4c0b-b048-f5db2a4f4b61"); }
+            get { return new Guid("1d228420-2e0f-4c36-8bad-8362e2a49bb1"); }
         }
     }
 }
