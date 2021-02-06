@@ -17,18 +17,20 @@ namespace g3gh.Components.Volumetric
     {
 
         public VolumetricLattice()
-          : base("VolumetricLattice", "Nickname",
-            "VolumetricLattice description",
+          : base("VolumetricLattice", "latticeMsh",
+            "Fill a DMesh3 object with a lightweight lattice structure"
             g3ghUtil.pluginName, "6_Volumetric")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to use as basis for lattice structure", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Lattice structure of mesh volume", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

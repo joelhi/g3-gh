@@ -19,7 +19,7 @@ namespace g3gh.Components.MarchingCubes
     {
 
         public CurveDistanceField()
-          : base("Curves Distance Field", "crvDist",
+          : base("Curve Distance Field", "crvDist",
               "Assign a value to each point of a grid based on their shortest distance to a curve in a set.",
               g3ghUtil.pluginName, "5_MarchingCubes")
         {
@@ -27,13 +27,13 @@ namespace g3gh.Components.MarchingCubes
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new Grid3f_Param(), "Grid", "g3f", "Target grid for values.", GH_ParamAccess.item);
             pManager.AddCurveParameter("Curves", "crvs", "Curves to compute values for", GH_ParamAccess.list);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new Grid3f_Param(), "Grid", "g3f", "Grid with values assigned.", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

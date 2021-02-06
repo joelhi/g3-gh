@@ -16,22 +16,22 @@ namespace g3gh.Components.Transform
     public class RotateDMesh3 : GH_Component
     {
         public RotateDMesh3()
-          : base("Rotate", "Nickname",
-            "Rotate DMesh3 description",
+          : base("Rotate", "rotDMesh3",
+            "Rotate a DMesh3 object in a plane",
             g3ghUtil.pluginName, "3_Transform")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to rotate", GH_ParamAccess.item);
             pManager.AddNumberParameter("Rotation Angle", "r", "Rotation angle for DMesh3", GH_ParamAccess.item, 0);
             pManager.AddPlaneParameter("Plane", "p", "Plane to rotate in", GH_ParamAccess.item, Plane.WorldXY);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Rotated mesh", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

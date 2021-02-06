@@ -18,20 +18,20 @@ namespace g3gh.Components.Remesh
 
         public SmoothDMesh3Laplace()
           : base("Smooth Mesh", "laplaceSmooth",
-            "SmoothDMesh3Laplace description",
+            "Smooth a mesh using Laplacian",
             g3ghUtil.pluginName, "4_Remesh")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to smooth", GH_ParamAccess.item);
             pManager.AddNumberParameter("Interior Weight", "w", "Weight for interior constraints", GH_ParamAccess.item,1);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Smooth mesh", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

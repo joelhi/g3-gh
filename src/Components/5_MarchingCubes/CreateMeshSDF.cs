@@ -24,13 +24,13 @@ namespace g3gh.Components.MarchingCubes
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(),"Mesh To Map","dm3","Mesh to map into a SDF",GH_ParamAccess.item);
             pManager.AddIntegerParameter("Number of Cells", "n", "Number of cells (Resolution)", GH_ParamAccess.item, 128);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new Grid3f_Param(), "Resulting Grid", "g3f", "Resulting grid with values.", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

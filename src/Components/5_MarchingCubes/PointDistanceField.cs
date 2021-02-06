@@ -35,7 +35,7 @@ namespace g3gh.Components._MarchingCubes
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new Grid3f_Param(), "Grid", "g3f", "Target grid for values.", GH_ParamAccess.item);
             pManager.AddPointParameter("Points", "pts", "Points to compute values for", GH_ParamAccess.list);
         }
 
@@ -44,7 +44,7 @@ namespace g3gh.Components._MarchingCubes
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new Grid3f_Param(),"Grid","g3f","Grid with values assigned");
         }
 
         /// <summary>

@@ -25,13 +25,13 @@ namespace g3gh.Components.Volumetric
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(),"Mesh","dm3","Mesh to map as a voxel mesh.",GH_ParamAccess.item);
             pManager.AddIntegerParameter("Number of Cells", "n", "Number of cells (Resolution)", GH_ParamAccess.item, 64);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(),"Voxel Mesh","dm3","The resutling meshed bitmap.",GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

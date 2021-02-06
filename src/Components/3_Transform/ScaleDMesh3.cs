@@ -26,14 +26,14 @@ namespace g3gh.Components.Transform
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to scale", GH_ParamAccess.item);
             pManager.AddVectorParameter("Scale Factor", "f", "Scale factor for DMesh3", GH_ParamAccess.item, new Rhino.Geometry.Vector3d(1,1,1));
             pManager.AddPointParameter("Origin", "o", "Origin point", GH_ParamAccess.item, new Point3d(0, 0, 0));
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Scaled mesh", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

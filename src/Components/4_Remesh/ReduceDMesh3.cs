@@ -17,15 +17,15 @@ namespace g3gh.Components.Remesh
     {
 
         public ReduceDMesh3()
-          : base("Reduce Mesh", "Nickname",
-            "ReduceDMesh3 description",
+          : base("Reduce Mesh", "reduce",
+            "Reduce the face count of a DMesh3 to a specific number",
             g3ghUtil.pluginName, "4_Remesh")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to reduce", GH_ParamAccess.item);
             pManager.AddIntegerParameter("Number of faces", "n", "Number of faces after reduction", GH_ParamAccess.item);
             pManager.AddBooleanParameter("Constrain Edges", "c", "Option to constrain the edges during the reduction procedure", GH_ParamAccess.item,false);
             pManager.AddBooleanParameter("Project to Input", "p", "Project the reduced result back to the input mesh", GH_ParamAccess.item, false);
@@ -33,7 +33,7 @@ namespace g3gh.Components.Remesh
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Reduced mesh", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

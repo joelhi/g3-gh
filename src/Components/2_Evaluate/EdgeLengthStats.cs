@@ -27,7 +27,7 @@ namespace g3gh.Components.Evaluate
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Mesh", "msh", "Mesh to evaluate", GH_ParamAccess.item);
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to evaluate", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)

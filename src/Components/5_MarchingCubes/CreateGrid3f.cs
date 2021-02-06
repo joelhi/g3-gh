@@ -34,7 +34,7 @@ namespace g3gh.Components.MarchingCubes
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new Grid3f_Param(),"Generated Grid3f","g3f","Generated Grid3f object",GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

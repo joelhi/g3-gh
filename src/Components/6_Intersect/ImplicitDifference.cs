@@ -19,8 +19,8 @@ namespace g3gh.Components.ImplicitBoolean
     {
 
         public ImplicitDifference()
-          : base("Implicit Difference", "Nickname",
-            "ImplicitDifference description",
+          : base("Implicit Difference", "implDiff",
+            "Perform a Marching Cubes based boolean difference on some DMesh3 objects.",
             g3ghUtil.pluginName, "6_Intersect")
         {
         }
@@ -34,7 +34,7 @@ namespace g3gh.Components.ImplicitBoolean
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Results", "result", "Result of subtraction", GH_ParamAccess.item);
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Result of subtraction", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

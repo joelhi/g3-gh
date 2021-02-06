@@ -14,15 +14,15 @@ namespace g3gh.Components.MarchingCubes
     public class DeconstructGrid3f : GH_Component
     {
         public DeconstructGrid3f()
-          : base("Deconstruct Grid3f", "Nickname",
-            "DeconstructGrid3f description",
+          : base("Deconstruct Grid3f", "deconG3f",
+            "Deconstruct a Grid3f object into its components.",
             g3ghUtil.pluginName, "5_MarchingCubes")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new Grid3f_Param(), "Grid", "g3f", "Grid object to deconstruct.", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)

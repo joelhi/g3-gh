@@ -23,15 +23,15 @@ namespace g3gh.Components.Remesh
         int passes = 0;
 
         public RemeshDMesh3()
-          : base("Remesh", "Nickname",
-            "RemeshDMesh3 description",g3ghUtil.pluginName
+          : base("Remesh", "rMsh",
+            "Remesh a DMesh3 object based on a target edge length",g3ghUtil.pluginName
             , "4_Remesh")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to remesh", GH_ParamAccess.item);
             pManager.AddNumberParameter("Target Edge Length", "len", "Target edge length for remeshing", GH_ParamAccess.item);
             pManager.AddIntegerParameter("Number of iterations", "iter", "Maximum number of iterations", GH_ParamAccess.item, 10);
             pManager.AddBooleanParameter("Constrain Edges", "c", "Option to constrain the edges during the remeshing procedure", GH_ParamAccess.item, false);
@@ -43,7 +43,7 @@ namespace g3gh.Components.Remesh
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "New mesh", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

@@ -19,19 +19,19 @@ namespace g3gh.Components.Process
 
         public RepairMesh()
           : base("Repair Mesh", "repairMsh",
-            "RepairMesh description",
+            "Run a general mesh repair using the auto repair tool from the geometry3sharp library",
             g3ghUtil.pluginName, "7_Process")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(),"Mesh","dm3","Mesh to repair",GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(),"Repaired Mesh","dm3","Resulting mesh from the reparation process.",GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

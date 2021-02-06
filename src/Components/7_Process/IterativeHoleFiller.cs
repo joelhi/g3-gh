@@ -23,8 +23,8 @@ namespace g3gh.Components.Process
         public HoleFillerType Type = HoleFillerType.Minimal;
 
         public IterativeHoleFiller()
-          : base("IterativeHoleFiller", "Nickname",
-            "IterativeHoleFiller description",
+          : base("Iteratice Mesh Hole Fill", "iterHoleFill",
+            "Iteratively fill holes in a DMesh3 object until no more holes remain.",
             g3ghUtil.pluginName, "7_Process")
         {
         }

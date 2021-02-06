@@ -32,6 +32,8 @@ namespace g3gh.Components.MakeModify
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to assign vertex colours to", GH_ParamAccess.item);
+            pManager.AddColourParameter("Colours", "cols", "List of vertex colours for mesh", GH_ParamAccess.list);
         }
 
         /// <summary>

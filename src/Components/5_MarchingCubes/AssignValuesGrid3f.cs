@@ -20,20 +20,20 @@ namespace g3gh.Components.MarchingCubes
 
         public AssignValuesGrid3f()
           : base("Assign Values to Grid3f", "GridAssign",
-            "AssignValuesGrid3f description",
+            "Assign a value to each point in a Grid3f.",
             g3ghUtil.pluginName, "5_MarchingCubes")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new Grid3f_Param(),"Target Grid","g3f","Target grid for values.",GH_ParamAccess.item);
             pManager.AddNumberParameter("Values", "v", "Values for each point in grid", GH_ParamAccess.list);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new Grid3f_Param(),"Updated Grid","g3f","Grid with values assigned.",GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

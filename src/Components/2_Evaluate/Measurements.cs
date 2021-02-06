@@ -17,7 +17,7 @@ namespace g3gh.Components.Evaluate
     {
 
         public Measurements()
-          : base("Measure Mesh", "msMsh",
+          : base("Mesh Measurements", "msMsh",
                   "Measure volume and area etc. of a DMesh3 Object",
                   g3ghUtil.pluginName, "2_Evaluate")
         {
@@ -25,11 +25,14 @@ namespace g3gh.Components.Evaluate
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to extract information about", GH_ParamAccess.item);
         }
 
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddNumberParameter("Area", "A", "Mesh surface area", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Volume", "V", "Mesh volume", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

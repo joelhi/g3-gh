@@ -31,7 +31,7 @@ namespace g3gh.Components._Intersect
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Mesh", "ms", "Mesh to cut", GH_ParamAccess.item);
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to cut", GH_ParamAccess.item);
             pManager.AddParameter(new DMesh3_Param(), "Cutter", "c", "Mesh to cut with", GH_ParamAccess.item);
             pManager.AddBooleanParameter("Remove Contained?", "rm", "Remove Contained Meshes?", GH_ParamAccess.item, false);
         }
@@ -41,7 +41,7 @@ namespace g3gh.Components._Intersect
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Mesh", "ms", "cut mesh", GH_ParamAccess.item);
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Cut mesh", GH_ParamAccess.item);
         }
 
         /// <summary>

@@ -24,7 +24,7 @@ namespace g3gh.Components.MarchingCubes
 
         public MarchingCubesIso()
           : base("Marching Cubes Iso Surface", "isoSrf",
-            "Construct marching cubes iso surface from a grid by interpolating through a value specific value.",
+            "Construct marching cubes iso surface from a grid by interpolating through a specific value.",
             g3ghUtil.pluginName, "5_MarchingCubes")
         {
         }
@@ -70,14 +70,14 @@ namespace g3gh.Components.MarchingCubes
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param());
+            pManager.AddParameter(new Grid3f_Param(), "Grid", "g3f", "Basis grid for interpolation.", GH_ParamAccess.item);
             pManager.AddNumberParameter("Value", "val", "Value for iso surface", GH_ParamAccess.item, 0);
             pManager.AddNumberParameter("Expansion", "e", "Expansion of grid beyond size of mesh", GH_ParamAccess.item, 0);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(),"Iso Mesh","dm3","Resulting Iso mesh from the Marching Cubes process");
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

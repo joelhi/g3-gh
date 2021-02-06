@@ -26,13 +26,13 @@ namespace g3gh.Components.Process
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Mesh", "msh", "Mesh to Clean", GH_ParamAccess.item);
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to Clean", GH_ParamAccess.item);
             pManager.AddBooleanParameter("Remove Fins", "fins", "Remove fin triangles (slim / narrow ones)", GH_ParamAccess.item, false);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Clean Mesh", "msh", "Cleaned mesh", GH_ParamAccess.item);
+            pManager.AddParameter(new DMesh3_Param(), "Clean Mesh", "dm3", "Cleaned mesh", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

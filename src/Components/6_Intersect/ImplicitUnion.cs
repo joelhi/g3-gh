@@ -19,21 +19,21 @@ namespace g3gh.Components.ImplicitBoolean
     {
 
         public ImplicitUnion()
-          : base("Implicit Union", "Nickname",
-            "ImplicitUnion description",
+          : base("Implicit Union", "implU",
+            "Perform a Marching Cubes based boolean union on some DMesh3 objects.",
             g3ghUtil.pluginName, "6_Intersect")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Meshes", "ms", "Meshes to union", GH_ParamAccess.list);
+            pManager.AddParameter(new DMesh3_Param(), "Meshes", "dm3", "Meshes to union", GH_ParamAccess.list);
             pManager.AddIntegerParameter("Number of cells", "n", "Number of sample cells", GH_ParamAccess.item, 64);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Results", "result", "Result of subtraction", GH_ParamAccess.item);
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Result of subtraction", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

@@ -22,8 +22,8 @@ namespace g3gh.Components.Process
         public HoleFillerType Type = HoleFillerType.Minimal;
 
         public HoleFiller()
-          : base("Mesh Hole Filler", "mshFill",
-            "MeshHoleFiller description",
+          : base("Mesh Hole Fill", "holeFill",
+            "Fill a specific boundary loop in a DMesh3 object.",
             g3ghUtil.pluginName, "7_Process")
         {
         }
@@ -54,14 +54,14 @@ namespace g3gh.Components.Process
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(),"Mesh","dm3","Mesh for which to fill hole.",GH_ParamAccess.item);
             pManager.AddParameter(new EdgeLoop_Param(), "Loops", "loops", "The boundary loops to try to fill", GH_ParamAccess.item);
             pManager.AddNumberParameter("Target Edge Length", "eLen", "Target edge length for hole fill", GH_ParamAccess.item, 1);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(),"Mesh","dm3","Mesh with edge loop filled.",GH_ParamAccess.item);
         }
 
 

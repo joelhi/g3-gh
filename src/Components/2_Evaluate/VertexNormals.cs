@@ -18,18 +18,20 @@ namespace g3gh.Components.Evaluate
     {
 
         public VertexNormals()
-          : base("VertexNormals", "Nickname",
-            "VertexNormals description",
+          : base("VertexNormals", "vertN",
+            "Get the normal vector of each vertex in a DMesh3 Object",
             g3ghUtil.pluginName, "2_Evaluate")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to extract vertex normals from", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddVectorParameter("Vertex Normals", "vec", "Normal vector of mesh vertices", GH_ParamAccess.list);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

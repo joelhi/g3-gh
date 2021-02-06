@@ -16,8 +16,8 @@ namespace g3gh.Components.FileIO
     {
 
         public DMesh3FromFile()
-          : base("Read From File", "DMshFromObj",
-            "DMesh3_From_ description",
+          : base("Read From File", "DMshFromFile",
+            "Read a DMesh3 object frorm either an obj, stl or off file.",
             g3ghUtil.pluginName, "9_FileIO")
         {
         }
@@ -29,7 +29,7 @@ namespace g3gh.Components.FileIO
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(),"Mesh","dm3","The read mesh from the file",GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

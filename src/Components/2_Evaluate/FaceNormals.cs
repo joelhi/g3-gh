@@ -18,19 +18,22 @@ namespace g3gh.Components.Evaluate
     {
 
         public FaceNormals()
-          : base("FaceNormals", "Nickname",
-            "FaceNormals description",
+          : base("FaceNormals", "faceN",
+            "Extract the face normals of a DMesh3 object",
             g3ghUtil.pluginName, "2_Evaluate")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to extract normals from", GH_ParamAccess.item);
         }
 
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddPointParameter("Face Centroids", "pt", "Centroid of mesh faces", GH_ParamAccess.list);
+            pManager.AddVectorParameter("Face Normals", "vec", "Normal vector of mesh faces", GH_ParamAccess.list);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

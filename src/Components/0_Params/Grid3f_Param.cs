@@ -21,7 +21,7 @@ namespace g3gh.Components.Params
     {
 
         public Grid3f_Param() :
-            base("Grid3f", "Grid3f", "Holds a Grid3f Object. This is a grid of point with values, which can be used to create meshes using marching cubes. ", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
+            base("Grid3f", "Grid3f", "Holds a collection Grid3f Object. This is a grid of point with float values, which can be used to create meshes using marching cubes. ", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
 
         public override GH_Exposure Exposure

@@ -17,7 +17,7 @@ namespace g3gh.Components.Transform
     {
 
         public MoveDMesh3()
-          : base("Translate", "moveDMesh3",
+          : base("Translate", "transDMesh3",
             "Translate a DMesh3 along a translation vector",
             g3ghUtil.pluginName, "3_Transform")
         {
@@ -25,13 +25,13 @@ namespace g3gh.Components.Transform
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to translate", GH_ParamAccess.item);
             pManager.AddVectorParameter("Translation Vector", "v", "Translation vector for DMesh3", GH_ParamAccess.item, new Rhino.Geometry.Vector3d(0, 0, 0));
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Translated mesh", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

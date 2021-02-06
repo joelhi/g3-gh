@@ -17,18 +17,20 @@ namespace g3gh.Components.Volumetric
     {
 
         public ExtrudeMesh()
-          : base("ExtrudeMesh", "Nickname",
-            "ExtrudeMesh description",
+          : base("ExtrudeMesh", "xtrudeMsh",
+            "Extrude a DMesh3 object by a certain distance and stich boundaries.",
             g3ghUtil.pluginName, "6_Volumetric")
         {
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to extude", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Resulting volume mesh", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

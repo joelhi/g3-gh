@@ -21,8 +21,8 @@ namespace g3gh.Components.MakeModify
         /// new tabs/panels will automatically be created.
         /// </summary>
         public RhinoMeshFromDMesh3()
-          : base("Convert to Rhino Mesh", "RhFromDMesh3",
-            "DMesh3FromRhinoMesh description",
+          : base("DMesh3 to Rhino Mesh", "fromDMesh3",
+            "Convert a DMesh3 object to a Rhino Mesh",
             Core.g3ghUtil.pluginName, "1_Make_Modify")
         {
         }
@@ -32,7 +32,7 @@ namespace g3gh.Components.MakeModify
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param());
+            pManager.AddParameter(new DMesh3_Param(),"Mesh To Convert","dm3","DMesh3 to convert to a Rhino Mesh",GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace g3gh.Components.MakeModify
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddMeshParameter("Rhino Mesh", "rhMsh", "Recovered rhino mesh",GH_ParamAccess.item);
+            pManager.AddMeshParameter("Rhino Mesh", "rMsh", "Recovered Rhino mesh",GH_ParamAccess.item);
         }
 
         /// <summary>
