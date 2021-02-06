@@ -32,7 +32,7 @@ namespace g3gh.Components.MarchingCubes
         protected override void AppendAdditionalComponentMenuItems(ToolStripDropDown menu)
         {
             foreach (var item in Enum.GetValues(typeof(g3.MarchingCubes.RootfindingModes)))
-                Menu_AppendItem(menu, item.ToString(), Menu_PanelTypeChanged, true, item.ToString() == modes.ToString()).Tag = "Converter";
+                Menu_AppendItem(menu, item.ToString(), Menu_PanelTypeChanged, true, item.ToString() == modes.ToString()).Tag = "RootMode";
 
             Menu_AppendSeparator(menu);
 
@@ -59,12 +59,8 @@ namespace g3gh.Components.MarchingCubes
 
         private void Menu_PanelTypeChanged(object sender, EventArgs e)
         {
-            if (sender is ToolStripMenuItem item && item.Tag is "Converter")
-            {
+            if (sender is ToolStripMenuItem item && item.Tag is "RootMode")
                 modes = (g3.MarchingCubes.RootfindingModes)Enum.Parse(typeof(g3.MarchingCubes.RootfindingModes), item.Text, true);
-
-                ((ToolStripMenuItem)item).Checked = true;
-            }
         }
 
         private void contextMenuStrip_Closing(object sender, EventArgs e)

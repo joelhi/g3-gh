@@ -5,24 +5,29 @@ using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using g3;
-
 using g3gh.Core;
-
 using g3gh.Core.Goos;
+
 using g3gh.Components.Params;
 
-namespace g3gh.Components._Intersect
+using g3;
+
+
+namespace g3gh.Components._Construction
 {
-    public class MeshMeshCut : GH_Component
+    public class TriangulatePolygon : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the CutMesh class.
+        /// Each implementation of GH_Component must provide a public 
+        /// constructor without any arguments.
+        /// Category represents the Tab in which the component will appear, 
+        /// Subcategory the panel. If you use non-existing tab or panel names, 
+        /// new tabs/panels will automatically be created.
         /// </summary>
-        public MeshMeshCut()
-          : base("Mesh | Mesh Cut", "mshXmsh",
-              "Description",
-              g3ghUtil.pluginName, "5_Intersect")
+        public TriangulatePolygon()
+          : base("TriangulatePolygon", "Nickname",
+            "TriangulatePolygon description",
+            g3ghUtil.pluginName, "1_Construction")
         {
         }
 
@@ -31,9 +36,6 @@ namespace g3gh.Components._Intersect
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Mesh", "ms", "Mesh to cut", GH_ParamAccess.item);
-            pManager.AddParameter(new DMesh3_Param(), "Cutter", "c", "Mesh to cut with", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("Remove Contained?", "rm", "Remove Contained Meshes?", GH_ParamAccess.item, false);
         }
 
         /// <summary>
@@ -41,7 +43,6 @@ namespace g3gh.Components._Intersect
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(), "Mesh", "ms", "cut mesh", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -51,30 +52,12 @@ namespace g3gh.Components._Intersect
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            DMesh3_goo goo = null;
-            DMesh3_goo cut = null;
-            bool cap = false;
-
-            DA.GetData(0, ref goo);
-            DA.GetData(1, ref cut);
-            DA.GetData(2, ref cap);
-
-            DMesh3 ms = new DMesh3(goo.Value);
-
-            g3.MeshMeshCut cutter = new g3.MeshMeshCut();
-
-            cutter.Target = new DMesh3(goo.Value);
-            cutter.CutMesh = new DMesh3(cut.Value);
-
-            cutter.Compute();
-
-            if (cap)
-                cutter.RemoveContained();
-
-            DA.SetData(0, cutter.CutMesh);
         }
 
-        public override GH_Exposure Exposure => GH_Exposure.hidden;
+        public override GH_Exposure Exposure
+        {
+            get { return GH_Exposure.tertiary; }
+        }
 
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.
@@ -86,7 +69,7 @@ namespace g3gh.Components._Intersect
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return Resource1.g3_gh_icons_26_copy;
+                return null;
             }
         }
 
@@ -97,7 +80,7 @@ namespace g3gh.Components._Intersect
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("f7f8aa81-faf3-4e54-a23a-60f35875331b"); }
+            get { return new Guid("25fa5980-2754-4255-b2a8-9a6b4114248b"); }
         }
     }
 }

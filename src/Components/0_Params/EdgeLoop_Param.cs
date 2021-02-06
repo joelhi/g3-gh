@@ -13,33 +13,33 @@ using g3;
 using Rhino.Geometry;
 using Rhino.Display;
 
-using g3gh;
 
 namespace g3gh.Components.Params
 {
-    public class Grid3f_Param : GH_Param<Grid3f_goo>, IGH_PreviewObject
+    public class EdgeLoop_Param : GH_Param<EdgeLoop_goo>, IGH_PreviewObject
     {
 
-        public Grid3f_Param() :
-            base("Grid3f", "Grid3f", "Holds a Grid3f Object. This is a grid of point with values, which can be used to create meshes using marching cubes. ", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
+        public EdgeLoop_Param() :
+            base("Edge Loop", "Edge Loop", "Holds an Edge Loop Object.", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
 
         public override GH_Exposure Exposure
         {
-            get { return GH_Exposure.secondary; }
-        }
-
-        protected override Grid3f_goo PreferredCast(object data)
-        {
-            if (data is DenseGridTrilinearImplicit)
-                return new Grid3f_goo((DenseGridTrilinearImplicit)data);
-            else
-                return null;
+            get { return GH_Exposure.primary; }
         }
 
         public void DrawViewportMeshes(IGH_PreviewArgs args)
         {
-            DrawViewportWires(args);
+            DisplayPipeline dp = args.Display;
+
+            foreach (EdgeLoop_goo goo in this.m_data.NonNulls)
+            {
+                goo.GenerateDispMesh();
+                goo.GenerateDispCurves();
+                dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
+                dp.DrawCurve(goo.loop, Color.DarkRed, 2);
+
+            }
         }
 
 
@@ -47,22 +47,20 @@ namespace g3gh.Components.Params
         {
             DisplayPipeline dp = args.Display;
 
-            foreach (Grid3f_goo goo in this.m_data.NonNulls)
+            foreach (EdgeLoop_goo goo in this.m_data.NonNulls)
             {
-                goo.GenerateDispPts();
-                int len = goo.dispPts.Length;
+                goo.GenerateDispMesh();
+                goo.GenerateDispCurves();
+                dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
+                dp.DrawCurve(goo.loop, Color.DarkRed, 2);
 
-                for (int i = 0; i < len; i++)
-                {
-                    dp.DrawPoint(goo.dispPts[i]);
-                    //dp.DrawDot(goo.dispPts[i], goo.values[i].ToString());
-                }
             }
+
         }
 
         public override Guid ComponentGuid
         {
-            get { return new Guid("07eb1e6d-bd57-4c66-bdbd-32cab4e898d4"); }
+            get { return new Guid("94b717e1-5b44-450e-a300-323f03292cb3"); }
         }
 
         public bool Hidden { get; set; }
@@ -78,8 +76,8 @@ namespace g3gh.Components.Params
 
                 BoundingBox box = BoundingBox.Empty;
 
-                foreach (Grid3f_goo gGoo in this.m_data.NonNulls)
-                    box.Union(gGoo.Value.Bounds().ToRhino());
+                foreach (EdgeLoop_goo mGoo in this.m_data.NonNulls)
+                    box.Union(mGoo.Value.GetBounds().ToRhino());
 
                 return box;
             }
@@ -91,8 +89,10 @@ namespace g3gh.Components.Params
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return Resource1.g3_gh_icons_07_copy;
+                return null;
             }
         }
     }
 }
+
+
