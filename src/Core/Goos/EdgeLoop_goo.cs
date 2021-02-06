@@ -83,12 +83,12 @@ namespace g3gh.Core.Goos
         {
 
             //Cast to mesh.
-            if (typeof(Q).IsAssignableFrom(typeof(PolylineCurve)))
+            if (typeof(Q).IsAssignableFrom(typeof(GH_Curve)))
             {
                 if (Value == null)
                     target = default(Q);
                 else
-                    target = (Q)(object)(new PolylineCurve(this.Value.Vertices.Select(ind => Value.Mesh.GetVertex(ind).ToRhinoPt())));
+                    target = (Q)(object)(new GH_Curve(new PolylineCurve(this.Value.Vertices.Select(ind => Value.Mesh.GetVertex(ind).ToRhinoPt()))));
                 return true;
             }
 
@@ -117,6 +117,16 @@ namespace g3gh.Core.Goos
         public override IGH_GeometricGoo Morph(SpaceMorph xmorph)
         {
             throw new NotImplementedException();
+        }
+
+        public static implicit operator EdgeLoop(EdgeLoop_goo Goo)
+        {
+            return Goo.Value;
+        }
+
+        public static implicit operator EdgeLoop_goo(EdgeLoop loop)
+        {
+            return new EdgeLoop_goo(loop);
         }
     }
 }

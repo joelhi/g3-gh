@@ -30,7 +30,7 @@ namespace g3gh.Components.Process
 
         protected override void AppendAdditionalComponentMenuItems(ToolStripDropDown menu)
         {
-            foreach (var item in Enum.GetValues(typeof(g3.MarchingCubes.RootfindingModes)))
+            foreach (var item in Enum.GetValues(typeof(HoleFillerType)))
                 Menu_AppendItem(menu, item.ToString(), Menu_PanelTypeChanged, true, item.ToString() == Type.ToString()).Tag = "Filler";
         }
 
