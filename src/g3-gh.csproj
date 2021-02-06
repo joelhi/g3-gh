@@ -48,6 +48,10 @@
     <None Remove="Resources\g3_gh_icons-18 copy.png" />
     <None Remove="Resources\g3_gh_icons-14 copy.png" />
     <None Remove="Resources\g3_gh_icons-15 copy.png" />
+    <None Remove="Resources\g3_gh_icons-34 copy.png" />
+    <None Remove="Resources\g3_gh_icons-33 copy.png" />
+    <None Remove="Resources\g3_gh_icons-32 copy.png" />
+    <None Remove="Resources\g3_gh_icons-06 copy.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resource1.Designer.cs">

@@ -41,6 +41,7 @@ namespace g3gh.Components.MakeModify
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh with vertex colours", GH_ParamAccess.item);
         }
 
         /// <summary>

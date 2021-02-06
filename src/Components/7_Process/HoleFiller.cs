@@ -55,8 +55,8 @@ namespace g3gh.Components.Process
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param(),"Mesh","dm3","Mesh for which to fill hole.",GH_ParamAccess.item);
-            pManager.AddParameter(new EdgeLoop_Param(), "Loops", "loops", "The boundary loops to try to fill", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Target Edge Length", "eLen", "Target edge length for hole fill", GH_ParamAccess.item, 1);
+            pManager.AddParameter(new EdgeLoop_Param(), "Edge Loop", "loop", "The boundary edge loop to try to fill", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Edge Length", "len", "Target edge length for hole fill", GH_ParamAccess.item, 1);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -113,7 +113,7 @@ namespace g3gh.Components.Process
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Resource1.g3_gh_icons_41_copy;
             }
         }
 

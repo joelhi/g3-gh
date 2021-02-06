@@ -23,7 +23,7 @@ namespace g3gh.Components.Process
         public HoleFillerType Type = HoleFillerType.Minimal;
 
         public IterativeHoleFiller()
-          : base("Iteratice Mesh Hole Fill", "iterHoleFill",
+          : base("Iterative Mesh Hole Fill", "iterHoleFill",
             "Iteratively fill holes in a DMesh3 object until no more holes remain.",
             g3ghUtil.pluginName, "7_Process")
         {
@@ -52,7 +52,7 @@ namespace g3gh.Components.Process
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param());
-            pManager.AddNumberParameter("Target Edge Length", "eLen", "Target edge length for hole fill", GH_ParamAccess.item, 1);
+            pManager.AddNumberParameter("Edge Length", "len", "Target edge length for hole fill", GH_ParamAccess.item, 1);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -116,7 +116,7 @@ namespace g3gh.Components.Process
 
         protected override System.Drawing.Bitmap Icon
         {
-            get{ return null; }
+            get{ return Resource1.g3_gh_icons_43_copy; }
         }
 
         public override Guid ComponentGuid
