@@ -18,7 +18,7 @@ namespace g3gh.Components.Volumetric
 
         public VolumetricLattice()
           : base("VolumetricLattice", "latticeMsh",
-            "Fill a DMesh3 object with a lightweight lattice structure"
+            "Fill a DMesh3 object with a lightweight lattice structure",
             g3ghUtil.pluginName, "6_Volumetric")
         {
         }

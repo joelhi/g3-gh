@@ -77,7 +77,7 @@ namespace g3gh.Components.MarchingCubes
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new DMesh3_Param(),"Iso Mesh","dm3","Resulting Iso mesh from the Marching Cubes process");
+            pManager.AddParameter(new DMesh3_Param(),"Iso Mesh","dm3","Resulting Iso mesh from the Marching Cubes process",GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)

@@ -44,7 +44,7 @@ namespace g3gh.Components._MarchingCubes
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddParameter(new Grid3f_Param(),"Grid","g3f","Grid with values assigned");
+            pManager.AddParameter(new Grid3f_Param(),"Grid","g3f","Grid with values assigned",GH_ParamAccess.item);
         }
 
         /// <summary>
