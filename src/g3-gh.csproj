@@ -27,12 +27,13 @@
     <Folder Include="Core\" />
     <Folder Include="Core\Goos\" />
     <Folder Include="Components\0_Params\" />
-    <Folder Include="Components\1_Construction\" />
-    <Folder Include="Components\3_Remesh\" />
-    <Folder Include="Components\2_Transform\" />
-    <Folder Include="Components\6_Volumetric\" />
+    <Folder Include="Components\1_Make_Modify\" />
+    <Folder Include="Components\4_Remesh\" />
+    <Folder Include="Components\3_Transform\" />
+    <Folder Include="Components\8_Volumetric\" />
     <Folder Include="Properties\" />
     <Folder Include="Components\7_Process\" />
+    <Folder Include="Components\9_FileIO\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
