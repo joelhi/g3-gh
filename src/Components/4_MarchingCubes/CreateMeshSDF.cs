@@ -33,11 +33,6 @@ namespace g3gh.Components.MarchingCubes
             pManager.AddParameter(new Grid3f_Param());
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object can be used to retrieve data from input parameters and 
-        /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
 
@@ -64,10 +59,7 @@ namespace g3gh.Components.MarchingCubes
         {
             get { return GH_Exposure.primary; }
         }
-        /// <summary>
-        /// Provides an Icon for every component that will be visible in the User Interface.
-        /// Icons need to be 24x24 pixels.
-        /// </summary>
+
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -78,11 +70,6 @@ namespace g3gh.Components.MarchingCubes
             }
         }
 
-        /// <summary>
-        /// Each component must have a unique Guid to identify it. 
-        /// It is vital this Guid doesn't change otherwise old ghx files 
-        /// that use the old ID will partially fail during loading.
-        /// </summary>
         public override Guid ComponentGuid
         {
             get { return new Guid("188897ae-828c-48b3-984f-6bf68bd749b2"); }

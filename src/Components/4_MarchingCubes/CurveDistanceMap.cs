@@ -17,9 +17,7 @@ namespace g3gh.Components.MarchingCubes
 {
     public class CurveDistanceField : GH_Component
     {
-        /// <summary>
-        /// Initializes a new instance of the CreateCurveDistanceField class.
-        /// </summary>
+
         public CurveDistanceField()
           : base("Curves Distance Field", "crvDist",
               "Assign a value to each point of a grid based on their shortest distance to a curve in a set.",
@@ -27,27 +25,17 @@ namespace g3gh.Components.MarchingCubes
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new Grid3f_Param());
             pManager.AddCurveParameter("Curves", "crvs", "Curves to compute values for", GH_ParamAccess.list);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddParameter(new Grid3f_Param());
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             Grid3f_goo goo = null;
@@ -80,9 +68,6 @@ namespace g3gh.Components.MarchingCubes
             DA.SetData(0, grid);
         }
 
-        /// <summary>
-        /// Provides an Icon for the component.
-        /// </summary>
         protected override System.Drawing.Bitmap Icon
         {
             get
@@ -98,9 +83,6 @@ namespace g3gh.Components.MarchingCubes
             get { return GH_Exposure.tertiary; }
         }
 
-        /// <summary>
-        /// Gets the unique ID for this component. Do not change this ID after release.
-        /// </summary>
         public override Guid ComponentGuid
         {
             get { return new Guid("37eef048-756c-4761-ad2a-e97b9f17f175"); }

@@ -46,7 +46,7 @@ namespace g3gh.Components.MarchingCubes
 
             if(vals.Count != (grid.Value.Grid.ni * grid.Value.Grid.nj * grid.Value.Grid.nk))
             {
-                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Lis tof values doesn't match number of points");
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "List of values doesn't match number of points");
                 return;
             }
 

@@ -46,8 +46,6 @@ namespace g3gh.Components.Params
                 return null;
         }
 
-        
-
         public void DrawViewportMeshes(IGH_PreviewArgs args)
         {
             DisplayPipeline dp = args.Display;
