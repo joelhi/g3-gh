@@ -1,4 +1,11 @@
 # g3-gh
+
+{
+
+Gif of remeshing here. As a teaser.
+
+}
+
 This repository contains a set of components for the Grasshopper plugin for Rhino wrapping functionality from the [geometry3sharp](https://github.com/gradientspace/geometry3Sharp) library.
 
 ![](https://github.com/joelhi/g3-gh/blob/main/src/media/toolbar.png)
@@ -15,13 +22,15 @@ Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have
 
 ### Remeshing
 
+[Gifs from grasshopper rhino with some work being done?]
+
 Smoothing
 
 Remeshing based on edge lengths.
 
 ### Marching Cubes
 
-### Voxelization / Lattices
+### Voxelization / Lattices etc.
 
 ### Mesh Repair / Hole filler
 
