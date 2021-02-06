@@ -28,6 +28,16 @@ namespace g3gh.Components.Params
             get { return GH_Exposure.primary; }
         }
 
+        protected override EdgeLoop_goo PreferredCast(object data)
+        {
+            if (data is EdgeLoop)
+            {
+                return new EdgeLoop_goo((EdgeLoop)data);
+            }
+            else
+                return null;
+        }
+
         public void DrawViewportMeshes(IGH_PreviewArgs args)
         {
             DisplayPipeline dp = args.Display;
