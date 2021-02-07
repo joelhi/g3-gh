@@ -108,6 +108,7 @@ namespace g3gh.Components.Process
                 if (iter > 500) { break; }
             }
 
+            this.Message += "\n" + iter.ToString() + " holes filled.";
 
             DA.SetData(0, outMesh);
         }
