@@ -9,6 +9,10 @@ using g3gh.Components.Params;
 using g3gh.Core.Goos;
 using g3gh.Core;
 
+using g3;
+
+using System.Drawing;
+
 namespace g3gh.Components.MakeModify
 {
     public class SetMeshColours : GH_Component
@@ -51,7 +55,35 @@ namespace g3gh.Components.MakeModify
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            //dMs.SetVertexColor(i, new Vector3f((float)ms.VertexColors[i].R / 255, (float)ms.VertexColors[i].G / 255, (float)ms.VertexColors[i].B / 255));
+
+            DMesh3_goo goo = null;
+            List<Color> cols = new List<Color>();
+
+            DA.GetData(0, ref goo);
+            DA.GetDataList(1, cols);
+
+            DMesh3 msh = new DMesh3(goo.Value);
+
+            if (cols.Count == msh.VertexCount)
+            {
+                for (int i = 0; i < cols.Count; i++)
+                {
+                    msh.SetVertexColor(i, new g3.Vector3f((float)cols[i].R / 255, (float)cols[i].G / 255, (float)cols[i].B / 255));
+                }
+            }
+            else if (cols.Count == 1)
+            {
+                for (int i = 0; i < cols.Count; i++)
+                {
+                    msh.SetVertexColor(i, new g3.Vector3f((float)cols[0].R / 255, (float)cols[0].G / 255, (float)cols[0].B / 255));
+                }
+            }
+            else
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Number of colours either need to be that same amount as number of vertices in mesh, or a single one");
+            }
+
+            DA.SetData(0, msh);
         }
 
         public override GH_Exposure Exposure

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Grasshopper;
 using Grasshopper.Kernel;
@@ -37,11 +38,22 @@ namespace g3gh.Components.MakeModify
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            Curve crv = null;
+
+            DA.GetData(0, ref crv);
+
+            if (!(crv is PolylineCurve))
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Curve must be a polyline.");
+                return;
+            }
+
+            
         }
 
         public override GH_Exposure Exposure
         {
-            get { return GH_Exposure.secondary; }
+            get { return GH_Exposure.hidden; }
         }
 
         protected override System.Drawing.Bitmap Icon
