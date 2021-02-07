@@ -2,7 +2,7 @@
 
 {
 
-Gif of remeshing here. As a teaser.
+![](https://github.com/joelhi/g3-gh/blob/main/src/media/example_mesh.png)
 
 }
 
