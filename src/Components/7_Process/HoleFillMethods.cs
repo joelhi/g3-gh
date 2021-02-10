@@ -33,7 +33,7 @@ namespace g3gh.Components.Process
 
             holeFiller.Fill();
 
-            return new DMesh3(holeFiller.Mesh);
+            return holeFiller.Mesh;
         }
 
         public static DMesh3 SmoothFill(DMesh3 mesh, EdgeLoop loop, double eLen)
@@ -43,14 +43,14 @@ namespace g3gh.Components.Process
             smoothFill.TargetEdgeLength = eLen;
 
             bool success = smoothFill.Apply();
-            return new DMesh3(smoothFill.Mesh);
+            return smoothFill.Mesh;
         }
 
         public static DMesh3 MinimalFill(DMesh3 mesh, EdgeLoop loop, double eLen)
         {
             gs.MinimalHoleFill minimalHoleFill = new gs.MinimalHoleFill(mesh, loop);
             minimalHoleFill.Apply();
-            return new DMesh3(minimalHoleFill.Mesh);
+            return minimalHoleFill.Mesh;
 
         }
     }
