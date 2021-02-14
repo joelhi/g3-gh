@@ -51,15 +51,18 @@ namespace g3gh.Components.Evaluate
             foreach (var ind in mesh.VertexIndices())
             {
                 vertices.Add(mesh.GetVertex(ind).ToRhinoPt());
-                var tri = mesh.GetTriangle(ind);
-                faces.Add(new MeshFace(tri.a, tri.b, tri.c));
                 var col = mesh.GetVertexColor(ind);
                 cols.Add(Color.FromArgb((int)(col.x * 255), (int)(col.y * 255), (int)(col.z * 255)));
             }
+            foreach (var ind in mesh.TriangleIndices())
+            {
+                var tri = mesh.GetTriangle(ind);
+                faces.Add(new MeshFace(tri.a, tri.b, tri.c));
+            }
 
-            DA.SetData(0, vertices);
-            DA.SetData(1, faces);
-            DA.SetData(2, cols);
+            DA.SetDataList(0, vertices);
+            DA.SetDataList(1, faces);
+            DA.SetDataList(2, cols);
         }
 
         public override GH_Exposure Exposure
