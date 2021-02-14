@@ -2,7 +2,7 @@
 
 {
 
-![](https://github.com/joelhi/g3-gh/blob/main/src/media/example_mesh.png)
+![](https://github.com/joelhi/g3-gh/blob/main/src/media/test.png)
 
 }
 
