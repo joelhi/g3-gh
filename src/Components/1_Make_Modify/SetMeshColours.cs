@@ -64,6 +64,7 @@ namespace g3gh.Components.MakeModify
 
             DMesh3 msh = new DMesh3(goo.Value);
 
+            msh.EnableVertexColors(new g3.Vector3f(0.5, 0.5, 0.5));
             if (cols.Count == msh.VertexCount)
             {
                 for (int i = 0; i < cols.Count; i++)

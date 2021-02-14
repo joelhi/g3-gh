@@ -84,13 +84,13 @@ namespace g3gh.Components.Volumetric
 
             g3.MarchingCubes c = new g3.MarchingCubes();
             c.Implicit = lattice_clipped;
-            c.RootMode = g3.MarchingCubes.RootfindingModes.LerpSteps;      // cube-edge convergence method
-            c.RootModeSteps = 5;                                        // number of iterations
+            c.RootMode = g3.MarchingCubes.RootfindingModes.LerpSteps;     
+            c.RootModeSteps = 5;                                       
             c.Bounds = lattice_clipped.Bounds();
             c.CubeSize = c.Bounds.MaxDim / mesh_resolution;
-            c.Bounds.Expand(3 * c.CubeSize);                            // leave a buffer of cells
+            c.Bounds.Expand(3 * c.CubeSize);                           
             c.Generate();
-            MeshNormals.QuickCompute(c.Mesh);                           // generate normals
+            MeshNormals.QuickCompute(c.Mesh);                          
 
 
             DA.SetData(0, c.Mesh);

@@ -11,6 +11,7 @@ using g3;
 
 using g3gh.Core.Goos;
 using g3gh.Components.Params;
+using System.Drawing;
 
 namespace g3gh.Components.Evaluate
 {
@@ -33,7 +34,7 @@ namespace g3gh.Components.Evaluate
         {
             pManager.AddPointParameter("Vertices", "v", "Vertices of the mesh",GH_ParamAccess.list);
             pManager.AddMeshFaceParameter("Faces", "f", "Faces of the mesh", GH_ParamAccess.list);
-            pManager.AddColourParameter("Colours", "col", "Vertiex Colours of the mesh", GH_ParamAccess.item);
+            pManager.AddColourParameter("Colours", "col", "Vertiex Colours of the mesh", GH_ParamAccess.list);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -43,6 +44,21 @@ namespace g3gh.Components.Evaluate
 
             DMesh3 mesh = new DMesh3(goo.Value);
 
+            List<Point3d> vertices = new List<Point3d>();
+            List<MeshFace> faces = new List<MeshFace>();
+            List<Color> cols = new List<Color>();
+
+            foreach (var ind in mesh.VertexIndices())
+            {
+                vertices.Add(mesh.GetVertex(ind).ToRhinoPt());
+                var tri = mesh.GetTriangle(ind);
+                faces.Add(new MeshFace(tri.a, tri.b, tri.c));
+                var col = mesh.GetVertexColor(ind);
+                cols.Add(Color.FromArgb((int)(col.x * 255), (int)(col.y * 255), (int)(col.z * 255)));
+            }
+            DA.SetData(0, vertices);
+            DA.SetData(1, faces);
+            DA.SetData(2, cols);
 
         }
 
