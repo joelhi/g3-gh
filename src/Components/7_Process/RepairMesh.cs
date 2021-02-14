@@ -43,6 +43,12 @@ namespace g3gh.Components.Process
             DMesh3 mesh = new DMesh3(goo.Value);
 
 
+            gs.MeshAutoRepair repair = new gs.MeshAutoRepair(mesh);
+            repair.Apply();
+
+
+            DA.SetData(0, repair.Mesh);
+
         }
 
         public override GH_Exposure Exposure

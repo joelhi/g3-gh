@@ -107,6 +107,16 @@ namespace g3gh.Core
             return new Rhino.Geometry.Point3d(vec3d.x, vec3d.y, vec3d.z);
         }
 
+        public static Rhino.Geometry.Vector3d ToRhinoVec(this Vector3d vec3d)
+        {
+            return new Rhino.Geometry.Vector3d(vec3d.x, vec3d.y, vec3d.z);
+        }
+
+        public static Rhino.Geometry.Vector3d ToRhinoVec(this Vector3f vec3f)
+        {
+            return new Rhino.Geometry.Vector3d(vec3f.x, vec3f.y, vec3f.z);
+        }
+
         public static Vector3i ToVec3i(this Rhino.Geometry.MeshFace rhMeshFace)
         {
             if (rhMeshFace.IsTriangle)

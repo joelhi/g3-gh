@@ -61,6 +61,7 @@ namespace g3gh.Components.MarchingCubes
         {
             if (sender is ToolStripMenuItem item && item.Tag is "RootMode")
                 modes = (g3.MarchingCubes.RootfindingModes)Enum.Parse(typeof(g3.MarchingCubes.RootfindingModes), item.Text, true);
+            this.ExpireSolution(true);
         }
 
         private void contextMenuStrip_Closing(object sender, EventArgs e)

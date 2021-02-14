@@ -32,12 +32,26 @@ namespace g3gh.Components.Evaluate
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddPointParameter("Face Centroids", "pt", "Centroid of mesh faces", GH_ParamAccess.list);
+            
             pManager.AddVectorParameter("Face Normals", "vec", "Normal vector of mesh faces", GH_ParamAccess.list);
+            //pManager.AddPointParameter("Face Centroids", "pt", "Centroid of mesh faces", GH_ParamAccess.list);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            DMesh3_goo goo = null;
+            DA.GetData(0, ref goo);
+
+            DMesh3 mesh = new DMesh3(goo.Value);
+
+            List<Rhino.Geometry.Vector3d> vecs = new List<Rhino.Geometry.Vector3d>();
+
+            foreach (var ind in mesh.TriangleIndices())
+            {
+                vecs.Add(mesh.GetTriNormal(ind).ToRhinoVec());
+            }
+
+            DA.SetDataList(0, vecs);
         }
 
         public override GH_Exposure Exposure

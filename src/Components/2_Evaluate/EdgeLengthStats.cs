@@ -34,11 +34,20 @@ namespace g3gh.Components.Evaluate
         {
             pManager.AddNumberParameter("Max Edge Length", "max", "Maximum length of an edge", GH_ParamAccess.list);
             pManager.AddNumberParameter("Min Edge Length", "min", "Minimum length of an edge", GH_ParamAccess.list);
-            pManager.AddNumberParameter("Average Edge Length", "avrg", "Average length of all edges", GH_ParamAccess.list);
+            pManager.AddNumberParameter("Average Edge Length", "avg", "Average length of all edges", GH_ParamAccess.list);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            DMesh3_goo goo = null;
+            DA.GetData(0, ref goo);
+
+            DMesh3 mesh = new DMesh3(goo.Value);
+            MeshQueries.EdgeLengthStats(mesh, out double min, out double max, out double avg);
+
+            DA.SetData(0, max);
+            DA.SetData(1, min);
+            DA.SetData(2, avg);
         }
 
         public override GH_Exposure Exposure

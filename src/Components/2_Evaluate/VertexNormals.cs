@@ -36,6 +36,19 @@ namespace g3gh.Components.Evaluate
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            DMesh3_goo goo = null;
+            DA.GetData(0, ref goo);
+
+            DMesh3 mesh = new DMesh3(goo.Value);
+
+            List<Rhino.Geometry.Vector3d> vecs = new List<Rhino.Geometry.Vector3d>();
+
+            foreach (var ind in mesh.VertexIndices())
+            {
+                vecs.Add(mesh.GetVertexNormal(ind).ToRhinoVec());
+            }
+
+            DA.SetDataList(0, vecs);
         }
 
         public override GH_Exposure Exposure

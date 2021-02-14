@@ -56,10 +56,10 @@ namespace g3gh.Components.Evaluate
                 var col = mesh.GetVertexColor(ind);
                 cols.Add(Color.FromArgb((int)(col.x * 255), (int)(col.y * 255), (int)(col.z * 255)));
             }
+
             DA.SetData(0, vertices);
             DA.SetData(1, faces);
             DA.SetData(2, cols);
-
         }
 
         public override GH_Exposure Exposure
