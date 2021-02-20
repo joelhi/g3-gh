@@ -52,6 +52,16 @@
     <None Remove="Resources\g3_gh_icons-33 copy.png" />
     <None Remove="Resources\g3_gh_icons-32 copy.png" />
     <None Remove="Resources\g3_gh_icons-06 copy.png" />
+    <None Remove="Resources\g3_gh_icons-35 copy.png" />
+    <None Remove="Resources\g3_gh_icons-10 copy.png" />
+    <None Remove="Resources\g3_gh_icons-20 copy.png" />
+    <None Remove="Resources\g3_gh_icons-03 copy.png" />
+    <None Remove="Resources\g3_gh_icons-37 copy.png" />
+    <None Remove="Resources\g3_gh_icons-36 copy.png" />
+    <None Remove="Resources\g3_gh_icons-04 copy.png" />
+    <None Remove="Resources\g3_gh_icons-05 copy.png" />
+    <None Remove="Resources\g3_gh_icons-30 copy.png" />
+    <None Remove="Resources\g3_gh_icons-19 copy.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resource1.Designer.cs">

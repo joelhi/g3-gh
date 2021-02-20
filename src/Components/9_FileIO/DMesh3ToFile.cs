@@ -45,7 +45,8 @@ namespace g3gh.Components.FileIO
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to write as a file", GH_ParamAccess.item);
-            pManager.AddTextParameter("File Path", "path", "File path without extension.", GH_ParamAccess.item);
+            pManager.AddTextParameter("Folder Path", "path", "Path to folder where file should be saved.", GH_ParamAccess.item);
+            pManager.AddTextParameter("File Name", "name", "File name without extension", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -55,19 +56,21 @@ namespace g3gh.Components.FileIO
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            this.Message = type.ToString();
+            this.Message = "." + type.ToString();
 
             DMesh3_goo goo = null;
             string path = "";
+            string file = "";
 
             DA.GetData(0, ref goo);
             DA.GetData(1, ref path);
+            DA.GetData(2, ref file);
             DMesh3 mesh = new DMesh3(goo.Value);
 
 
-            IOWriteResult result = StandardMeshWriter.WriteFile(path + "." + type.ToString(), new List<WriteMesh>() { new WriteMesh(mesh) }, WriteOptions.Defaults);
+            IOWriteResult result = StandardMeshWriter.WriteFile(Path.Combine(path, file) + "." + type.ToString(), new List<WriteMesh>() { new WriteMesh(mesh) }, WriteOptions.Defaults);
            
-            DA.SetData(0, path + "." + type.ToString());
+            DA.SetData(0, Path.Combine(path,file) + "." + type.ToString());
         }
 
 

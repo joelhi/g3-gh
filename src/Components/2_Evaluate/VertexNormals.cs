@@ -44,7 +44,10 @@ namespace g3gh.Components.Evaluate
             List<Rhino.Geometry.Vector3d> vecs = new List<Rhino.Geometry.Vector3d>();
 
             if (!mesh.HasVertexNormals)
-                MeshNormals.QuickCompute(mesh);
+            {
+                var normals = new MeshNormals(mesh);
+                normals.Compute();
+            }
 
             foreach (var ind in mesh.VertexIndices())
             {

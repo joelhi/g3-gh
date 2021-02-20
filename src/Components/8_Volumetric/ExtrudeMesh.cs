@@ -26,6 +26,7 @@ namespace g3gh.Components.Volumetric
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to extude", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Distance", "d", "Distance to extrude", GH_ParamAccess.item, 1);
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -35,7 +36,23 @@ namespace g3gh.Components.Volumetric
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            DMesh3_goo goo = null;
+            double dist = 1;
 
+            DA.GetData(0, ref goo);
+            DA.GetData(1, ref dist);
+
+            DMesh3 mesh = new DMesh3(goo.Value);
+
+            MeshExtrudeMesh extruder = new MeshExtrudeMesh(mesh);
+            extruder.ExtrudedPositionF = (pos, normal, idx) => {return pos + normal.Multiply(dist);};
+
+            if (dist < 0)
+                extruder.IsPositiveOffset = false;
+
+            extruder.Extrude();
+
+            DA.SetData(0, extruder.Mesh);
         }
 
         protected override System.Drawing.Bitmap Icon

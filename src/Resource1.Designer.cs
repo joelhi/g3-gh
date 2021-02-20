@@ -320,6 +320,13 @@ namespace g3gh {
             }
         }
         
+        internal static System.Drawing.Bitmap g3_gh_icons_40_copy {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_40_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap g3_gh_icons_41_copy {
             get {
                 object obj = ResourceManager.GetObject("g3_gh_icons_41_copy", resourceCulture);
