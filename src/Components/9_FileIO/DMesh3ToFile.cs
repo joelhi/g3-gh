@@ -37,7 +37,7 @@ namespace g3gh.Components.FileIO
 
         private void Menu_PanelTypeChanged(object sender, EventArgs e)
         {
-            if (sender is ToolStripMenuItem item && item.Tag is "RootMode")
+            if (sender is ToolStripMenuItem item && item.Tag is "FileMode")
                 type = (FileType)Enum.Parse(typeof(FileType), item.Text, true);
             this.ExpireSolution(true);
         }
@@ -64,32 +64,9 @@ namespace g3gh.Components.FileIO
             DA.GetData(1, ref path);
             DMesh3 mesh = new DMesh3(goo.Value);
 
-            List<g3.WriteMesh> writeMesh = new List<WriteMesh>();
-            writeMesh.Add(new WriteMesh(mesh));
 
-
-            Stream str = new FileStream(path + "." + type.ToString(), FileMode.CreateNew);
-            BinaryWriter wrtr = new BinaryWriter(str);
-
-            switch (type)
-            {
-                case FileType.obj:
-                    OBJWriter oBJWriter = new OBJWriter();
-                    var stream = oBJWriter.OpenStreamF(path + "." + type.ToString());
-                    oBJWriter.Write(new BinaryWriter(stream), writeMesh, new WriteOptions());
-                    break;
-                case FileType.stl:
-                    STLWriter stl = new STLWriter();
-                    stl.Write(wrtr, writeMesh, new WriteOptions());
-                    break;
-                case FileType.off:
-                    OFFWriter oFF = new OFFWriter();
-                    oFF.Write(wrtr, writeMesh, new WriteOptions());
-                    break;
-                default:
-                    break;
-            }
-
+            IOWriteResult result = StandardMeshWriter.WriteFile(path + "." + type.ToString(), new List<WriteMesh>() { new WriteMesh(mesh) }, WriteOptions.Defaults);
+           
             DA.SetData(0, path + "." + type.ToString());
         }
 

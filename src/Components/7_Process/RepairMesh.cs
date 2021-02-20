@@ -45,7 +45,7 @@ namespace g3gh.Components.Process
 
             gs.MeshAutoRepair repair = new gs.MeshAutoRepair(mesh);
             repair.Apply();
-
+            
 
             DA.SetData(0, repair.Mesh);
 

@@ -12,16 +12,66 @@ using g3;
 
 using g3gh.Core.Goos;
 using g3gh.Components.Params;
+using System.Windows.Forms;
 
 namespace g3gh.Components.Process
 {
     public class CleanMesh : GH_Component
     {
+        public bool RemoveDupTris = true;
+        public bool RemoveOcclTris = true;
+        public bool RemoveFinTris = true;
+
+        public bool RemoveUnusedVerts = true;
+        
+
         public CleanMesh()
           : base("Clean Mesh", "cleanMsh",
-              "Clean a DMesh3, ridding it of unused vertices and faces etc.",
+              "Clean a DMesh3, ridding it of unused vertices and faces etc. Right click for clean settings.",
               g3ghUtil.pluginName, "7_Process")
         {
+        }
+
+        protected override void AppendAdditionalComponentMenuItems(ToolStripDropDown menu)
+        {
+            Menu_AppendItem(menu, "Remove Duplicate Triangles",Menu_PanelTypeChanged,true,RemoveDupTris).Tag = "DupTris";
+            Menu_AppendItem(menu, "Remove Occluded Triangles", Menu_PanelTypeChanged, true, RemoveOcclTris).Tag = "OccTris";
+            Menu_AppendItem(menu, "Remove Fin Triangles", Menu_PanelTypeChanged, true, RemoveFinTris).Tag = "FinTris";
+
+            Menu_AppendSeparator(menu);
+
+            Menu_AppendItem(menu, "Remove Unused Vertices", Menu_PanelTypeChanged, true, RemoveUnusedVerts).Tag = "UnusedVert";
+        }
+
+        private void Menu_PanelTypeChanged(object sender, EventArgs e)
+        {
+            var item = sender as ToolStripMenuItem;
+
+            if (item is null)
+                return;
+
+            if (item.Text == "Remove Duplicate Triangles")
+            {
+                RemoveDupTris = !RemoveDupTris;
+                item.Checked = !item.Checked;
+            }
+            else if (item.Text is "Remove Occluded Triangles")
+            {
+                RemoveOcclTris = !RemoveOcclTris;
+                item.Checked = !item.Checked;
+            }
+            else if (item.Text is "Remove Fin Triangles")
+            {
+                RemoveFinTris = !RemoveFinTris;
+                item.Checked = !item.Checked;
+            }
+            else if (item.Text is "Remove Unused Vertices")
+            {
+                RemoveUnusedVerts = !RemoveUnusedVerts;
+                item.Checked = !item.Checked;
+            }
+
+            this.ExpireSolution(true);
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
@@ -42,21 +92,25 @@ namespace g3gh.Components.Process
 
             DMesh3 mesh = new DMesh3(goo.Value);
 
-            gs.RemoveDuplicateTriangles removeDuplicate = new gs.RemoveDuplicateTriangles(mesh);
+            if (RemoveDupTris)
+            {
+                gs.RemoveDuplicateTriangles removeDuplicate = new gs.RemoveDuplicateTriangles(mesh);
+                removeDuplicate.Apply();
+                mesh = removeDuplicate.Mesh;
+            }
 
-            removeDuplicate.Apply();
+            if (RemoveOcclTris)
+            {
+                gs.RemoveOccludedTriangles removeOccluded = new gs.RemoveOccludedTriangles(mesh);
+                removeOccluded.Apply();
+                mesh = removeOccluded.Mesh;
+            }
+            
+            if(RemoveUnusedVerts)
+                MeshEditor.RemoveUnusedVertices(mesh);
 
-            mesh = removeDuplicate.Mesh;
-
-
-            gs.RemoveOccludedTriangles removeOccluded = new gs.RemoveOccludedTriangles(mesh);
-            removeOccluded.Apply();
-
-            mesh = removeOccluded.Mesh;
-
-            MeshEditor.RemoveUnusedVertices(mesh);
-
-            MeshEditor.RemoveFinTriangles(mesh);
+            if(RemoveFinTris)
+                MeshEditor.RemoveFinTriangles(mesh);
 
             DA.SetData(0, mesh);
         }
