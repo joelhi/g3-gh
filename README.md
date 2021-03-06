@@ -46,6 +46,8 @@ Planar, Minimal and Smooth hole filler implemented in components, either as iter
 
 ## Details.
 
+### Objects
+
 Three core objects are implemented as goos with custom previews in the gh viewport.
 
 **DMesh3**
@@ -56,7 +58,7 @@ Dynamic indexed mesh, main object used by the
 
 **EdgeLoop**
 
-## Use
+### Use
 
 **Convert from and to Rhino Meshes**
 
