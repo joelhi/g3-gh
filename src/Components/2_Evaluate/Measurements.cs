@@ -37,6 +37,17 @@ namespace g3gh.Components.Evaluate
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            DMesh3_goo goo = null;
+
+            DA.GetData(0, ref goo);
+
+            DMesh3 msh = new DMesh3(goo.Value);
+
+            var volArea = MeshMeasurements.VolumeArea(msh, msh.TriangleIndices(), msh.GetVertex);
+
+            DA.SetData(0, volArea[1]);
+            DA.SetData(1, volArea[0]);
+
         }
 
         public override GH_Exposure Exposure

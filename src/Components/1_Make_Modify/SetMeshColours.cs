@@ -17,13 +17,7 @@ namespace g3gh.Components.MakeModify
 {
     public class SetMeshColours : GH_Component
     {
-        /// <summary>
-        /// Each implementation of GH_Component must provide a public 
-        /// constructor without any arguments.
-        /// Category represents the Tab in which the component will appear, 
-        /// Subcategory the panel. If you use non-existing tab or panel names, 
-        /// new tabs/panels will automatically be created.
-        /// </summary>
+
         public SetMeshColours()
           : base("Set Mesh Vertex Colours", "setCols",
             "Set the vertex colours of a mesh.",
@@ -31,28 +25,17 @@ namespace g3gh.Components.MakeModify
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to assign vertex colours to", GH_ParamAccess.item);
             pManager.AddColourParameter("Colours", "cols", "List of vertex colours for mesh", GH_ParamAccess.list);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh with vertex colours", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object can be used to retrieve data from input parameters and 
-        /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
 
@@ -65,16 +48,21 @@ namespace g3gh.Components.MakeModify
             DMesh3 msh = new DMesh3(goo.Value);
 
             msh.EnableVertexColors(new g3.Vector3f(0.5, 0.5, 0.5));
+
+            var indices = msh.VertexIndices();
+
             if (cols.Count == msh.VertexCount)
             {
-                for (int i = 0; i < cols.Count; i++)
+                int counter = 0;
+                foreach (int i in indices)
                 {
-                    msh.SetVertexColor(i, new g3.Vector3f((float)cols[i].R / 255, (float)cols[i].G / 255, (float)cols[i].B / 255));
+                    msh.SetVertexColor(i, new g3.Vector3f((float)cols[counter].R / 255, (float)cols[counter].G / 255, (float)cols[counter].B / 255));
+                    counter++;
                 }
             }
             else if (cols.Count == 1)
             {
-                for (int i = 0; i < cols.Count; i++)
+                foreach (int i in indices)
                 {
                     msh.SetVertexColor(i, new g3.Vector3f((float)cols[0].R / 255, (float)cols[0].G / 255, (float)cols[0].B / 255));
                 }
