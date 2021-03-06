@@ -1,4 +1,4 @@
-![](https://github.com/joelhi/g3-gh/blob/main/src/media/mesh2.png)
+![](https://github.com/joelhi/g3-gh/blob/main/src/media/meshh.png)
 
 # g3-gh
 
@@ -12,7 +12,7 @@ I found the tools in that library quite useful so, to kill some time during a gl
 
 Build the project and as with most other gh plugins, just copy the g3gh.gha assembly and the geometry3sharp.dll to the grasshopper libraries folder.
 
-Or go to the releases tab and download the built project. 
+Or go to the [releases](https://github.com/joelhi/g3-gh/releases) tab and download the built project. 
 
 Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have used it on Window as well and everything seemed fine.
 
@@ -39,6 +39,8 @@ Both AutoRepair and some general mesh clean up utilities.
 Planar, Minimal and Smooth hole filler implemented in components, either as iterative filler which fills holes until the mesh is closed, or by specifying
 
 **File Utility**
+
+File utilites to read and write common mesh geometry files .obj .stl and .off.
 
 ## Details.
 
