@@ -10,9 +10,9 @@ I found the tools in that library quite useful so, to kill some time during a gl
 
 Build the project and as with most other gh plugins, just copy the g3gh.gha assembly and the geometry3sharp.dll to the grasshopper libraries folder.
 
-Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have used it on Window as well and everything seemed fine.
-
 Or go to the releases tab and download the built project. 
+
+Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have used it on Window as well and everything seemed fine.
 
 ## Current Functionality
 
@@ -46,11 +46,15 @@ Three core objects are implemented as goos with custom previews in the gh viewpo
 
 **DMesh3**
 
-Dynamic indexed mesh, main object used by the 
+Dynamic indexed mesh, main object used by the geometry3sharp library.
 
 **Grid3f**
 
+3-dimensional grid of points with scalar float values. Used for the marching cubes algorithm.
+
 **EdgeLoop**
+
+The edge loop describes an edge loop in a mesh. Used in this context mainly in combination with the hole fill methods.
 
 ### Use
 
