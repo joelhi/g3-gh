@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using g3gh.Core.Goos;
 
 using System.IO;
+using GH_IO.Serialization;
 
 namespace g3gh.Components.FileIO
 {
@@ -73,6 +74,19 @@ namespace g3gh.Components.FileIO
             DA.SetData(0, Path.Combine(path,file) + "." + type.ToString());
         }
 
+        public override bool Write(GH_IWriter writer)
+        {
+            writer.SetInt32("Type", (int)type);
+
+            return true;
+        }
+
+        public override bool Read(GH_IReader reader)
+        {
+            this.type = (FileType)reader.GetInt32("Type");
+
+            return true;
+        }
 
         protected override System.Drawing.Bitmap Icon
         {

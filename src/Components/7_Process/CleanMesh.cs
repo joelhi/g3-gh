@@ -13,6 +13,7 @@ using g3;
 using g3gh.Core.Goos;
 using g3gh.Components.Params;
 using System.Windows.Forms;
+using GH_IO.Serialization;
 
 namespace g3gh.Components.Process
 {
@@ -128,6 +129,26 @@ namespace g3gh.Components.Process
                 //return Resources.IconForThisComponent;
                 return Resource1.g3_gh_icons_29_copy;
             }
+        }
+
+        public override bool Write(GH_IWriter writer)
+        {
+            writer.SetBoolean("Dup", RemoveDupTris);
+            writer.SetBoolean("Fin", RemoveFinTris);
+            writer.SetBoolean("Occ", RemoveOcclTris);
+            writer.SetBoolean("Un", RemoveUnusedVerts);
+
+            return true;
+        }
+
+        public override bool Read(GH_IReader reader)
+        {
+            this.RemoveDupTris = reader.GetBoolean("Dup");
+            this.RemoveFinTris = reader.GetBoolean("Fin");
+            this.RemoveOcclTris = reader.GetBoolean("Occ");
+            this.RemoveUnusedVerts = reader.GetBoolean("Un");
+
+            return true;
         }
 
         public override Guid ComponentGuid

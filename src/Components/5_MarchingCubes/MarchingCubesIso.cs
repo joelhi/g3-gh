@@ -12,6 +12,7 @@ using g3gh.Components.Params;
 
 using g3;
 using Grasshopper.GUI;
+using GH_IO.Serialization;
 
 namespace g3gh.Components.MarchingCubes
 {
@@ -110,9 +111,25 @@ namespace g3gh.Components.MarchingCubes
             bool isValid = outputMesh.CheckValidity();
 
             if(!isValid)
-                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Mesh seems to have been corrupted during reduction. Please check...");
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Mesh seems to be corrupted. Please check...");
 
             DA.SetData(0,outputMesh);
+        }
+
+        public override bool Write(GH_IWriter writer)
+        {
+            writer.SetInt32("Modes", (int)modes);
+            writer.SetInt32("steps", this.steps);
+
+            return true;
+        }
+
+        public override bool Read(GH_IReader reader)
+        {
+            this.modes = (g3.MarchingCubes.RootfindingModes)reader.GetInt32("Modes");
+            this.steps = reader.GetInt32("steps");
+
+            return true;
         }
 
         public override GH_Exposure Exposure

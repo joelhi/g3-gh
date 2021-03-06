@@ -12,6 +12,7 @@ using g3gh.Components.Params;
 
 
 using g3;
+using System.Threading.Tasks;
 
 namespace g3gh.Components.MarchingCubes
 {
@@ -49,21 +50,21 @@ namespace g3gh.Components.MarchingCubes
             var pts = grid.ToRhinoPts();
             int numCurves = crvs.Count;
 
-            for (int i = 0; i < pts.Length; i++)
-            {
-                var pt = pts[i];
-                double[] distances = new double[numCurves];
-                for (int j = 0; j < crvs.Count; j++)
-                {
-                    double param = 0;
-                    var crv = crvs[j];
-                    bool res = crv.ClosestPoint(pt, out param);
+            Parallel.For(0, pts.Length, i =>
+             {
+                 var pt = pts[i];
+                 double[] distances = new double[numCurves];
+                 for (int j = 0; j < crvs.Count; j++)
+                 {
+                     double param = 0;
+                     var crv = crvs[j];
+                     bool res = crv.ClosestPoint(pt, out param);
 
-                    double tempDouble = crv.PointAt(param).DistanceTo(pt);
-                    distances[j] = tempDouble;
-                }
-                grid.Grid.Buffer[i] = (float)distances.Min();
-            }
+                     double tempDouble = crv.PointAt(param).DistanceTo(pt);
+                     distances[j] = tempDouble;
+                 }
+                 grid.Grid.Buffer[i] = (float)distances.Min();
+             });
 
             DA.SetData(0, grid);
         }

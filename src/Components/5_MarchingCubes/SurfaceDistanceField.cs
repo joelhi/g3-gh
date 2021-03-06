@@ -11,18 +11,13 @@ using g3gh.Core.Goos;
 using g3gh.Components.Params;
 
 using g3;
+using System.Threading.Tasks;
 
 namespace g3gh.Components._MarchingCubes
 {
     public class SurfaceDistanceField : GH_Component
     {
-        /// <summary>
-        /// Each implementation of GH_Component must provide a public 
-        /// constructor without any arguments.
-        /// Category represents the Tab in which the component will appear, 
-        /// Subcategory the panel. If you use non-existing tab or panel names, 
-        /// new tabs/panels will automatically be created.
-        /// </summary>
+
         public SurfaceDistanceField()
           : base("Surface Distance Field", "ptDist",
               "Assign a value to each point of a grid based on their shortest distance to a surface in a set.",
@@ -30,28 +25,17 @@ namespace g3gh.Components._MarchingCubes
         {
         }
 
-        /// <summary>
-        /// Registers all the input parameters for this component.
-        /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddParameter(new Grid3f_Param(), "Grid", "g3f", "Target grid for values.", GH_ParamAccess.item);
             pManager.AddSurfaceParameter("Surfaces", "srfs", "Surfaces to compute values for", GH_ParamAccess.list);
         }
 
-        /// <summary>
-        /// Registers all the output parameters for this component.
-        /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddParameter(new Grid3f_Param(), "Grid", "g3f", "Resulting grid with values assigned.", GH_ParamAccess.item);
         }
 
-        /// <summary>
-        /// This is the method that actually does the work.
-        /// </summary>
-        /// <param name="DA">The DA object can be used to retrieve data from input parameters and 
-        /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             Grid3f_goo goo = null;
@@ -65,22 +49,22 @@ namespace g3gh.Components._MarchingCubes
             var pts = grid.ToRhinoPts();
             int numCurves = srfs.Count;
 
-            for (int i = 0; i < pts.Length; i++)
-            {
-                var pt = pts[i];
-                double[] distances = new double[numCurves];
-                for (int j = 0; j < srfs.Count; j++)
-                {
-                    double u = 0;
-                    double v = 0;
-                    var srf = srfs[j];
-                    bool res = srf.ClosestPoint(pt, out u, out v);
+            Parallel.For(0, pts.Length, i =>
+             {
+                 var pt = pts[i];
+                 double[] distances = new double[numCurves];
+                 for (int j = 0; j < srfs.Count; j++)
+                 {
+                     double u = 0;
+                     double v = 0;
+                     var srf = srfs[j];
+                     bool res = srf.ClosestPoint(pt, out u, out v);
 
-                    double tempDouble = srf.PointAt(u,v).DistanceTo(pt);
-                    distances[j] = tempDouble;
-                }
-                grid.Grid.Buffer[i] = (float)distances.Min();
-            }
+                     double tempDouble = srf.PointAt(u, v).DistanceTo(pt);
+                     distances[j] = tempDouble;
+                 }
+                 grid.Grid.Buffer[i] = (float)distances.Min();
+             });
 
             DA.SetData(0, grid);
         }

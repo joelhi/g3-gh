@@ -12,6 +12,7 @@ using g3gh.Core;
 using g3gh.Core.Goos;
 using g3gh.Components.Params;
 using System.Windows.Forms;
+using GH_IO.Serialization;
 
 namespace g3gh.Components.Process
 {
@@ -111,6 +112,20 @@ namespace g3gh.Components.Process
             this.Message += "\n" + iter.ToString() + " holes filled.";
 
             DA.SetData(0, outMesh);
+        }
+
+        public override bool Write(GH_IWriter writer)
+        {
+            writer.SetInt32("Type", (int)Type);
+
+            return true;
+        }
+
+        public override bool Read(GH_IReader reader)
+        {
+            this.Type = (HoleFillerType)reader.GetInt32("Type");
+
+            return true;
         }
 
         public override GH_Exposure Exposure{ get { return GH_Exposure.secondary; } }
