@@ -24,18 +24,39 @@ Or go to the releases tab and download the built project.
 
 **Remeshing**
 
+Currently includes a iterative remesher as internal and external iterations. Also includes a mesh smoother (Laplacian) and mesh face count reducer.
 
 **Marching Cubes**
 
-**Voxelization / Lattices etc.**
+
+
+**Voxelization / Lattices**
+
+Functionality for both the Voxeilzation and Inner Lattice examples implemented as components.
 
 **Mesh Repair** 
 
+Both AutoRepair and some general mesh clean up utilities.
+
 **Hole filler**
+
+Planar, Minimal and Smooth hole filler implemented in components, either as iterative filler which fills holes until the mesh is closed, or by specifying
 
 **File Utility**
 
-## How to use it.
+## Details.
+
+Three core objects are implemented as goos with custom previews in the gh viewport.
+
+**DMesh3**
+
+Dynamic indexed mesh, main object used by the 
+
+**Grid3f**
+
+**EdgeLoop**
+
+## Use
 
 **Convert from and to Rhino Meshes**
 
