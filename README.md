@@ -1,4 +1,4 @@
-![](https://github.com/joelhi/g3-gh/blob/main/src/media/meshh.png)
+![](https://github.com/joelhi/g3-gh/blob/main/src/media/mesh.png)
 
 # g3-gh
 
