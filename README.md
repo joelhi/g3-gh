@@ -1,11 +1,5 @@
 # g3-gh
 
-{
-
-![](https://github.com/joelhi/g3-gh/blob/main/src/media/test.png)
-
-}
-
 This repository contains a set of components for the Grasshopper plugin for Rhino wrapping functionality from the [geometry3sharp](https://github.com/gradientspace/geometry3Sharp) library.
 
 ![](https://github.com/joelhi/g3-gh/blob/main/src/media/toolbar.png)
