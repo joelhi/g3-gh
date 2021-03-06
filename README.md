@@ -18,27 +18,26 @@ Build the project and as with most other gh plugins, just copy the g3gh.gha asse
 
 Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have used it on Window as well and everything seemed fine.
 
+Or go to the releases tab and download the built project. 
+
 ## Current Functionality
 
-### Remeshing
+**Remeshing**
 
-[Gifs from grasshopper rhino with some work being done?]
 
-Smoothing
+**Marching Cubes**
 
-Remeshing based on edge lengths.
+**Voxelization / Lattices etc.**
 
-### Marching Cubes
+**Mesh Repair** 
 
-### Voxelization / Lattices etc.
+**Hole filler**
 
-### Mesh Repair / Hole filler
-
-### File Utility
+**File Utility**
 
 ## How to use it.
 
-### Convert from - to Rhino Meshes.
+**Convert from and to Rhino Meshes**
 
 Autocast, just plug into DMesh3 param / GH_Mesh param.
 
