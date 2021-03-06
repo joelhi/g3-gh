@@ -42,7 +42,7 @@ Planar, Minimal and Smooth hole filler implemented in components, either as iter
 
 File utilites to read and write common mesh geometry files .obj .stl and .off.
 
-## Details.
+***
 
 ### Objects
 
@@ -59,6 +59,8 @@ Dynamic indexed mesh, main object used by the geometry3sharp library.
 **EdgeLoop**
 
 The edge loop describes an edge loop in a mesh. Used in this context mainly in combination with the hole fill methods.
+
+***
 
 ### Use
 
