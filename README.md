@@ -39,8 +39,8 @@ Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have
 
 **Intersections**
 
--Implicit boolean operations (difference, union, intersection)
--Mesh | plane cut
+- Implicit boolean operations (difference, union, intersection)
+- Mesh | plane cut
 
 **Mesh Repair** 
 
@@ -64,17 +64,11 @@ Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have
 
 Three core objects are implemented as goos with custom previews in the gh viewport.
 
-- **DMesh3**
+- **DMesh3:** *Dynamic indexed mesh, main object used by the geometry3sharp library.*
 
-Dynamic indexed mesh, main object used by the geometry3sharp library.
+- **Grid3f:** *3-dimensional grid of points with scalar float values. Used for the marching cubes algorithm.*
 
-- **Grid3f**
-
-3-dimensional grid of points with scalar float values. Used for the marching cubes algorithm.
-
-- **EdgeLoop**
-
-The edge loop describes an edge loop in a mesh. Used in this context mainly in combination with the hole fill methods.
+- **EdgeLoop:** *The edge loop describes an edge loop in a mesh. Used in this context mainly in combination with the hole fill methods.*
 
 ***
 
