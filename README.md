@@ -20,27 +20,43 @@ Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have
 
 **Remeshing**
 
-Currently includes a iterative remesher as internal and external iterations. Also includes a mesh smoother (Laplacian) and mesh face count reducer.
+- Iterative edge length remesher (with both internal and external iterations)
+- Mesh face reducer
+- Laplacian mesh smoother
 
 **Marching Cubes**
 
+- Point, curve and surface distance fields
+- Marching Cube iso surface
+- Mesh SDF
 
 
-**Voxelization / Lattices**
+**Volumetric Opreations**
 
-Functionality for both the Voxeilzation and Inner Lattice examples implemented as components.
+- Voxelization (from example)
+- Inner lattice structure (from example)
+- Mesh extrude
+
+**Intersections**
+
+-Implicit boolean operations (difference, union, intersection)
+-Mesh | plane cut
 
 **Mesh Repair** 
 
-Both AutoRepair and some general mesh clean up utilities.
+- AutoRepairG
+- General mesh clean up utilities.
 
 **Hole filler**
 
-Planar, Minimal and Smooth hole filler implemented in components, either as iterative filler which fills holes until the mesh is closed, or by specifying
+- Planar
+- Smooth
+- Minimal
 
 **File Utility**
 
-File utilites to read and write common mesh geometry files .obj .stl and .off.
+- Read from File (.obj / .off / .stl)
+- Write to File (.obj / .off / .stl)
 
 ***
 
@@ -48,15 +64,15 @@ File utilites to read and write common mesh geometry files .obj .stl and .off.
 
 Three core objects are implemented as goos with custom previews in the gh viewport.
 
-**DMesh3**
+- **DMesh3**
 
 Dynamic indexed mesh, main object used by the geometry3sharp library.
 
-**Grid3f**
+- **Grid3f**
 
 3-dimensional grid of points with scalar float values. Used for the marching cubes algorithm.
 
-**EdgeLoop**
+- **EdgeLoop**
 
 The edge loop describes an edge loop in a mesh. Used in this context mainly in combination with the hole fill methods.
 
