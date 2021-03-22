@@ -31,7 +31,7 @@ Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have
 - Mesh SDF
 
 
-**Volumetric Opreations**
+**Volumetric Operations**
 
 - Voxelization (from example)
 - Inner lattice structure (from example)
@@ -44,7 +44,7 @@ Should work for both Rhino on Mac and Windows. Mainly developed on mac, but have
 
 **Mesh Repair** 
 
-- AutoRepairG
+- AutoRepair
 - General mesh clean up utilities.
 
 **Hole filler**
