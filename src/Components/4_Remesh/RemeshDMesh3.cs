@@ -13,6 +13,8 @@ using g3gh.Core.Goos;
 using System.Threading;
 
 using g3;
+using System.Windows.Forms;
+using Grasshopper.GUI;
 
 namespace g3gh.Components.Remesh
 {
@@ -21,7 +23,7 @@ namespace g3gh.Components.Remesh
         Remesher r;
         DMesh3 dMsh_copy;
         int passes = 0;
-
+        int timeStep = 100;
         public RemeshDMesh3()
           : base("Remesh", "rMsh",
             "Remesh a DMesh3 object based on a target edge length",g3ghUtil.pluginName
@@ -44,6 +46,29 @@ namespace g3gh.Components.Remesh
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "New mesh", GH_ParamAccess.item);
+        }
+
+        protected override void AppendAdditionalComponentMenuItems(ToolStripDropDown menu)
+        {
+            base.AppendAdditionalComponentMenuItems(menu);
+
+            var timeStepItem = GH_DocumentObject.Menu_AppendTextItem(menu, timeStep.ToString(), null, timeStepUpdate, false);
+            timeStepItem.ToolTipText = "Time step for iterations";
+            timeStepItem.Tag = "timestep";
+        }
+
+        private void timeStepUpdate(GH_MenuTextBox sender, string newText)
+        {
+            try
+            {
+                timeStep = int.Parse(newText);
+            }
+            catch (Exception)
+            {
+                timeStep = 100;
+            }
+
+            this.ExpireSolution(true);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -80,7 +105,7 @@ namespace g3gh.Components.Remesh
                 passes = 0;
 
                 if (fixB)
-                    MeshConstraintUtil.PreserveBoundaryLoops(r);
+                    MeshConstraintUtil.FixAllBoundaryEdges(r);
 
                 if (projBack)
                 {
@@ -92,7 +117,7 @@ namespace g3gh.Components.Remesh
             {
                 r.BasicRemeshPass();
                 passes++;
-                this.ExpireSolution(true);
+                Update();
             }
 
             bool isValid = dMsh_copy.CheckValidity();
@@ -103,6 +128,17 @@ namespace g3gh.Components.Remesh
             this.Message = "Pass: " + passes.ToString();
 
             DA.SetData(0, dMsh_copy);
+        }
+
+        private void Update()
+        {
+            var doc = this.OnPingDocument();
+            doc.ScheduleSolution(timeStep, callback);
+        }
+
+        private void callback(GH_Document doc)
+        {
+            this.ExpireSolution(false);
         }
 
         public override GH_Exposure Exposure

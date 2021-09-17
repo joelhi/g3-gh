@@ -59,7 +59,7 @@ namespace g3gh.Components.Remesh
             r.SmoothSpeedT = 0.5;
 
             if (fixB)
-                MeshConstraintUtil.PreserveBoundaryLoops(r);
+                MeshConstraintUtil.FixAllBoundaryEdges(r);
 
             if(projBack)
                 r.SetProjectionTarget(MeshProjectionTarget.Auto(dMsh_goo.Value));
