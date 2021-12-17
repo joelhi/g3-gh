@@ -42,7 +42,7 @@ namespace g3gh.Components.Process
         {
             if (sender is ToolStripMenuItem item && item.Tag is "Filler")
                type = (HoleFillerType)Enum.Parse(typeof(HoleFillerType), item.Text);
-
+            this.ExpireSolution(true);
         }
 
         private void contextMenuStrip_Closing(object sender, EventArgs e)
@@ -116,7 +116,7 @@ namespace g3gh.Components.Process
 
         public override bool Write(GH_IWriter writer)
         {
-            writer.SetInt32("type", (int)type);
+            writer.SetInt32("Type", (int)type);
 
             return base.Write(writer);
         }

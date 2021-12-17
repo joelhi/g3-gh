@@ -43,7 +43,7 @@ namespace g3gh.Components.Process
         {
             if (sender is ToolStripMenuItem item && item.Tag is "Filler")
                 Type = (HoleFillerType)Enum.Parse(typeof(HoleFillerType),item.Text);
-
+            this.ExpireSolution(true);
         }
 
         
