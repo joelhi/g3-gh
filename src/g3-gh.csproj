@@ -7,6 +7,7 @@
     <Description>Description of gh_3sharp</Description>
     <Configurations>Release;Debug</Configurations>
     <RhinoMacLauncher>/Applications/Rhino 7.app</RhinoMacLauncher>
+    <StartupObject />
   </PropertyGroup>
   
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -17,6 +18,10 @@
         </Command>
       </CustomCommands>
     </CustomCommands>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Grasshopper" Version="6.16.19190.7001" IncludeAssets="compile;build" />
@@ -77,4 +82,7 @@
       <CustomToolNamespace>gh3sharp</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="Copy &quot;$(TargetPath)&quot; &quot;$(TargetDir)$(ProjectName).gha&quot;&#xD;&#xA;Erase &quot;$(TargetPath)&quot;" />
+  </Target>
 </Project>

@@ -105,14 +105,14 @@ namespace g3gh.Components.Process
         {
             writer.SetInt32("Type", (int)Type);
 
-            return true;
+            return base.Write(writer);
         }
 
         public override bool Read(GH_IReader reader)
         {
             this.Type = (HoleFillerType)reader.GetInt32("Type");
 
-            return true;
+            return base.Read(reader);
         }
 
         public override GH_Exposure Exposure

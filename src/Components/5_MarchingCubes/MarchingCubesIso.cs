@@ -121,7 +121,7 @@ namespace g3gh.Components.MarchingCubes
             writer.SetInt32("Modes", (int)modes);
             writer.SetInt32("steps", this.steps);
 
-            return true;
+            return base.Write(writer);
         }
 
         public override bool Read(GH_IReader reader)
@@ -129,7 +129,7 @@ namespace g3gh.Components.MarchingCubes
             this.modes = (g3.MarchingCubes.RootfindingModes)reader.GetInt32("Modes");
             this.steps = reader.GetInt32("steps");
 
-            return true;
+            return base.Read(reader);
         }
 
         public override GH_Exposure Exposure

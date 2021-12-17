@@ -21,7 +21,7 @@ namespace g3gh.Components.Process
     public class IterativeHoleFiller : GH_Component
     {
         
-        public HoleFillerType Type = HoleFillerType.Minimal;
+        private HoleFillerType type = HoleFillerType.Minimal;
 
         public IterativeHoleFiller()
           : base("Iterative Mesh Hole Fill", "iterHoleFill",
@@ -33,15 +33,15 @@ namespace g3gh.Components.Process
         protected override void AppendAdditionalComponentMenuItems(ToolStripDropDown menu)
         {
             foreach (var item in Enum.GetValues(typeof(HoleFillerType)))
-                Menu_AppendItem(menu, item.ToString(), Menu_PanelTypeChanged, true, item.ToString() == Type.ToString()).Tag = "Filler";
+                Menu_AppendItem(menu, item.ToString(), Menu_PanelTypeChanged, true, item.ToString() == type.ToString()).Tag = "Filler";
 
-            menu.Closed += contextMenuStrip_Closing;
+                menu.Closed += contextMenuStrip_Closing;
         }
 
         private void Menu_PanelTypeChanged(object sender, EventArgs e)
         {
             if (sender is ToolStripMenuItem item && item.Tag is "Filler")
-                Type = (HoleFillerType)Enum.Parse(typeof(HoleFillerType), item.Text);
+               type = (HoleFillerType)Enum.Parse(typeof(HoleFillerType), item.Text);
 
         }
 
@@ -63,7 +63,7 @@ namespace g3gh.Components.Process
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            this.Message = Type.ToString();
+            this.Message = type.ToString();
 
             DMesh3_goo goo = null;
             double eLen = 1;
@@ -80,11 +80,11 @@ namespace g3gh.Components.Process
             bool hasLoops = (lps.Count > 0);
             int iter = 0;
 
-            while(hasLoops)
+            while (hasLoops)
             {
                 EdgeLoop loop = lps[0];
 
-                switch (Type)
+                switch (type)
                 {
                     case HoleFillerType.Planar:
                         outMesh = HoleFillMethods.PlanarFill(outMesh, loop, eLen);
@@ -116,16 +116,28 @@ namespace g3gh.Components.Process
 
         public override bool Write(GH_IWriter writer)
         {
-            writer.SetInt32("Type", (int)Type);
+            writer.SetInt32("type", (int)type);
 
-            return true;
+            return base.Write(writer);
         }
 
         public override bool Read(GH_IReader reader)
         {
-            this.Type = (HoleFillerType)reader.GetInt32("Type");
 
-            return true;
+
+            int val = 1;
+            if (reader.TryGetInt32("Type", ref val))
+            {
+                type = (HoleFillerType)val;
+                return base.Read(reader);
+            }
+            else
+            {
+                type = HoleFillerType.Minimal;
+                return base.Read(reader);
+            }
+
+
         }
 
         public override GH_Exposure Exposure{ get { return GH_Exposure.secondary; } }

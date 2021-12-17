@@ -78,14 +78,14 @@ namespace g3gh.Components.FileIO
         {
             writer.SetInt32("Type", (int)type);
 
-            return true;
+            return base.Write(writer);
         }
 
         public override bool Read(GH_IReader reader)
         {
             this.type = (FileType)reader.GetInt32("Type");
 
-            return true;
+            return base.Read(reader);
         }
 
         protected override System.Drawing.Bitmap Icon

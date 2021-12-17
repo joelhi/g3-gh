@@ -1,0 +1,6 @@
+C:\Users\joel.hilmersson\Documents\Development\g3-gh\MyProject1\bin\MyProject1.dll
+C:\Users\joel.hilmersson\Documents\Development\g3-gh\MyProject1\bin\MyProject1.pdb
+C:\Users\joel.hilmersson\Documents\Development\g3-gh\MyProject1\obj\Debug\MyProject1.csproj.AssemblyReference.cache
+C:\Users\joel.hilmersson\Documents\Development\g3-gh\MyProject1\obj\Debug\MyProject1.csproj.CoreCompileInputs.cache
+C:\Users\joel.hilmersson\Documents\Development\g3-gh\MyProject1\obj\Debug\MyProject1.dll
+C:\Users\joel.hilmersson\Documents\Development\g3-gh\MyProject1\obj\Debug\MyProject1.pdb

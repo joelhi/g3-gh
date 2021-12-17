@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "g3-gh", "g3-gh.csproj", "{8960B712-B3C6-4F1F-A9DC-EB49A714AD39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "g3-gh", "g3-gh.csproj", "{8960B712-B3C6-4F1F-A9DC-EB49A714AD39}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7CB7FFE-9482-40C2-A056-966BDD2AA88F}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Resources\grid3f.png = Resources\grid3f.png
 		Resources\tempIcon.png = Resources\tempIcon.png
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyProject1", "..\MyProject1\MyProject1.csproj", "{B3928B98-B5FD-416C-8E12-CA2ECD405CDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +24,10 @@ Global
 		{8960B712-B3C6-4F1F-A9DC-EB49A714AD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8960B712-B3C6-4F1F-A9DC-EB49A714AD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8960B712-B3C6-4F1F-A9DC-EB49A714AD39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3928B98-B5FD-416C-8E12-CA2ECD405CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3928B98-B5FD-416C-8E12-CA2ECD405CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3928B98-B5FD-416C-8E12-CA2ECD405CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3928B98-B5FD-416C-8E12-CA2ECD405CDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

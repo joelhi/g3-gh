@@ -138,7 +138,7 @@ namespace g3gh.Components.Process
             writer.SetBoolean("Occ", RemoveOcclTris);
             writer.SetBoolean("Un", RemoveUnusedVerts);
 
-            return true;
+            return base.Write(writer);
         }
 
         public override bool Read(GH_IReader reader)
@@ -148,7 +148,7 @@ namespace g3gh.Components.Process
             this.RemoveOcclTris = reader.GetBoolean("Occ");
             this.RemoveUnusedVerts = reader.GetBoolean("Un");
 
-            return true;
+            return base.Read(reader);
         }
 
         public override Guid ComponentGuid
