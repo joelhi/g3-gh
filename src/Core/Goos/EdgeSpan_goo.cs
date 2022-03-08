@@ -13,21 +13,20 @@ using g3gh.Core;
 namespace g3gh.Core.Goos
 {
 
-    public class EdgeLoop_goo : GH_GeometricGoo<EdgeLoop>
+    public class EdgeSpan_goo : GH_GeometricGoo<EdgeSpan>
     {
         public Mesh dispMsh = null;
-        public PolylineCurve loop = null;
+        public PolylineCurve span = null;
 
-        public EdgeLoop_goo()
+        public EdgeSpan_goo()
         {
 
             this.Value = null;
         }
 
-        public EdgeLoop_goo(EdgeLoop loop)
+        public EdgeSpan_goo(EdgeSpan span)
         {
-            Value = loop;
-
+            Value = span;
 
         }
 
@@ -41,26 +40,29 @@ namespace g3gh.Core.Goos
 
         public void GenerateDispCurves()
         {
-            if (loop == null)
+            if (span == null)
             {
-                loop = new PolylineCurve(this.Value.Vertices.Select(ind => Value.Mesh.GetVertex(ind).ToRhinoPt()));
+                for (int i = 0; i < Value.EdgeCount; i++)
+                {
+                    span = new PolylineCurve(this.Value.Vertices.Select(ind => Value.Mesh.GetVertex(ind).ToRhinoPt()));
+                }
             }
         }
 
         public override string ToString()
         {
-            return "EdgeLoop [IsBoundary:" + this.Value.IsBoundaryLoop().ToString() + " V:" + this.Value.VertexCount.ToString() + "]";
+            return "EdgeSpan [E:" + this.Value.EdgeCount + " V:" + this.Value.VertexCount.ToString() + "]";
         }
 
 
         public override string TypeDescription
         {
-            get { return ("EdgeLoop Goo"); }
+            get { return ("EdgeSpan Goo"); }
         }
 
         public override string TypeName
         {
-            get { return ("EdgeLoop"); }
+            get { return ("EdgeSpan"); }
         }
 
         public override IGH_Goo Duplicate()
@@ -101,7 +103,7 @@ namespace g3gh.Core.Goos
 
         public override IGH_GeometricGoo DuplicateGeometry()
         {
-            return new EdgeLoop_goo(new EdgeLoop(Value));
+            return new EdgeSpan_goo(Value);
         }
 
         public override BoundingBox GetBoundingBox(Transform xform)
@@ -122,14 +124,14 @@ namespace g3gh.Core.Goos
             throw new NotImplementedException();
         }
 
-        public static implicit operator EdgeLoop(EdgeLoop_goo Goo)
+        public static implicit operator EdgeSpan(EdgeSpan_goo Goo)
         {
             return Goo.Value;
         }
 
-        public static implicit operator EdgeLoop_goo(EdgeLoop loop)
+        public static implicit operator EdgeSpan_goo(EdgeSpan loop)
         {
-            return new EdgeLoop_goo(loop);
+            return new EdgeSpan_goo(loop);
         }
     }
 }

@@ -13,9 +13,10 @@ using g3;
 
 namespace g3gh.Components.Remesh
 {
+    [Obsolete("This component has been superseeded by one with more options")]
     public class Old_ZombieRemeshDMesh3 : GH_Component
     {
-        [Obsolete("This component has been superseeded by one with more options")]
+        
         public Old_ZombieRemeshDMesh3()
           : base("Remesh [Zombie]", "remeshZ",
             "Remesh a DMesh3 object. Same as other remesher, only this one does iterations internally.",g3ghUtil.pluginName
@@ -77,7 +78,7 @@ namespace g3gh.Components.Remesh
 
         public override GH_Exposure Exposure
         {
-            get { return GH_Exposure.primary; }
+            get { return GH_Exposure.hidden; }
         }
 
         protected override System.Drawing.Bitmap Icon

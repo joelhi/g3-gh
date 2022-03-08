@@ -11,6 +11,7 @@ using g3gh.Core.Goos;
 
 using g3;
 using gs;
+using System.Linq;
 
 namespace g3gh.Components.Remesh
 {
@@ -28,7 +29,7 @@ namespace g3gh.Components.Remesh
         {
             pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to remesh", GH_ParamAccess.item);
             pManager.AddNumberParameter("Target Edge Length", "len", "Target edge length for remeshing", GH_ParamAccess.item);
-            pManager.AddPointParameter("Point Constraints", "pts", "Points on mesh to constrain", GH_ParamAccess.item);
+            pManager.AddPointParameter("Point Constraints", "pts", "Points on mesh to constrain", GH_ParamAccess.list);
             pManager.AddIntegerParameter("Number of Iterations", "iter", "Number of Iterations for the remeshing process", GH_ParamAccess.item, 10);
             pManager.AddIntegerParameter("Constrain Edges", "c", "Option to constrain the edges during the remeshing procedure\n0 = No Constraint\n1 = Sliding\n2 = Fixed", GH_ParamAccess.item, 0);
             pManager.AddBooleanParameter("Project to Input", "p", "Project the remeshed result back to the input mesh", GH_ParamAccess.item, false);
@@ -45,6 +46,7 @@ namespace g3gh.Components.Remesh
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             DMesh3_goo dMsh_goo = null;
+            List<Point3d> points = new List<Point3d>();
             double targetL = 0;
             int numI = 0;
             int fixB = 0;
@@ -52,6 +54,7 @@ namespace g3gh.Components.Remesh
             double smooth = 0;
 
             DA.GetData(0, ref dMsh_goo);
+            DA.GetDataList(2, points);
             DA.GetData(1, ref targetL);
             DA.GetData(3, ref numI);
             DA.GetData(4, ref fixB);
@@ -70,7 +73,20 @@ namespace g3gh.Components.Remesh
                 MeshConstraintUtil.FixAllBoundaryEdges(r);
             else if (fixB == 1)
                 MeshConstraintUtil.PreserveBoundaryLoops(r);
+            else
+                r.SetExternalConstraints(new MeshConstraints());
 
+            if (points.Count > 0)
+            {
+                var v3pts = points.Select(pt => pt.ToVec3d());
+
+                foreach (var p in v3pts)
+                {
+                    int id = MeshQueries.FindNearestVertex_LinearSearch(dMsh_copy, p);
+
+                    r.Constraints.SetOrUpdateVertexConstraint(id, VertexConstraint.Pinned);
+                }
+            }
 
             if(projBack)
                 r.SetProjectionTarget(MeshProjectionTarget.Auto(dMsh_goo.Value));
