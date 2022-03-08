@@ -10,15 +10,14 @@ using g3gh.Components.Params;
 using g3gh.Core.Goos;
 
 using g3;
-using gs;
 
 namespace g3gh.Components.Remesh
 {
-    public class ZombieRemeshDMesh3 : GH_Component
+    public class Old_ZombieRemeshDMesh3 : GH_Component
     {
-
-        public ZombieRemeshDMesh3()
-          : base("Remesh [Zombie]", "Nickname",
+        [Obsolete("This component has been superseeded by one with more options")]
+        public Old_ZombieRemeshDMesh3()
+          : base("Remesh [Zombie]", "remeshZ",
             "Remesh a DMesh3 object. Same as other remesher, only this one does iterations internally.",g3ghUtil.pluginName
             , "4_Remesh")
         {
@@ -28,13 +27,9 @@ namespace g3gh.Components.Remesh
         {
             pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to remesh", GH_ParamAccess.item);
             pManager.AddNumberParameter("Target Edge Length", "len", "Target edge length for remeshing", GH_ParamAccess.item);
-            pManager.AddPointParameter("Point Constraints", "pts", "Points on mesh to constrain", GH_ParamAccess.item);
             pManager.AddIntegerParameter("Number of Iterations", "iter", "Number of Iterations for the remeshing process", GH_ParamAccess.item, 10);
-            pManager.AddIntegerParameter("Constrain Edges", "c", "Option to constrain the edges during the remeshing procedure\n0 = No Constraint\n1 = Sliding\n2 = Fixed", GH_ParamAccess.item, 0);
+            pManager.AddBooleanParameter("Constrain Edges", "c", "Option to constrain the edges during the remeshing procedure", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Project to Input", "p", "Project the remeshed result back to the input mesh", GH_ParamAccess.item, false);
-            pManager.AddNumberParameter("Smoothing Speed", "s", "Smooth speed between iterations", GH_ParamAccess.item, 0.5);
-
-            pManager[2].Optional = true;
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -47,34 +42,27 @@ namespace g3gh.Components.Remesh
             DMesh3_goo dMsh_goo = null;
             double targetL = 0;
             int numI = 0;
-            int fixB = 0;
+            bool fixB = false;
             bool projBack = false;
-            double smooth = 0;
 
             DA.GetData(0, ref dMsh_goo);
             DA.GetData(1, ref targetL);
-            DA.GetData(3, ref numI);
-            DA.GetData(4, ref fixB);
-            DA.GetData(5, ref projBack);
-            DA.GetData(6, ref smooth);
+            DA.GetData(2, ref numI);
+            DA.GetData(3, ref fixB);
+            DA.GetData(4, ref projBack);
 
             DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
 
             Remesher r = new Remesher(dMsh_copy);
             r.PreventNormalFlips = true;
             r.SetTargetEdgeLength(targetL);
-            r.SmoothSpeedT = smooth;
+            r.SmoothSpeedT = 0.5;
 
-
-            if (fixB == 2)
+            if (fixB)
                 MeshConstraintUtil.FixAllBoundaryEdges(r);
-            else if (fixB == 1)
-                MeshConstraintUtil.PreserveBoundaryLoops(r);
-
 
             if(projBack)
                 r.SetProjectionTarget(MeshProjectionTarget.Auto(dMsh_goo.Value));
-            
 
             for (int k = 0; k < numI; ++k)
                 r.BasicRemeshPass();
@@ -102,7 +90,7 @@ namespace g3gh.Components.Remesh
 
         public override Guid ComponentGuid
         {
-            get { return new Guid("862f4d4e-914c-495e-a1f1-3465879263b5"); }
+            get { return new Guid("862f6d4e-964c-495c-a1f1-3465879263b5"); }
         }
     }
 }
