@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using g3;
+using g3gh.Core;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
@@ -14,7 +15,7 @@ namespace g3gh.Components.Remesh
         public EdgeConstraint_Type()
           : base("EdgeConstraint Type", "Nickname",
               "Description",
-              "Category", "Subcategory")
+              g3ghUtil.pluginName, "4_Remesh")
         {
         }
 
@@ -66,6 +67,8 @@ namespace g3gh.Components.Remesh
 
             DA.SetData(0, constraint);
         }
+
+        public override GH_Exposure Exposure => GH_Exposure.tertiary;
 
         /// <summary>
         /// Provides an Icon for the component.

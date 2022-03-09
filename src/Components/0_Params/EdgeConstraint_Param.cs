@@ -59,7 +59,7 @@ namespace g3gh.Components.Params
 
         public override Guid ComponentGuid
         {
-            get { return new Guid("94b719e1-5b24-450e-a300-323f08292eb3"); }
+            get { return new Guid("94b719e1-5b14-450e-b300-323e08292eb5"); }
         }
 
         public bool Hidden { get; set; }

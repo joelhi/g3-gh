@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using g3;
 using g3gh.Components.Params;
 using g3gh.Core;
+using g3gh.Core.Goos;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
@@ -43,7 +45,25 @@ namespace g3gh.Components.Remesh
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            EdgeLoop_goo eLoop = null;
+            EdgeRefineFlags flag = EdgeRefineFlags.NoConstraint;
+            bool pin = false;
+
+            DA.GetData(0, ref eLoop);
+            DA.GetData(1, ref flag);
+            DA.GetData(2, ref pin);
+
+            EdgeConstraint_goo edgeConstraint = new EdgeConstraint_goo();
+
+            edgeConstraint.crv = eLoop.Value.ToCurve(eLoop.Value.Mesh);
+            edgeConstraint.vertices = eLoop.Value.Vertices;
+            edgeConstraint.edges = eLoop.Value.Edges;
+            edgeConstraint.edgeType = EdgeConstraint_goo.EdgeType.Loop;
+
+            DA.SetData(0, edgeConstraint);
         }
+
+        public override GH_Exposure Exposure => GH_Exposure.tertiary;
 
         /// <summary>
         /// Provides an Icon for the component.
