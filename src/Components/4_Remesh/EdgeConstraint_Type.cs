@@ -50,6 +50,11 @@ namespace g3gh.Components.Remesh
             bool split = true;
             bool topology = true;
 
+            DA.GetData(0, ref flip);
+            DA.GetData(1, ref collapse);
+            DA.GetData(2, ref split);
+            DA.GetData(3, ref topology);
+
             EdgeRefineFlags constraint = EdgeRefineFlags.NoConstraint;
 
             if (!flip)
@@ -65,7 +70,7 @@ namespace g3gh.Components.Remesh
                 constraint = constraint | EdgeRefineFlags.PreserveTopology;
 
 
-            DA.SetData(0, constraint);
+            DA.SetData(0, (int)constraint);
         }
 
         public override GH_Exposure Exposure => GH_Exposure.tertiary;

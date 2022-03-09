@@ -60,6 +60,7 @@ namespace g3gh.Components.Remesh
             edgeConstraint.edges = eLoop.Value.Edges;
             edgeConstraint.edgeType = EdgeConstraint_goo.EdgeType.Loop;
             edgeConstraint.constraint = new EdgeConstraint((EdgeRefineFlags)flag, new DCurveProjectionTarget(edgeConstraint.crv));
+            edgeConstraint.PinVerts = pin;
 
             DA.SetData(0, edgeConstraint);
         }

@@ -67,7 +67,7 @@ namespace g3gh.Components.Remesh
 
             List<EdgeConstraint_goo> edgeC = new List<EdgeConstraint_goo>();
 
-            DA.GetDataList(6, edgeC);
+            DA.GetDataList(4, edgeC);
 
             DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
 
@@ -96,9 +96,17 @@ namespace g3gh.Components.Remesh
 
                         if (tempEC.PinVerts)
                         {
-                            Index2i edgeV = dMsh_copy.GetEdgeV(i);
+                            Index2i edgeV = dMsh_copy.GetEdgeV(j);
                             r.Constraints.SetOrUpdateVertexConstraint(edgeV.a, VertexConstraint.Pinned);
                             r.Constraints.SetOrUpdateVertexConstraint(edgeV.b, VertexConstraint.Pinned);
+                        }
+                        else
+                        {
+                            Index2i edgeV = dMsh_copy.GetEdgeV(j);
+                            IProjectionTarget target = new DCurveProjectionTarget(tempEC.crv);
+
+                            r.Constraints.SetOrUpdateVertexConstraint(edgeV.a, new VertexConstraint(target));
+                            r.Constraints.SetOrUpdateVertexConstraint(edgeV.b, new VertexConstraint(target));
                         }
                     }
                 }
