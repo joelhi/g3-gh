@@ -90,23 +90,23 @@ namespace g3gh.Components.Remesh
                 {
                     var tempEC = edgeC[i];
 
+                    IProjectionTarget target = new DCurveProjectionTarget(tempEC.crv);
+
                     for (int j = 0; j < tempEC.edges.Length; j++)
                     {
+                        tempEC.constraint.Target = target;
                         r.Constraints.SetOrUpdateEdgeConstraint(tempEC.edges[j], tempEC.constraint);
+                    }
 
+                    for (int j = 0; j < tempEC.vertices.Length; j++)
+                    {
                         if (tempEC.PinVerts)
                         {
-                            Index2i edgeV = dMsh_copy.GetEdgeV(j);
-                            r.Constraints.SetOrUpdateVertexConstraint(edgeV.a, VertexConstraint.Pinned);
-                            r.Constraints.SetOrUpdateVertexConstraint(edgeV.b, VertexConstraint.Pinned);
+                            r.Constraints.SetOrUpdateVertexConstraint(tempEC.vertices[j], VertexConstraint.Pinned);
                         }
                         else
                         {
-                            Index2i edgeV = dMsh_copy.GetEdgeV(j);
-                            IProjectionTarget target = new DCurveProjectionTarget(tempEC.crv);
-
-                            r.Constraints.SetOrUpdateVertexConstraint(edgeV.a, new VertexConstraint(target));
-                            r.Constraints.SetOrUpdateVertexConstraint(edgeV.b, new VertexConstraint(target));
+                            r.Constraints.SetOrUpdateVertexConstraint(tempEC.vertices[j], new VertexConstraint(target));
                         }
                     }
                 }
@@ -114,9 +114,7 @@ namespace g3gh.Components.Remesh
 
             if (points.Count > 0)
             {
-
-                DMeshAABBTree3 mshAABB = new DMeshAABBTree3(dMsh_copy);
-
+                DMeshAABBTree3 mshAABB = new DMeshAABBTree3(dMsh_copy, true);
 
                 var v3pts = points.Select(pt => pt.ToVec3d());
 
