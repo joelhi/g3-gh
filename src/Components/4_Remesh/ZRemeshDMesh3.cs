@@ -65,6 +65,10 @@ namespace g3gh.Components.Remesh
             DA.GetData(5, ref projBack);
             DA.GetData(7, ref smooth);
 
+            List<EdgeConstraint_goo> edgeC = new List<EdgeConstraint_goo>();
+
+            DA.GetDataList(6, edgeC);
+
             DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
 
             Remesher r = new Remesher(dMsh_copy);
@@ -79,6 +83,26 @@ namespace g3gh.Components.Remesh
                 MeshConstraintUtil.PreserveBoundaryLoops(r);
             else
                 r.SetExternalConstraints(new MeshConstraints());
+
+            if (edgeC.Count > 0)
+            {
+                for (int i = 0; i < edgeC.Count; i++)
+                {
+                    var tempEC = edgeC[i];
+
+                    for (int j = 0; j < tempEC.edges.Length; j++)
+                    {
+                        r.Constraints.SetOrUpdateEdgeConstraint(tempEC.edges[j], tempEC.constraint);
+
+                        if (tempEC.PinVerts)
+                        {
+                            Index2i edgeV = dMsh_copy.GetEdgeV(i);
+                            r.Constraints.SetOrUpdateVertexConstraint(edgeV.a, VertexConstraint.Pinned);
+                            r.Constraints.SetOrUpdateVertexConstraint(edgeV.b, VertexConstraint.Pinned);
+                        }
+                    }
+                }
+            }
 
             if (points.Count > 0)
             {

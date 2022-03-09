@@ -29,6 +29,8 @@ namespace g3gh.Core.Goos
 
         public Curve DisplayCurve = null;
 
+        internal bool PinVerts = false;
+
         public override BoundingBox Boundingbox => crv.GetBoundingBox().ToRhino();
 
         public override string TypeName => "Edge Constraint";
@@ -60,7 +62,7 @@ namespace g3gh.Core.Goos
 
         public override string ToString()
         {
-            return "Edge Constraint | "+ edgeType.ToString()  + " | " + constraint.ToString();
+            return "Edge Constraint | " + edgeType.ToString();
         }
 
         public override IGH_GeometricGoo Transform(Transform xform)

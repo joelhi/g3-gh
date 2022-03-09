@@ -46,7 +46,7 @@ namespace g3gh.Components.Remesh
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             EdgeLoop_goo eLoop = null;
-            EdgeRefineFlags flag = EdgeRefineFlags.NoConstraint;
+            int flag = -1;
             bool pin = false;
 
             DA.GetData(0, ref eLoop);
@@ -59,6 +59,7 @@ namespace g3gh.Components.Remesh
             edgeConstraint.vertices = eLoop.Value.Vertices;
             edgeConstraint.edges = eLoop.Value.Edges;
             edgeConstraint.edgeType = EdgeConstraint_goo.EdgeType.Loop;
+            edgeConstraint.constraint = new EdgeConstraint((EdgeRefineFlags)flag, new DCurveProjectionTarget(edgeConstraint.crv));
 
             DA.SetData(0, edgeConstraint);
         }

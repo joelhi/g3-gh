@@ -59,6 +59,7 @@ namespace g3gh.Components.Remesh
             edgeConstraint.vertices = eLoop.Value.Vertices;
             edgeConstraint.edges = eLoop.Value.Edges;
             edgeConstraint.edgeType = EdgeConstraint_goo.EdgeType.Loop;
+            edgeConstraint.PinVerts = pin;
 
             DA.SetData(0, edgeConstraint);
         }
