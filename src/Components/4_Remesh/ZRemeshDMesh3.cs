@@ -30,12 +30,16 @@ namespace g3gh.Components.Remesh
             pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to remesh", GH_ParamAccess.item);
             pManager.AddNumberParameter("Target Edge Length", "len", "Target edge length for remeshing", GH_ParamAccess.item);
             pManager.AddPointParameter("Point Constraints", "pts", "Points on mesh to constrain", GH_ParamAccess.list);
-            pManager.AddIntegerParameter("Number of Iterations", "iter", "Number of Iterations for the remeshing process", GH_ParamAccess.item, 10);
-            pManager.AddIntegerParameter("Constrain Edges", "c", "Option to constrain the edges during the remeshing procedure\n0 = No Constraint\n1 = Sliding\n2 = Fixed", GH_ParamAccess.item, 0);
+            
+            pManager.AddIntegerParameter("Constrain Boundaries", "c", "Option to constrain the boundary edges during the remeshing procedure\n0 = No Constraint\n1 = Sliding\n2 = Fixed", GH_ParamAccess.item, 0);
+            pManager.AddParameter(new EdgeConstraint_Param(), "Custom Edge Constraints", "eC", "Custom edge constrraints which may or may not be on the boundary.\nGenerate from Loops or Spans", GH_ParamAccess.list); ;
             pManager.AddBooleanParameter("Project to Input", "p", "Project the remeshed result back to the input mesh", GH_ParamAccess.item, false);
+
+            pManager.AddIntegerParameter("Number of Iterations", "iter", "Number of Iterations for the remeshing process", GH_ParamAccess.item, 10);
             pManager.AddNumberParameter("Smoothing Speed", "s", "Smooth speed between iterations", GH_ParamAccess.item, 0.5);
 
             pManager[2].Optional = true;
+            pManager[4].Optional = true;
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -56,10 +60,10 @@ namespace g3gh.Components.Remesh
             DA.GetData(0, ref dMsh_goo);
             DA.GetDataList(2, points);
             DA.GetData(1, ref targetL);
-            DA.GetData(3, ref numI);
-            DA.GetData(4, ref fixB);
+            DA.GetData(6, ref numI);
+            DA.GetData(3, ref fixB);
             DA.GetData(5, ref projBack);
-            DA.GetData(6, ref smooth);
+            DA.GetData(7, ref smooth);
 
             DMesh3 dMsh_copy = new DMesh3(dMsh_goo.Value);
 
@@ -78,13 +82,18 @@ namespace g3gh.Components.Remesh
 
             if (points.Count > 0)
             {
+
+                DMeshAABBTree3 mshAABB = new DMeshAABBTree3(dMsh_copy);
+
+
                 var v3pts = points.Select(pt => pt.ToVec3d());
 
                 foreach (var p in v3pts)
                 {
-                    int id = MeshQueries.FindNearestVertex_LinearSearch(dMsh_copy, p);
+                    int id = mshAABB.FindNearestVertex(p, 0.1);
 
-                    r.Constraints.SetOrUpdateVertexConstraint(id, VertexConstraint.Pinned);
+                    if(id != -1)
+                        r.Constraints.SetOrUpdateVertexConstraint(id, VertexConstraint.Pinned);
                 }
             }
 

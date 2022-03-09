@@ -16,10 +16,10 @@ using Rhino.Display;
 
 namespace g3gh.Components.Params
 {
-    public class EdgeSpan_Param : GH_Param<EdgeSpan_goo>, IGH_PreviewObject
+    public class EdgeConstraint_Param : GH_Param<EdgeConstraint_goo>, IGH_PreviewObject
     {
 
-        public EdgeSpan_Param() :
+        public EdgeConstraint_Param() :
             base("Edge Span", "eSpan", "Holds a collection of EdgeSpan objects.", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
 
@@ -28,26 +28,16 @@ namespace g3gh.Components.Params
             get { return GH_Exposure.primary; }
         }
 
-        protected override EdgeSpan_goo PreferredCast(object data)
-        {
-            if (data is EdgeSpan)
-            {
-                return new EdgeSpan_goo((EdgeSpan)data);
-            }
-            else
-                return null;
-        }
 
         public void DrawViewportMeshes(IGH_PreviewArgs args)
         {
             DisplayPipeline dp = args.Display;
 
-            foreach (EdgeSpan_goo goo in this.m_data.NonNulls)
+            foreach (EdgeConstraint_goo goo in this.m_data.NonNulls)
             {
-                goo.GenerateDispMesh();
-                goo.GenerateDispCurves();
-                dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
-                dp.DrawCurve(goo.span, Color.DarkRed, 2);
+                goo.GenerateDisplayCurve();
+                dp.DrawCurve(goo.DisplayCurve, Color.DarkRed, 2);
+                dp.DrawPoints(((PolylineCurve)goo.DisplayCurve).ToPolyline(), PointStyle.ArrowTip, 3, Color.Black);
 
             }
         }
@@ -57,12 +47,11 @@ namespace g3gh.Components.Params
         {
             DisplayPipeline dp = args.Display;
 
-            foreach (EdgeSpan_goo goo in this.m_data.NonNulls)
+            foreach (EdgeConstraint_goo goo in this.m_data.NonNulls)
             {
-                goo.GenerateDispMesh();
-                goo.GenerateDispCurves();
-                dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
-                dp.DrawCurve(goo.span, Color.DarkRed, 2);
+                goo.GenerateDisplayCurve();
+                dp.DrawCurve(goo.DisplayCurve, Color.DarkRed, 2);
+                dp.DrawPoints(((PolylineCurve)goo.DisplayCurve).ToPolyline(), PointStyle.ArrowTip, 3, Color.Black);
 
             }
 
@@ -86,8 +75,8 @@ namespace g3gh.Components.Params
 
                 BoundingBox box = BoundingBox.Empty;
 
-                foreach (EdgeSpan_goo mGoo in this.m_data.NonNulls)
-                    box.Union(mGoo.Value.GetBounds().ToRhino());
+                foreach (EdgeConstraint_goo mGoo in this.m_data.NonNulls)
+                    box.Union(mGoo.crv.GetBoundingBox().ToRhino());
 
                 return box;
             }

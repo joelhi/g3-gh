@@ -20,7 +20,7 @@ namespace g3gh.Components.Params
     {
 
         public EdgeLoop_Param() :
-            base("Edge Loop", "Edge Loop", "Holds a collection of EdgeLoop objects.", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
+            base("Edge Loop", "eLoop", "Holds a collection of EdgeLoop objects.", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
 
         public override GH_Exposure Exposure

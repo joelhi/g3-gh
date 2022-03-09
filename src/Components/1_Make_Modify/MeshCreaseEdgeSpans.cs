@@ -56,45 +56,6 @@ namespace g3gh.Components.Make_Modify
 
             var e = topology.CreaseEdges;
 
-            //List<EdgeSpan> creaseSpans = new List<EdgeSpan>();
-
-            //Curve[] lines = new Curve[e.Count];
-
-            //int counter = 0;
-            //foreach (int ei in e)
-            //{
-            //    g3.Vector3d a = g3.Vector3d.Zero;
-            //    g3.Vector3d b = g3.Vector3d.Zero;
-
-            //    if (mesh.GetEdgeV(ei, ref a, ref b))
-            //    { 
-            //        lines[counter] = (new Line(a.ToRhinoPt(), b.ToRhinoPt())).ToNurbsCurve();
-            //    }
-
-            //    counter++;
-            //}
-
-            //Curve[] joined = Curve.JoinCurves(lines);
-
-            
-            //for (int i = 0; i < joined.Length; i++)
-            //{
-
-            //    if(!joined[i].TryGetPolyline(out Polyline pl))
-            //    {
-            //        continue;
-            //    }
-            //    counter = 0;
-            //    int[] indexes = new int[pl.Count];
-            //    foreach (var p in pl)
-            //    {
-            //        indexes[counter] = MeshQueries.FindNearestVertex_LinearSearch(mesh, p.ToVec3d());
-            //        counter++;
-            //    }
-
-            //    creaseSpans.Add(EdgeSpan.FromVertices(mesh, indexes));
-            //}
-
             DA.SetDataList(0, topology.Spans);
             DA.SetDataList(1, topology.Loops);
         }

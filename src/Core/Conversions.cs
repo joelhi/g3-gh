@@ -129,5 +129,17 @@ namespace g3gh.Core
         {
             return new Rhino.Geometry.BoundingBox(bx.Min.x, bx.Min.y, bx.Min.z, bx.Max.x, bx.Max.y, bx.Max.z);
         }
+
+        public static Rhino.Geometry.PolylineCurve ToRhino(this DCurve3 _crv)
+        {
+            List<Rhino.Geometry.Point3d> pts = new List<Rhino.Geometry.Point3d>(_crv.VertexCount);
+
+            for (int i = 0; i < _crv.VertexCount; i++)
+            {
+                pts.Add(_crv[i].ToRhinoPt());
+            }
+
+            return new Rhino.Geometry.PolylineCurve(pts);
+        }
     }
 }
