@@ -54,7 +54,7 @@ namespace g3gh.Components.MakeModify
         {
             get
             {
-                return Resource1.g3_gh_icons_05_copy;
+                return Resource1.g3_gh_icons_05;
             }
         }
 

@@ -13,7 +13,6 @@ using g3gh.Components.Params;
 
 using g3;
 
-
 namespace g3gh.Components.MakeModify
 {
     public class TriangulatePolygon : GH_Component
@@ -60,7 +59,7 @@ namespace g3gh.Components.MakeModify
         {
             get
             {
-                return Resource1.g3_gh_icons_44_copy;
+                return Resource1.g3_gh_icons_44;
             }
         }
 

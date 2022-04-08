@@ -58,7 +58,7 @@ namespace g3gh.Components.MakeModify
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return Resource1.g3_gh_icons_41_copy;
+                return Resource1.g3_gh_icons_41;
             }
         }
         public override Guid ComponentGuid

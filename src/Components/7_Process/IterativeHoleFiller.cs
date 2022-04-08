@@ -144,7 +144,7 @@ namespace g3gh.Components.Process
 
         protected override System.Drawing.Bitmap Icon
         {
-            get{ return Resource1.g3_gh_icons_42_copy; }
+            get{ return Resource1.g3_gh_icons_42; }
         }
 
         public override Guid ComponentGuid

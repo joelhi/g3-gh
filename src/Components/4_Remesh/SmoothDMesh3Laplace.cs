@@ -74,7 +74,7 @@ namespace g3gh.Components.Remesh
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return Resource1.g3_gh_icons_03_copy;
+                return Resource1.g3_gh_icons_03;
             }
         }
 

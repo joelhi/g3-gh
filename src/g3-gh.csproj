@@ -5,7 +5,7 @@
     <Version>1.0</Version>
     <Title>gh_3sharp</Title>
     <Description>Description of gh_3sharp</Description>
-    <Configurations>Release;Debug</Configurations>
+    <Configurations>Debug;Release</Configurations>
     <RhinoMacLauncher>/Applications/Rhino 7.app</RhinoMacLauncher>
     <StartupObject />
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
@@ -106,7 +106,4 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="Copy &quot;$(TargetPath)&quot; &quot;$(TargetDir)$(ProjectName).gha&quot;&#xD;&#xA;Erase &quot;$(TargetPath)&quot;" />
-  </Target>
 </Project>

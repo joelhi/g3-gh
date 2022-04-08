@@ -93,7 +93,7 @@ namespace g3gh.Components.FileIO
             get
             {
 
-                return Resource1.g3_gh_icons_31_copy;
+                return Resource1.g3_gh_icons_31;
             }
         }
 

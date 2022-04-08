@@ -66,7 +66,7 @@ namespace g3gh.Components.MarchingCubes
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return Resource1.g3_gh_icons_16_copy;
+                return Resource1.g3_gh_icons_16;
             }
         }
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace g3gh {
+namespace g3gh.Core {
     using System;
     using System.Reflection;
     
@@ -47,310 +47,324 @@ namespace g3gh {
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_01_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_01 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_01_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_01", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_02_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_02 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_02_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_02", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_03_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_03 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_03_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_03", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_04_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_04 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_04_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_04", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_05_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_05 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_05_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_05", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_06_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_06 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_06_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_06", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_07_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_07 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_07_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_07", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_08_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_08 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_08_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_08", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_09_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_09 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_09_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_09", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_10_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_10 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_10_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_10", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_11_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_11 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_11_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_12_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_12 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_12_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_12", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_13_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_13 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_13_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_13", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_14_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_14 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_14_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_14", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_15_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_15 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_15_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_15", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_16_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_16 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_16_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_17_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_17 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_17_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_17", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_18_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_18 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_18_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_18", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_19_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_19 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_19_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_19", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_20_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_20 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_20_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_21_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_21 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_21_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_21", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_22_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_22 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_22_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_22", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_23_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_23 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_23_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_23", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_24_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_24 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_24_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_25_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_25 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_25_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_25", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_26_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_26 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_26_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_26", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_27_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_27 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_27_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_27", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_28_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_28 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_28_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_28", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_29_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_29 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_29_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_29", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_30_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_30 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_30_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_31_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_31 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_31_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_31", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_32_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_32 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_32_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_33_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_33 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_33_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_33", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_34_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_34 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_34_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_34", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_35_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_35 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_35_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_35", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_36_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_36 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_36_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_36", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_37_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_37 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_37_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_37", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_38_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_38 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_38_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_38", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_39_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_39 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_39_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_39", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_40_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_40 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_40_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_40", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_41_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_41 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_41_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_41", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_42_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_42 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_42_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_42", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_43_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_43 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_43_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_43", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap g3_gh_icons_44_copy {
+        internal static System.Drawing.Bitmap g3_gh_icons_44 {
             get {
-                object obj = ResourceManager.GetObject("g3_gh_icons_44_copy", resourceCulture);
+                object obj = ResourceManager.GetObject("g3_gh_icons_44", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap g3_gh_icons_45 {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_45", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap g3_gh_icons_46 {
+            get {
+                object obj = ResourceManager.GetObject("g3_gh_icons_46", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

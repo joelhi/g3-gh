@@ -10,7 +10,7 @@ namespace g3gh
         public override string Name => "g3gh Info";
 
         //Return a 24x24 pixel bitmap to represent this GHA library.
-        public override Bitmap Icon => Resource1.g3_gh_icons_06_copy;
+        public override Bitmap Icon => Core.Resource1.g3_gh_icons_06;
 
         //Return a short string describing the purpose of this GHA library.
         public override string Description => "Grasshopper library to expose some functionality from the geometry3sharp library";

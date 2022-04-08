@@ -53,7 +53,7 @@ namespace g3gh.Components.FileIO
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return Resource1.g3_gh_icons_04_copy;
+                return Resource1.g3_gh_icons_04;
             }
         }
 

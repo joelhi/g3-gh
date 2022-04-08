@@ -150,7 +150,7 @@ namespace g3gh.Components.Remesh
         {
             get
             {
-                return Resource1.g3_gh_icons_02_copy;
+                return Resource1.g3_gh_icons_02;
             }
         }
 
