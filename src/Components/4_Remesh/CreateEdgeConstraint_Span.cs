@@ -15,8 +15,8 @@ namespace g3gh.Components.Remesh
         /// Initializes a new instance of the CreateEdgeConstraint class.
         /// </summary>
         public CreateEdgeConstraint_Span()
-          : base("Create Edge Constraint [Span]", "Nickname",
-              "Description",
+          : base("Create Edge Constraint [Span]", "createSpanConstr",
+              "Creates a custom edge constraint from an edge span",
               g3ghUtil.pluginName, "4_Remesh")
         {
         }
@@ -76,7 +76,7 @@ namespace g3gh.Components.Remesh
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Resource1.g3_gh_icons_46;
+                return Resource1.g3_gh_icons_28;
             }
         }
 

@@ -20,7 +20,7 @@ namespace g3gh.Components.Params
     {
 
         public EdgeConstraint_Param() :
-            base("Edge Span", "eSpan", "Holds a collection of EdgeSpan objects.", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
+            base("Edge Constraint", "eConstr", "Holds a collection of EdgeConstraint objects.", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
 
         public override GH_Exposure Exposure

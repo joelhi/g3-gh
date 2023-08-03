@@ -16,8 +16,8 @@ namespace g3gh.Components.Make_Modify
         /// Initializes a new instance of the MeshCreaseEdgeLoops class.
         /// </summary>
         public MeshCreaseEdgeSpans()
-          : base("MeshCreaseEdgeLoops", "Nickname",
-              "Description",
+          : base("Get Creased Edges", "creasedEdges",
+              "Get edges with a crease angle above a cut of value",
               g3ghUtil.pluginName, "1_Make_Modify")
         {
         }
@@ -71,7 +71,7 @@ namespace g3gh.Components.Make_Modify
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return null;
+                return Resource1.g3_gh_icons_43;
             }
         }
 

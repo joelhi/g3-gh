@@ -13,8 +13,8 @@ namespace g3gh.Components.Remesh
         /// Initializes a new instance of the EdgeConstraint_Type class.
         /// </summary>
         public EdgeConstraint_Type()
-          : base("EdgeConstraint Type", "Nickname",
-              "Description",
+          : base("Edge Constraint Type", "eConstrType",
+              "Create a set of edge constraint flags to use as custom constraints",
               g3ghUtil.pluginName, "4_Remesh")
         {
         }
@@ -84,7 +84,7 @@ namespace g3gh.Components.Remesh
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return null;
+                return Resource1.g3_gh_icons_26;
             }
         }
 

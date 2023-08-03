@@ -19,7 +19,7 @@ namespace g3gh.Components.MakeModify
     {
 
         public MeshBoundaryEdgeLoops()
-          : base("Mesh Boundary Edge Loops", "edgeLoops",
+          : base("Get Boundary Edge Loops", "edgeLoops",
             "Get the boundary edge loops of a DMesh3, as EdgeLoop objects.",
             g3ghUtil.pluginName, "1_Make_Modify")
         {
