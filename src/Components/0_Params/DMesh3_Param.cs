@@ -12,7 +12,8 @@ using g3gh.Core.Goos;
 using g3;
 using Rhino.Geometry;
 using Rhino.Display;
-
+using Grasshopper.Kernel.Parameters;
+using Grasshopper;
 
 namespace g3gh.Components.Params
 {
@@ -48,32 +49,28 @@ namespace g3gh.Components.Params
 
         public void DrawViewportMeshes(IGH_PreviewArgs args)
         {
-            DisplayPipeline dp = args.Display;
-
-            foreach (DMesh3_goo goo in this.m_data.NonNulls)
+            if (args.Document.PreviewMode == GH_PreviewMode.Shaded && args.Display.SupportsShading)
             {
-                goo.GenerateDispMesh();
-
-                if(goo.dispMsh.VertexColors.Count != 0)
-                    dp.DrawMeshFalseColors(goo.dispMsh);
-                else
-                    dp.DrawMeshShaded(goo.dispMsh, new DisplayMaterial(Color.DarkSlateGray, 0.2));
-
-                dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
+                Preview_DrawMeshes(args);
             }
         }
 
 
         public void DrawViewportWires(IGH_PreviewArgs args)
         {
-            DisplayPipeline dp = args.Display;
-
-            foreach (DMesh3_goo goo in this.m_data.NonNulls)
+            switch (args.Document.PreviewMode)
             {
-                goo.GenerateDispMesh();
-                dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
+                case GH_PreviewMode.Wireframe:
+                    Preview_DrawWires(args);
+                    break;
+                case GH_PreviewMode.Shaded:
+                    if (CentralSettings.PreviewMeshEdges)
+                    {
+                        Preview_DrawWires(args);
+                    }
+
+                    break;
             }
- 
         }
 
         public override Guid ComponentGuid

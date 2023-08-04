@@ -18,10 +18,13 @@ namespace g3gh.Components.Params
 {
     public class EdgeSpan_Param : GH_Param<EdgeSpan_goo>, IGH_PreviewObject
     {
+        bool showMesh = false;
 
         public EdgeSpan_Param() :
             base("Edge Span", "eSpan", "Holds a collection of EdgeSpan objects.", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
-        { }
+        { 
+            
+        }
 
         public override GH_Exposure Exposure
         {

@@ -53,7 +53,7 @@ namespace g3gh.Components.Remesh
             DA.GetData(1, ref flag);
             DA.GetData(2, ref pin);
 
-            EdgeConstraint_goo edgeConstraint = new EdgeConstraint_goo();
+            EdgeConstraint_goo edgeConstraint = new EdgeConstraint_goo(EdgeConstraint_goo.EdgeType.Span);
 
             edgeConstraint.crv = eLoop.Value.ToCurve(eLoop.Value.Mesh);
             edgeConstraint.vertices = eLoop.Value.Vertices;

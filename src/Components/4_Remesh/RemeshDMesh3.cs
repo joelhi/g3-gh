@@ -15,6 +15,7 @@ using System.Threading;
 using g3;
 using System.Windows.Forms;
 using Grasshopper.GUI;
+using System.Linq;
 
 namespace g3gh.Components.Remesh
 {
@@ -35,12 +36,19 @@ namespace g3gh.Components.Remesh
         {
             pManager.AddParameter(new DMesh3_Param(), "Mesh", "dm3", "Mesh to remesh", GH_ParamAccess.item);
             pManager.AddNumberParameter("Target Edge Length", "len", "Target edge length for remeshing", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Number of iterations", "iter", "Maximum number of iterations", GH_ParamAccess.item, 10);
-            pManager.AddBooleanParameter("Constrain Edges", "c", "Option to constrain the edges during the remeshing procedure", GH_ParamAccess.item, false);
+            pManager.AddPointParameter("Point Constraints", "pts", "Points on mesh to constrain", GH_ParamAccess.list);
+
+            pManager.AddIntegerParameter("Constrain Boundaries", "c", "Option to constrain the boundary edges during the remeshing procedure\n0 = No Constraint\n1 = Sliding\n2 = Fixed", GH_ParamAccess.item, 0);
+            pManager.AddParameter(new EdgeConstraint_Param(), "Custom Edge Constraints", "eC", "Custom edge constrraints which may or may not be on the boundary.\nGenerate from Loops or Spans", GH_ParamAccess.list); ;
             pManager.AddBooleanParameter("Project to Input", "p", "Project the remeshed result back to the input mesh", GH_ParamAccess.item, false);
+
+            pManager.AddIntegerParameter("Number of Iterations", "iter", "Number of Iterations for the remeshing process", GH_ParamAccess.item, 10);
+            pManager.AddNumberParameter("Smoothing Speed", "s", "Smooth speed between iterations", GH_ParamAccess.item, 0.5);
             pManager.AddBooleanParameter("Run", "run", "Run remeshing?", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Reset", "reset", "Reset mesh?", GH_ParamAccess.item, false);
 
+            pManager[2].Optional = true;
+            pManager[4].Optional = true;
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -75,19 +83,25 @@ namespace g3gh.Components.Remesh
         {
             DMesh3_goo dMsh_goo = null;
             double targetL = 0;
-            bool fixB = false;
+            List<Point3d> points = new List<Point3d>();
+            int fixB = 0;
+            List<EdgeConstraint_goo> edgeC = new List<EdgeConstraint_goo>();
             bool projBack = false;
+            double smoothing = 0;
             bool run = false;
             bool reset = false;
             int maxIter = 0;
 
             DA.GetData(0, ref dMsh_goo);
             DA.GetData(1, ref targetL);
+            DA.GetDataList(2, points);
             DA.GetData(3, ref fixB);
-            DA.GetData(4, ref projBack);
-            DA.GetData(2, ref maxIter);
-            DA.GetData(5, ref run);
-            DA.GetData(6, ref reset);
+            DA.GetDataList(4, edgeC);
+            DA.GetData(5, ref projBack);
+            DA.GetData(6, ref maxIter);
+            DA.GetData(7, ref smoothing);
+            DA.GetData(8, ref run);
+            DA.GetData(9, ref reset);
 
             if (passes >= maxIter)
                 run = false;
@@ -100,16 +114,63 @@ namespace g3gh.Components.Remesh
                 r = new Remesher(dMsh_copy);
                 r.PreventNormalFlips = true;
                 r.SetTargetEdgeLength(targetL);
-                r.SmoothSpeedT = 0.5;
+                r.SmoothSpeedT = smoothing;
 
                 passes = 0;
 
-                if (fixB)
+                if (fixB == 2)
                     MeshConstraintUtil.FixAllBoundaryEdges(r);
+                else if (fixB == 1)
+                    MeshConstraintUtil.PreserveBoundaryLoops(r);
+                else
+                    r.SetExternalConstraints(new MeshConstraints());
 
                 if (projBack)
                 {
                     r.SetProjectionTarget(MeshProjectionTarget.Auto(dMsh_goo.Value));
+                }
+
+                if (edgeC.Count > 0)
+                {
+                    for (int i = 0; i < edgeC.Count; i++)
+                    {
+                        var tempEC = edgeC[i];
+
+                        IProjectionTarget target = new DCurveProjectionTarget(tempEC.crv);
+
+                        for (int j = 0; j < tempEC.edges.Length; j++)
+                        {
+                            tempEC.constraint.Target = target;
+                            r.Constraints.SetOrUpdateEdgeConstraint(tempEC.edges[j], tempEC.constraint);
+                        }
+
+                        for (int j = 0; j < tempEC.vertices.Length; j++)
+                        {
+                            if (tempEC.PinVerts)
+                            {
+                                r.Constraints.SetOrUpdateVertexConstraint(tempEC.vertices[j], VertexConstraint.Pinned);
+                            }
+                            else
+                            {
+                                r.Constraints.SetOrUpdateVertexConstraint(tempEC.vertices[j], new VertexConstraint(target));
+                            }
+                        }
+                    }
+                }
+
+                if (points.Count > 0)
+                {
+                    DMeshAABBTree3 mshAABB = new DMeshAABBTree3(dMsh_copy, true);
+
+                    var v3pts = points.Select(pt => pt.ToVec3d());
+
+                    foreach (var p in v3pts)
+                    {
+                        int id = mshAABB.FindNearestVertex(p, 0.1);
+
+                        if (id != -1)
+                            r.Constraints.SetOrUpdateVertexConstraint(id, VertexConstraint.Pinned);
+                    }
                 }
             }
 

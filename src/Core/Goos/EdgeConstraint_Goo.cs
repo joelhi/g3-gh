@@ -17,6 +17,11 @@ namespace g3gh.Core.Goos
             Loop = 1
         };
 
+        public EdgeConstraint_goo(EdgeType type)
+        {
+            this.edgeType = type;
+        }
+
         internal int[] edges;
 
         internal int[] vertices;

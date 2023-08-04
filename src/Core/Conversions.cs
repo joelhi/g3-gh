@@ -50,11 +50,17 @@ namespace g3gh.Core
                 rhMs.Faces.AddFace(new Rhino.Geometry.MeshFace(tri.a, tri.b, tri.c));
             foreach (var vert in copy.Vertices())
                 rhMs.Vertices.Add((float)vert.x, (float)vert.y, (float)vert.z);
-            foreach (int ind in copy.VertexIndices())
+
+            if (dMesh3.HasVertexColors)
             {
-                Vector3f col = copy.GetVertexColor(ind);
-                rhMs.VertexColors.Add((int)(col.x * 255), (int)(col.y * 255), (int)(col.z * 255));
+                foreach (int ind in copy.VertexIndices())
+                {
+                    Vector3f col = copy.GetVertexColor(ind);
+                    rhMs.VertexColors.Add((int)(col.x * 255), (int)(col.y * 255), (int)(col.z * 255));
+                }
             }
+
+            rhMs.Normals.ComputeNormals();
 
             return rhMs;
         }

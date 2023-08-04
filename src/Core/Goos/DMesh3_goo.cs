@@ -8,11 +8,12 @@ using Rhino.Geometry;
 using g3;
 
 using g3gh.Core;
+using Grasshopper.Kernel;
 
 namespace g3gh.Core.Goos
 {
 
-    public class DMesh3_goo : GH_GeometricGoo<DMesh3>
+    public class DMesh3_goo : GH_GeometricGoo<DMesh3>, IGH_PreviewData
     {
         public Mesh dispMsh = null;
 
@@ -25,12 +26,14 @@ namespace g3gh.Core.Goos
         public DMesh3_goo(DMesh3 ms)
         {
             Value = ms;
-            
+            GenerateDispMesh();
+
         }
 
         public DMesh3_goo(Mesh ms)
         {
             Value = ms.ToDMesh3();
+            GenerateDispMesh();
         }
 
         public void GenerateDispMesh()
@@ -68,6 +71,8 @@ namespace g3gh.Core.Goos
         }
 
         public override BoundingBox Boundingbox => throw new NotImplementedException();
+
+        public BoundingBox ClippingBox => throw new NotImplementedException();
 
         public override object ScriptVariable()
         {
@@ -114,6 +119,29 @@ namespace g3gh.Core.Goos
             throw new NotImplementedException();
         }
 
+        public void DrawViewportWires(GH_PreviewWireArgs args)
+        {
+            if (CentralSettings.PreviewMeshEdges && m_value != null)
+            {
+                args.Pipeline.DrawMeshWires(dispMsh, args.Color, 1);
+            }
+        }
+
+        public void DrawViewportMeshes(GH_PreviewMeshArgs args)
+        {
+            if (m_value != null && args.Pipeline.SupportsShading)
+            {
+                if (dispMsh.VertexColors.Count > 0)
+                {
+                    args.Pipeline.DrawMeshFalseColors(dispMsh);
+                }
+                else
+                {
+                    args.Pipeline.DrawMeshShaded(dispMsh, args.Material);
+                }
+            }
+        }
+
         public static implicit operator DMesh3(DMesh3_goo dmshGoo)
         {
             return dmshGoo.Value;
@@ -133,5 +161,7 @@ namespace g3gh.Core.Goos
         {
             return new DMesh3_goo(dMesh3);
         }
+
+        
     }
 }
