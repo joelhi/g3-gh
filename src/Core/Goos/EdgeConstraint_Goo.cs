@@ -13,9 +13,15 @@ namespace g3gh.Core.Goos
     {
         public enum EdgeType
         { 
-            Span = 0,
-            Loop = 1
+            Empty = 0,
+            Span = 1,
+            Loop = 2
         };
+
+        public EdgeConstraint_goo()
+        {
+            this.edgeType = EdgeType.Empty;
+        }
 
         public EdgeConstraint_goo(EdgeType type)
         {
