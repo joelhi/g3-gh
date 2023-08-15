@@ -13,15 +13,30 @@ using g3;
 using Rhino.Geometry;
 using Rhino.Display;
 using Grasshopper;
+using System.Windows.Forms;
 
 namespace g3gh.Components.Params
 {
     public class EdgeLoop_Param : GH_Param<EdgeLoop_goo>, IGH_PreviewObject
     {
+        bool showAllMeshes = false;
 
         public EdgeLoop_Param() :
             base("Edge Loop", "eLoop", "Holds a collection of EdgeLoop objects.", g3ghUtil.pluginName, "0_params", GH_ParamAccess.item)
         { }
+
+        public override void AppendAdditionalMenuItems(ToolStripDropDown menu)
+        {
+            base.AppendAdditionalMenuItems(menu);
+
+            Menu_AppendItem(menu, "Show All Meshes", onShowMeshes, true, showAllMeshes);
+        }
+
+        private void onShowMeshes(object sender, EventArgs e)
+        {
+            showAllMeshes = !showAllMeshes;
+            this.OnDisplayExpired(true);
+        }
 
         public override GH_Exposure Exposure
         {
@@ -40,7 +55,7 @@ namespace g3gh.Components.Params
 
         public void DrawViewportWires(IGH_PreviewArgs args)
         {
-            if (this.m_data.NonNulls.Count() > 1)
+            if (this.m_data.NonNulls.Count() > 1 && !showAllMeshes)
             {
                 this.AddRuntimeMessage(
                     GH_RuntimeMessageLevel.Remark,
@@ -49,6 +64,14 @@ namespace g3gh.Components.Params
                 var goo = this.m_data.NonNulls.FirstOrDefault();
                 goo.GenerateDispMesh();
                 args.Display.DrawMeshWires(goo.dispMsh, Color.DarkGray);
+            }
+            else
+            {
+                foreach(var goo in m_data.NonNulls) 
+                {
+                    goo.GenerateDispMesh();
+                    args.Display.DrawMeshWires(goo.dispMsh, Color.DarkGray);
+                }
             }
 
             switch (args.Document.PreviewMode)

@@ -9,11 +9,13 @@ using Rhino.Geometry;
 using g3;
 
 using g3gh.Core;
+using Grasshopper.Kernel;
+using System.Drawing;
 
 namespace g3gh.Core.Goos
 {
 
-    public class EdgeSpan_goo : GH_GeometricGoo<EdgeSpan>
+    public class EdgeSpan_goo : GH_GeometricGoo<EdgeSpan>, IGH_PreviewData
     {
         public Mesh dispMsh = null;
         public PolylineCurve span = null;
@@ -74,7 +76,9 @@ namespace g3gh.Core.Goos
             get { return !(Value is null); }
         }
 
-        public override BoundingBox Boundingbox => throw new NotImplementedException();
+        public override BoundingBox Boundingbox => this.m_value.GetBounds().ToRhino();
+
+        public BoundingBox ClippingBox => Boundingbox;
 
         public override object ScriptVariable()
         {
@@ -98,6 +102,18 @@ namespace g3gh.Core.Goos
 
             target = default(Q);
             return false;
+        }
+
+        public void DrawViewportWires(GH_PreviewWireArgs args)
+        {
+            this.GenerateDispCurves();
+
+            args.Pipeline.DrawPolyline(this.span.ToPolyline(), Color.MediumVioletRed, 2);
+        }
+
+        public void DrawViewportMeshes(GH_PreviewMeshArgs args)
+        {
+
         }
 
         public override IGH_GeometricGoo DuplicateGeometry()
