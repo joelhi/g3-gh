@@ -55,7 +55,6 @@ namespace g3gh.Components.Params
             }
         }
 
-
         public void DrawViewportWires(IGH_PreviewArgs args)
         {
             switch (args.Document.PreviewMode)

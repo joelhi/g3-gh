@@ -27,7 +27,6 @@ namespace g3gh.Core.Goos
         public EdgeSpan_goo(EdgeSpan span)
         {
             Value = span;
-
         }
 
         public void GenerateDispMesh()

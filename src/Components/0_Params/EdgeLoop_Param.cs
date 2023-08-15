@@ -12,7 +12,7 @@ using g3gh.Core.Goos;
 using g3;
 using Rhino.Geometry;
 using Rhino.Display;
-
+using Grasshopper;
 
 namespace g3gh.Components.Params
 {
@@ -38,34 +38,36 @@ namespace g3gh.Components.Params
                 return null;
         }
 
-        public void DrawViewportMeshes(IGH_PreviewArgs args)
+        public void DrawViewportWires(IGH_PreviewArgs args)
         {
-            DisplayPipeline dp = args.Display;
-
-            foreach (EdgeLoop_goo goo in this.m_data.NonNulls)
+            if (this.m_data.NonNulls.Count() > 1)
             {
+                this.AddRuntimeMessage(
+                    GH_RuntimeMessageLevel.Remark,
+                    "Multiple EdgeLoops present, only mesh of the first will be rendered for performance reasons." +
+                    "\nTo show all, right click and tick Show All Meshes");
+                var goo = this.m_data.NonNulls.FirstOrDefault();
                 goo.GenerateDispMesh();
-                goo.GenerateDispCurves();
-                dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
-                dp.DrawCurve(goo.loop, Color.DarkRed, 2);
+                args.Display.DrawMeshWires(goo.dispMsh, Color.DarkGray);
+            }
 
+            switch (args.Document.PreviewMode)
+            {
+                case GH_PreviewMode.Wireframe:
+                    Preview_DrawWires(args);
+                    break;
+                case GH_PreviewMode.Shaded:
+                    if (CentralSettings.PreviewMeshEdges)
+                    {
+                        Preview_DrawWires(args);
+                    }
+                    break;
             }
         }
 
-
-        public void DrawViewportWires(IGH_PreviewArgs args)
+        public void DrawViewportMeshes(IGH_PreviewArgs args)
         {
-            DisplayPipeline dp = args.Display;
-
-            foreach (EdgeLoop_goo goo in this.m_data.NonNulls)
-            {
-                goo.GenerateDispMesh();
-                goo.GenerateDispCurves();
-                dp.DrawMeshWires(goo.dispMsh, Color.DarkGray);
-                dp.DrawCurve(goo.loop, Color.DarkRed, 2);
-
-            }
-
+            // Not needed
         }
 
         public override Guid ComponentGuid

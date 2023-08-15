@@ -9,11 +9,13 @@ using Rhino.Geometry;
 using g3;
 
 using g3gh.Core;
+using Grasshopper.Kernel;
+using System.Drawing;
 
 namespace g3gh.Core.Goos
 {
 
-    public class EdgeLoop_goo : GH_GeometricGoo<EdgeLoop>
+    public class EdgeLoop_goo : GH_GeometricGoo<EdgeLoop>, IGH_PreviewData
     {
         public Mesh dispMsh = null;
         public PolylineCurve loop = null;
@@ -73,7 +75,9 @@ namespace g3gh.Core.Goos
             get { return !(Value is null); }
         }
 
-        public override BoundingBox Boundingbox => throw new NotImplementedException();
+        public override BoundingBox Boundingbox => this.m_value.GetBounds().ToRhino();
+
+        public BoundingBox ClippingBox => this.m_value.GetBounds().ToRhino();
 
         public override object ScriptVariable()
         {
@@ -83,7 +87,7 @@ namespace g3gh.Core.Goos
         public override bool CastTo<Q>(out Q target)
         {
 
-            //Cast to mesh.
+            //Cast to curve.
             if (typeof(Q).IsAssignableFrom(typeof(GH_Curve)))
             {
                 if (Value == null)
@@ -106,7 +110,6 @@ namespace g3gh.Core.Goos
 
         public override BoundingBox GetBoundingBox(Transform xform)
         {
-
             BoundingBox box = BoundingBox.Empty;
             box.Union(Value.GetBounds().ToRhino());
             return box;
@@ -120,6 +123,18 @@ namespace g3gh.Core.Goos
         public override IGH_GeometricGoo Morph(SpaceMorph xmorph)
         {
             throw new NotImplementedException();
+        }
+
+        public void DrawViewportWires(GH_PreviewWireArgs args)
+        {
+            this.GenerateDispCurves();
+
+            args.Pipeline.DrawPolyline(this.loop.ToPolyline(), Color.MediumVioletRed, 2);
+        }
+
+        public void DrawViewportMeshes(GH_PreviewMeshArgs args)
+        {
+
         }
 
         public static implicit operator EdgeLoop(EdgeLoop_goo Goo)
