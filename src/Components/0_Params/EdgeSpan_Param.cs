@@ -61,7 +61,7 @@ namespace g3gh.Components.Params
             {
                 this.AddRuntimeMessage(
                     GH_RuntimeMessageLevel.Remark,
-                    "Multiple EdgeLoops present, only mesh of the first will be rendered for performance reasons." +
+                    "Multiple EdgeSpans present, only mesh of the first will be rendered for performance reasons." +
                     "\nTo show all, right click and tick Show All Meshes");
                 var goo = this.m_data.NonNulls.FirstOrDefault();
                 goo.GenerateDispMesh();
